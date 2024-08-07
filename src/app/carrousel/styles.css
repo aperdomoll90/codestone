@@ -1,0 +1,271 @@
+html {
+  font-size: 62.5%;
+  color: #fff;
+}
+
+.slideshow {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.slideshow::before {
+  content: 'PORTFOLIO';
+  position: absolute;
+  z-index: 10;
+  font-size: 6rem;
+  font-weight: 900;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  letter-spacing: 4px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  margin-top: 2rem;
+}
+
+.info-container {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4rem 0 0 4rem;
+}
+
+.info-container::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  border: 2px dashed #f1ece8;
+  animation: rotation 200s linear infinite;
+}
+
+.info-container::after {
+  content: '';
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  border: 2px dashed #f1ece8;
+  animation: rotation 200s linear infinite reverse;
+}
+
+.project-info {
+  display: flex;
+  max-width: 70%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-family: 'Inria Sans', sans-serif;
+  z-index: 10;
+  gap: 2rem;
+  backdrop-filter: blur(5px);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.project-info h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.project-info p {
+  font-size: 1rem;
+  line-height: 1.7rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+.project-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.project-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-position: center 1.5rem;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.project-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.595);
+  scale: 1.1;
+}
+
+.project-button span {
+  font-size: 1rem;
+  font-weight: bold;
+  display: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.project-button span::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.136);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: all 0.5s ease-in-out;
+}
+.project-button:hover span {
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+
+.live-demo-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.github-button {
+  background-color: #24292e;
+  color: white;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carousel {
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: -40%;
+  right: -30%;
+}
+
+.carousel::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  border: 2px dashed #f1ece8;
+  animation: rotation 200s linear infinite;
+  transform-origin: center center;
+}
+
+.carousel::after {
+  content: '';
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  border: 2px dashed #f1ece8;
+  animation: rotation 200s linear infinite reverse;
+  transform-origin: center center;
+}
+
+.slide {
+  outline: 0.2px solid #f1ece8;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  z-index: 10;
+}
+
+.slide-active {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.726);
+}
+
+.controls {
+  display: flex;
+  width: 40rem;
+  overflow-x: scroll;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 2rem;
+  right: 1%;
+  z-index: 15;
+  background: rgba(255, 255, 255, 0.433);
+  border-radius: 15px;
+}
+
+.control {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  transition: outline 0.5s;
+  border: none;
+  margin: 0.7rem;
+}
+
+.control-active {
+  outline: 0.3rem solid #7dbd77;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (width >= 900px) {
+  .slideshow {
+    flex-direction: row;
+    align-items: center;
+  }
+  .slideshow::before {
+    font-size: 10rem;
+  }
+  .info-container {
+    width: 58%;
+    height: 100%;
+    padding: unset;
+  }
+
+  .project-info h2 {
+    font-size: 3rem;
+  }
+
+  .project-info p {
+    font-size: 1.2rem;
+  }
+
+  .carousel-container {
+    width: 42%;
+    height: 100%;
+  }
+}
