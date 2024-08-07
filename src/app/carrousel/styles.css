@@ -1,9 +1,5 @@
-html {
-  font-size: 62.5%;
-  color: #fff;
-}
-
 .slideshow {
+  color: #fff;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -18,7 +14,7 @@ html {
   content: 'PORTFOLIO';
   position: absolute;
   z-index: 10;
-  font-size: 6rem;
+  font-size: 3.5rem;
   font-weight: 900;
   font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   letter-spacing: 4px;
@@ -62,28 +58,28 @@ html {
 
 .project-info {
   display: flex;
-  max-width: 70%;
+  max-width: 90%;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   font-family: 'Inria Sans', sans-serif;
   z-index: 10;
-  gap: 2rem;
+  gap: 1rem;
   backdrop-filter: blur(5px);
   padding: 1.5rem;
   border-radius: 8px;
 }
 
 .project-info h2 {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 5px;
   text-transform: uppercase;
 }
 
 .project-info p {
-  font-size: 1rem;
-  line-height: 1.7rem;
+  font-size: .8rem;
+  line-height: 1.1rem;
   font-weight: 200;
   letter-spacing: 2px;
 }
@@ -98,7 +94,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
+  width: 2rem;
   aspect-ratio: 1 / 1;
   border: none;
   border-radius: 8px;
@@ -116,7 +112,7 @@ html {
 }
 
 .project-button span {
-  font-size: 1rem;
+  font-size: .5rem;
   font-weight: bold;
   display: none;
   transition: all 0.5s ease-in-out;
@@ -157,11 +153,9 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .carousel {
-  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,7 +167,7 @@ html {
 .carousel::before {
   content: '';
   position: absolute;
-  width: 100%;
+  width: 90%;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
   border: 2px dashed #f1ece8;
@@ -183,7 +177,7 @@ html {
 
 .carousel::after {
   content: '';
-  width: 80%;
+  width: 70%;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
   border: 2px dashed #f1ece8;
@@ -205,7 +199,7 @@ html {
 
 .controls {
   display: flex;
-  width: 40rem;
+  width: 20rem;
   overflow-x: scroll;
   flex-direction: row;
   align-items: center;
@@ -248,20 +242,24 @@ html {
     align-items: center;
   }
   .slideshow::before {
-    font-size: 10rem;
+    font-size: 6.5rem;
   }
   .info-container {
     width: 58%;
     height: 100%;
     padding: unset;
   }
+  .project-info {
+    max-width: 70%;
+  }
 
   .project-info h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .project-info p {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.3rem;
   }
 
   .carousel-container {

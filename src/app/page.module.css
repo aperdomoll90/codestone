@@ -7,17 +7,6 @@
   inset 0 8rem 100px -8rem rgba(0, 0, 0, 0.933),
   inset 0 -8rem 100px -8rem rgba(0, 0, 0, 0.933);
 }
-/* .container::before {
-  content: '';
-  height: 8rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.384) 0%, transparent 100%); ;
-  filter: blur(10px);
-  z-index: -1;
-} */
 
 .main {
   display: flex;

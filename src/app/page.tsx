@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './page.module.css'
 import RenderCarrousel from './carrousel/page'
-import Hero from './hero/hero'
+import Hero from './hero/Hero'
 import About from './about/About'
 
 interface Section {

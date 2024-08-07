@@ -1,0 +1,78 @@
+#heroWrapper {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(var(--lightblue), var(--darkblue));
+  box-shadow: inset 0 8rem 100px -8rem rgba(0, 0, 0, 0.933), inset 0 -8rem 100px -8rem rgba(0, 0, 0, 0.933);
+}
+
+.heroImage {
+  width: auto;
+  height: 65vh;
+  object-fit: cover;
+  position: absolute;
+  bottom: -5rem;
+  left: 2rem;
+  z-index: 1;
+}
+.heroTitle {
+  position: absolute;
+  font-size: 6em;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  color: white;
+  text-transform: uppercase;
+  z-index: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  left: 1rem;
+  top: 1.5rem;
+}
+
+.heroTitleOutline {
+  color: transparent;
+  -webkit-text-stroke: 5px white;
+  z-index: 5;
+}
+
+.heroMessage {
+  font-family: 'Kaisei Decol', sans-serif;
+  width: 60%;
+  font-size: 0.7em;
+  font-weight: 200;
+  letter-spacing: 0.3em;
+  line-height: 1.2rem;
+  color: white;
+  position: absolute;
+  bottom: 65%;
+  right: 5%;
+  z-index: 5;
+}
+
+@media (width >= 900px) {
+  .heroImage {
+    height: 90vh;
+    left: 5rem;
+    bottom: 0;
+  }
+
+  .heroTitle {
+    font-size: 14em;
+    writing-mode: unset;
+    text-orientation: upright;
+    transform: unset;
+    top: unset;
+    left: unset;
+  }
+
+  .heroMessage {
+    width: 30%;
+    bottom: 7rem;
+    right: unset;
+    font-size: 0.8em;
+  }
+}
