@@ -28,6 +28,22 @@ const HomeComponent: React.FC<HomeProps> = ({ sections, transitionDuration = 500
     const container = containerRef.current
     if (!container) return
 
+    const sectionElements = container.querySelectorAll(`.${styles.screen}`)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Array.from(sectionElements).indexOf(entry.target as Element)
+            setCurrentSection(index)
+          }
+        })
+      },
+      { threshold: 1.0 } // Adjust threshold as needed
+    )
+
+    sectionElements.forEach((section) => observer.observe(section))
+
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault()
 
@@ -55,14 +71,27 @@ const HomeComponent: React.FC<HomeProps> = ({ sections, transitionDuration = 500
     container.addEventListener('wheel', handleWheel, { passive: false })
 
     return () => {
+      sectionElements.forEach((section) => observer.unobserve(section))
       container.removeEventListener('wheel', handleWheel)
     }
   }, [totalSections])
 
   const transitionStyle = `transform ${transitionDuration}ms ${transitionEasing}`
 
+  const getBackgroundColor = (sectionIndex: number) => {
+    const backgroundColors = [
+      'radial-gradient(#a7a3d8, #585672)',
+      'radial-gradient(#a7a3d8, #03254e)',
+      'radial-gradient(#E7B13B, #885310)',
+      'radial-gradient(#E7B13B, #885310)'
+    ]
+    return {
+      background: backgroundColors[sectionIndex],
+    }
+  }
+
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div className={styles.container} ref={containerRef} style={getBackgroundColor(currentSection)}>
       <main
         className={styles.main}
         style={{
@@ -86,6 +115,7 @@ const HomeComponent: React.FC<HomeProps> = ({ sections, transitionDuration = 500
 
 const sections = [
   { background: 'red', content: <Hero /> },
+  { background: 'blue', content: <About /> },
   { background: 'blue', content: <About /> },
   { background: 'yellow', content: <RenderCarrousel /> },
 ]

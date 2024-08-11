@@ -1,8 +1,10 @@
 :root {
   --white: #fff;
-  --lightblue: #a7a3d8;
-  --darkblue: #585672;
-  --purple: #03254e;
+  --lightLavender: #a7a3d8;
+  --darkLavender: #585672;
+  --blue: #03254e;
+  --goldenYellow: #E7B13B;
+  --richBrown: #885310;
 }
 
 * {
