@@ -2,10 +2,8 @@ export interface ToggleButtonPropsType {
   size?: number
   top?: number
   bottom?: number
-  leftMobile?: number
-  leftDesktop?: number
-  rightMobile?: number
-  rightDesktop?: number
+  left?: number
+  right?: number
   color?: `#${string}` | `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, ${number}, ${number})` | ''
   buttonHover?: string
   buttonBackgroundColor?: string

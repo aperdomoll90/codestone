@@ -1,22 +1,22 @@
 import './styles.css'
+import '../../utils/GlobalStyles.css'
 import { ToggleButtonPropsType } from './ToggleButton.types'
+import { LightenDarkenColor } from '@/app/utils/ColorManipulation'
 
-export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ size, color, buttonHover, buttonBackgroundColor, shadow, active, setActive, ariaControls, ariaExpanded, top, bottom, leftMobile, leftDesktop, rightMobile, rightDesktop, customClass }) => {
+export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ size, color, buttonHover, buttonBackgroundColor, shadow, active, setActive, ariaControls, ariaExpanded, top, bottom, left, right, customClass }) => {
   const defaultColor = '#fff'
   const defaultBackgroundColor = '#303030da'
 
   const stylesProps = {
     '--size': size ? `${size}rem` : '2rem',
     '--color': color ? color : defaultColor,
-    '--buttonHover': buttonHover && buttonHover,
+    '--buttonHover': buttonHover ? buttonHover : LightenDarkenColor(buttonBackgroundColor || defaultBackgroundColor, -80),
     '--buttonBackgroundColor': buttonBackgroundColor ? buttonBackgroundColor : defaultBackgroundColor,
     '--shadow': shadow ? 'rgba(0, 0, 0, 0.8)' : '',
     '--top': top ? `${top}rem` : 'auto',
     '--bottom': bottom ? `${bottom}rem` : 'auto',
-    '--leftMobile': leftMobile ? `${leftMobile}rem` : 'auto',
-    '--leftDesktop': leftDesktop ? `${leftDesktop}rem` : 'auto',
-    '--rightMobile': rightMobile ? `${rightMobile}rem` : 'auto',
-    '--rightDesktop': rightDesktop ? `${rightDesktop}rem` : 'auto',
+    '--left': left ? `${left}rem` : 'auto',
+    '--right': right ? `${right}rem` : 'auto',
   }
 
   const isActive = active ? 'ToggleButtonActive ToggleButton' : 'ToggleButton'

@@ -17,7 +17,9 @@
   bottom: -5rem;
   left: 2rem;
   z-index: 1;
+  pointer-events: none;
 }
+
 .heroTitle {
   position: absolute;
   font-size: 6em;
@@ -31,12 +33,16 @@
   transform: rotate(180deg);
   left: 1rem;
   top: 1.5rem;
+  pointer-events: none;
+  margin-right: -0.3em;
+  transition: transform 0.2s ease;
 }
 
 .heroTitleOutline {
   color: transparent;
   -webkit-text-stroke: 5px white;
   z-index: 5;
+  pointer-events: none;
 }
 
 .heroMessage {
@@ -51,6 +57,7 @@
   bottom: 65%;
   right: 5%;
   z-index: 5;
+  pointer-events: none;
 }
 
 @media (width >= 900px) {
@@ -61,7 +68,7 @@
   }
 
   .heroTitle {
-    font-size: 14em;
+    font-size: 16vw;
     writing-mode: unset;
     text-orientation: upright;
     transform: unset;

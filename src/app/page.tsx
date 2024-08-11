@@ -32,16 +32,13 @@ const HomeComponent: React.FC<HomeProps> = ({ sections, transitionDuration = 500
       e.preventDefault()
 
       const now = Date.now()
-      if (now - lastScrollTime.current < 1000) return // Throttle scroll events
+      if (now - lastScrollTime.current < 1000) return
 
       let direction = 0
 
-      // Handle vertical scrolling
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         direction = e.deltaY > 0 ? 1 : -1
-      }
-      // Handle horizontal scrolling
-      else {
+      } else {
         direction = e.deltaX > 0 ? 1 : -1
       }
 
