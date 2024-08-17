@@ -3,16 +3,13 @@
   width: var(--size);
   aspect-ratio: 1;
   position: absolute;
-  top: var(--top);
-  bottom: var(--bottom);
-  left: var(--left);
-  right: var(--right);
+  top: 1rem;
+  right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--buttonBackgroundColor);
+  background: transparent;
   border-radius: 5px;
-  box-shadow: 0 10px 20px var(--shadow);
   overflow: hidden;
   cursor: pointer;
   transition: 0.5s ease-in-out;
@@ -22,7 +19,7 @@
   pointer-events: all;
 }
 .ToggleButton:hover {
-  background: var(--buttonHover);
+  background: transparent;
 }
 
 .ToggleButton span {
@@ -30,7 +27,7 @@
   width: 80%;
   height: 4px;
   border-radius: 4px;
-  background: var(--color);
+  background: #fff;
   transition: 0.5s ease-in-out;
 }
 

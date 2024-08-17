@@ -8,18 +8,6 @@ import { ToggleButton } from '../ToggleButtonNew'
 export const ResponsiveNav: React.FC<ResponsiveNavPropsTypes> = ({ logo, height, width, logoHeight, logoMargin, menuItemsArray, primaryColor, secondaryColor, hoverColor, pressColor, labelColor }) => {
   const [visible, setVisible] = useState(false)
 
-  const stylesProps = {
-    '--height': height ? `${height}rem` : '5.4rem',
-    '--width': width ? `${width}rem` : '100%',
-    '--logoHeight': logoHeight ? logoHeight : '3rem',
-    '--logoMargin': logoMargin ? logoMargin : '1rem',
-    '--primaryColor': primaryColor ? primaryColor : '#222327',
-    '--secondaryColor': secondaryColor ? secondaryColor : '#29fd53',
-    '--labelColor': labelColor ? labelColor : '#fff',
-    '--hoverColor': hoverColor ? hoverColor : '#1c2942',
-    '--pressColor': pressColor ? pressColor : '#1c2942',
-  }
-
   const renderMenuItems = menuItemsArray?.map((item: menuItemsArrayPropsTypes, index: number) => (
     <li key={`${item.label}-${index}`} className='responsiveNav-active'>
       <a className='responsiveNav-link' href={item.link}>
@@ -30,8 +18,7 @@ export const ResponsiveNav: React.FC<ResponsiveNavPropsTypes> = ({ logo, height,
   ))
 
   return (
-    <section id='primary-header' className='primary-header flex-row' style={stylesProps as React.CSSProperties}>
-      <div>{logo && <img src={logo} className='primary-logo' />}</div>
+    <section id='primary-header' className='primary-header flex-row'>
       <ToggleButton
         top={1}
         right={1}

@@ -1,6 +1,6 @@
 .primary-header {
-  height: var(--height);
-  width: var(--width);
+  height: 5.4rem;
+  width: 100%;
   align-items: center;
   position: absolute;
   inset: 0;
@@ -22,12 +22,6 @@
   text-transform: uppercase;
 }
 
-.primary-logo {
-  height: var(--logoHeight);
-  width: auto;
-  margin: var(--logoMargin);
-}
-
 .mobile-nav-toggle {
   display: none !important;
 }
@@ -47,7 +41,7 @@
 
 .responsiveNav-link {
   text-decoration: none;
-  color: var(--labelColor);
+  color: #fff;
   font-weight: 300;
   pointer-events:all;
 }
