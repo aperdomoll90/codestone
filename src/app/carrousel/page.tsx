@@ -88,7 +88,7 @@ const slideData = [
 ]
 
 const RenderCarrousel = () => {
-  return <Carousel slides={slideData} size={55} />
+  return <Carousel slides={slideData} size={50} />
 }
 
 export default RenderCarrousel

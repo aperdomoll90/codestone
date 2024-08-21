@@ -153,8 +153,8 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
                 background={slides[index].slideBackground}
                 size={`${size * 0.06}rem`}
                 radius={size / (position === 0 ? 1.8 : 1.95)}
-                angle={position * 54 + 141}
-                scale={position === 0 ? 5 : 2.5}
+                angle={position * 54 + 137}
+                scale={position === 0 ? 4.2 : 2.5}
                 className={`slide ${position === 0 ? 'slide-active' : ''}`}
                 label={`Slide ${index + 1} of ${slidesCount}, ${slides[index].project}`}
                 hidden={position !== 0}
