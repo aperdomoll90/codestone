@@ -2,6 +2,7 @@
 import * as React from 'react'
 import './styles.css'
 import { Carousel } from './Carrousel'
+import { SvgCarrousel } from './SvgCarrousel'
 
 const hikerSlide = '../../carouselassets/hikerslide.png'
 const hikerBackground = '../../carouselassets/hikerbackground.png'
@@ -12,7 +13,7 @@ const djBackground = '../../carouselassets/djbackground.png'
 const seaSlide = '../../carouselassets/seaslide.png'
 const seaBackground = '../../carouselassets/seabackground.png'
 
-const slideData = [
+export const slideData = [
   {
     fullBackground: hikerBackground,
     slideBackground: hikerSlide,
@@ -88,7 +89,8 @@ const slideData = [
 ]
 
 const RenderCarrousel = () => {
-  return <Carousel slides={slideData} size={50} />
+  return <SvgCarrousel />
+  // return <Carousel slides={slideData} size={60} />
 }
 
 export default RenderCarrousel

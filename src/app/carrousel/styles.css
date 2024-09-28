@@ -6,10 +6,12 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: all 0.5s ease-in-out;
 }
-
+.carousel-track {
+  overflow: visible  !important;
+}
 .info-container {
   width: 100%;
   height: 50vh;
@@ -18,7 +20,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 4rem 0 0 4rem;
 }
 
@@ -131,16 +133,29 @@
   color: white;
 }
 
+
 .carousel-container {
   width: 100%;
-  height: 50vh;
+  height: 30vh;
   position: relative;
+  bottom: -20%;
+  right: -50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+#carouselPath::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  border: 2px dashed #f1ece8;
+  animation: rotation 200s linear infinite;
+  transform-origin: center center;
+}
 .carousel {
   display: flex;
   align-items: center;
@@ -175,7 +190,6 @@
   outline: 0.2px solid #f1ece8;
   border-radius: 50%;
   position: absolute;
-  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 10;
 }
 
@@ -185,22 +199,23 @@
 
 .controls {
   display: flex;
-  width: 20rem;
-  overflow-x: scroll;
-  flex-direction: row;
+  height: 15rem;
+  overflow: scroll;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   position: absolute;
   bottom: 2rem;
-  right: 1%;
+  left: -40%;
   z-index: 15;
-  background: rgba(255, 255, 255, 0.433);
+  /* background: rgba(255, 255, 255, 0.433); */
+  backdrop-filter: blur(10px);
   border-radius: 15px;
 }
 
 .control {
-  height: 3rem;
-  width: 3rem;
+  min-height: 3rem;
+  min-width: 3rem;
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
@@ -226,6 +241,7 @@
   .slideshow {
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
   }
   .slideshow::before {
     font-size: 6.5rem;
@@ -249,7 +265,17 @@
   }
 
   .carousel-container {
+    bottom: -20%;
+    right: -15%;
     width: 42%;
-    height: 100%;
+    height: 60%;
+  }
+
+  .controls {
+    height: 27rem;
+    width: 10rem;
+    bottom: 2rem;
+    left: 30%;
+    flex-wrap: wrap;
   }
 }

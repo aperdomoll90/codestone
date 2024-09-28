@@ -1,7 +1,7 @@
 'use client'
-import React, { useState, useCallback, useMemo, useRef, Suspense, useEffect } from 'react'
+import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import './styles.css'
-import { SvgCarrousel } from './SvgCarrousel'
+import { slideData } from './page'
 
 const demo = '../../carouselassets/demo.png'
 const github = '../../carouselassets/github.png'
@@ -15,40 +15,6 @@ interface Slide {
   githubLink: string
 }
 
-interface LazySlideProps {
-  background: string
-  size: string
-  radius: number
-  angle: number
-  scale: number
-  className: string
-  label: string
-  hidden: boolean
-}
-
-const LazySlide: React.FC<LazySlideProps> = React.memo(({ background, size, radius, angle, scale, className, label, hidden }) => {
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100)
-    return () => clearTimeout(timer)
-  }, [])
-
-  const style = {
-    width: size,
-    height: size,
-    backgroundImage: isLoaded ? `url(${background})` : 'none',
-    backgroundColor: isLoaded ? 'transparent' : '#ccc',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    transform: `rotate(${angle}deg) translateY(${radius}rem) rotate(-${angle}deg) scale(${scale})`,
-  }
-
-  return <div className={className} style={style} role='group' aria-roledescription='slide' aria-label={label} aria-hidden={hidden} />
-})
-
-LazySlide.displayName = 'LazySlide'
-
 interface CarouselProps {
   slides: Slide[]
   size?: number
@@ -57,7 +23,7 @@ interface CarouselProps {
 export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  const carouselRef = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<SVGPathElement | null>(null)
   const slidesCount = slides.length
 
   const moveToSlide = useCallback(
@@ -66,16 +32,11 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
       setIsAnimating(true)
 
       const diff = (targetIndex - currentSlide + slidesCount) % slidesCount
-      if (diff === 0) {
-        setIsAnimating(false)
-        return
-      }
-
-      const step = diff > slidesCount / 2 ? -1 : 1
+      const direction = diff > slidesCount / 2 ? -1 : 1
       let current = currentSlide
 
       const animate = () => {
-        current = (current + step + slidesCount) % slidesCount
+        current = (current + direction + slidesCount) % slidesCount
         setCurrentSlide(current)
 
         if (current !== targetIndex) {
@@ -85,19 +46,17 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
         }
       }
 
-      setTimeout(animate, 300)
+      animate()
     },
     [currentSlide, isAnimating, slidesCount]
   )
 
-  const visibleSlides = useMemo(
-    () =>
-      [-2, -1, 0, 1, 2].map(offset => ({
-        index: (currentSlide + offset + slidesCount) % slidesCount,
-        position: offset,
-      })),
-    [currentSlide, slidesCount]
-  )
+  const visibleSlides = useMemo(() => {
+    return [-2, -1, 0, 1, 2].map(offset => ({
+      index: (currentSlide + offset + slidesCount) % slidesCount,
+      position: offset,
+    }))
+  }, [currentSlide, slidesCount])
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent, index: number) => {
@@ -110,6 +69,51 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
   )
 
   const activeSlide = slides[currentSlide]
+
+  // SVG path for the carousel
+  const svgPath = 'M 0 -100 A 100 100 0 1 1 0 100 A 100 100 0 1 1 0 -100'
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const pathLength = carouselRef.current.getTotalLength()
+      slides.forEach((slide, index) => {
+        const slideElement = document.getElementById(`slide-${index}`)
+        if (slideElement) {
+          const baseAngle = Math.PI / 1.2 // Start angle for visible slides
+          const angleStep = (Math.PI * 2) / 6 // Divide the circle into 6 parts
+
+          // Check if this slide is in the visible set
+          const visibleSlideInfo = visibleSlides.find(vs => vs.index === index)
+
+          let angle, scale, opacity, zIndex
+
+          if (visibleSlideInfo) {
+            // If it's a visible slide, calculate its position on the circle
+            angle = baseAngle - visibleSlideInfo.position * angleStep
+            scale = visibleSlideInfo.position === 0 ? 1.5 : Math.abs(visibleSlideInfo.position) === 1 ? 0.9 : 0.5
+            opacity = 1
+            // opacity = visibleSlideInfo.position === 0 ? 1 : 0.7
+            zIndex = visibleSlideInfo.position === 0 ? 10 : Math.abs(visibleSlideInfo.position) === 1 ? 5 : 0
+          } else {
+            // If it's not visible, place it at the bottom of the circle
+            angle = Math.PI / -6 // Bottom of the circle
+            scale = 0.8 // Smaller scale for non-visible slides
+            opacity = 0 // Hidden
+            zIndex = -1
+          }
+
+          // Calculate position on the circle
+          const x = Math.cos(angle) * 100 // 100 is the radius of the path
+          const y = -Math.sin(angle) * 100 // Negative to invert the y-axis
+
+          // Apply transformations
+          slideElement.style.transform = `translate(${x}px, ${y}px) scale(${scale})`
+          slideElement.style.opacity = opacity.toString()
+          slideElement.style.zIndex = zIndex.toString()
+        }
+      })
+    }
+  }, [visibleSlides, slides])
 
   return (
     <div
@@ -146,22 +150,26 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
         </div>
       </div>
       <div className='carousel-container'>
-        <div className='carousel' ref={carouselRef}  style={{ height: `${size}rem`, width: `${size}rem` }}>
-          {visibleSlides.map(({ index, position }) => (
-            <Suspense key={`slide-${index}`} fallback={<div style={{ width: `${size * 0.06}rem`, height: `${size * 0.06}rem` }} />}>
-              <LazySlide
-                background={slides[index].slideBackground}
-                size={`${size * 0.06}rem`}
-                radius={size / (position === 0 ? 1.8 : 1.95)}
-                angle={position * 54 + 137}
-                scale={position === 0 ? 4.2 : 2.5}
-                className={`slide ${position === 0 ? 'slide-active' : ''}`}
-                label={`Slide ${index + 1} of ${slidesCount}, ${slides[index].project}`}
-                hidden={position !== 0}
+        <svg overflow='visible' width='100%' height='100%' viewBox='-70 -70 130 130' xmlns='http://www.w3.org/2000/svg' className='test'>
+          <path ref={carouselRef} id='carouselPath' d={svgPath} fill='none' stroke='black' strokeWidth='1' />
+          {slides.map((slide, index) => {
+            return (
+              <image
+                key={`slide-${index}`}
+                id={`slide-${index}`}
+                href={slide.slideBackground}
+                width={size * 0.6}
+                height={size * 0.6}
+                x={-size * 0.4}
+                y={-size * 0.4}
+                className={`slide ${index === currentSlide ? 'slide-active' : ''}`}
+                style={{
+                  transition: 'all 0.3s ease-in-out',
+                }}
               />
-            </Suspense>
-          ))}
-        </div>
+            )
+          })}
+        </svg>
         <div className='controls' role='tablist' aria-label='Carousel Controls'>
           {slides.map((slide, index) => (
             <button
@@ -183,6 +191,14 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
           ))}
         </div>
       </div>
+    </div>
+  )
+}
+
+export const SvgCarrousel = () => {
+  return (
+    <div id='svg-carrousel-wrapper'>
+      <Carousel slides={slideData} size={70} />
     </div>
   )
 }

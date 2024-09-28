@@ -4,7 +4,7 @@
   align-items: center;
   position: absolute;
   inset: 0;
-  justify-content: space-between;
+  justify-content: flex-end;
   z-index: 1000;
   pointer-events: none;
 }
