@@ -6,11 +6,12 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  /* overflow: hidden; */
+  overflow: hidden;
   transition: all 0.5s ease-in-out;
+
 }
 .carousel-track {
-  overflow: visible  !important;
+  overflow: visible !important;
 }
 .info-container {
   width: 100%;
@@ -66,7 +67,7 @@
 }
 
 .project-info p {
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.1rem;
   font-weight: 200;
   letter-spacing: 2px;
@@ -100,7 +101,7 @@
 }
 
 .project-button span {
-  font-size: .5rem;
+  font-size: 0.5rem;
   font-weight: bold;
   display: none;
   transition: all 0.5s ease-in-out;
@@ -133,83 +134,55 @@
   color: white;
 }
 
-
 .carousel-container {
   width: 100%;
-  height: 30vh;
+  height: 35vh;
   position: relative;
-  bottom: -20%;
-  right: -50%;
+  bottom: -30%;
+  right: -25%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#carouselPath::before {
+.carousel-container::before {
   content: '';
   position: absolute;
-  width: 90%;
+  width: 120%;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
   border: 2px dashed #f1ece8;
   animation: rotation 200s linear infinite;
   transform-origin: center center;
-}
-.carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  bottom: -40%;
-  right: -30%;
+  z-index: 1;
 }
 
-.carousel::before {
+.carousel-container::after {
   content: '';
   position: absolute;
   width: 90%;
   aspect-ratio: 1 / 1;
-  border-radius: 100%;
-  border: 2px dashed #f1ece8;
-  animation: rotation 200s linear infinite;
-  transform-origin: center center;
-}
-
-.carousel::after {
-  content: '';
-  width: 70%;
-  aspect-ratio: 1 / 1;
-  border-radius: 100%;
+  border-radius: 90%;
   border: 2px dashed #f1ece8;
   animation: rotation 200s linear infinite reverse;
   transform-origin: center center;
-}
-
-.slide {
-  outline: 0.2px solid #f1ece8;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 10;
-}
-
-.slide-active {
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.726);
+  z-index: 1;
 }
 
 .controls {
   display: flex;
-  height: 15rem;
+  height: 5rem;
   overflow: scroll;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   position: absolute;
-  bottom: 2rem;
-  left: -40%;
+  margin-bottom: 8rem;
+  margin-right: 2rem;
   z-index: 15;
   /* background: rgba(255, 255, 255, 0.433); */
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   border-radius: 15px;
 }
 
@@ -226,6 +199,32 @@
 
 .control-active {
   outline: 0.3rem solid #7dbd77;
+}
+
+.carousel-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  margin: 0 .5rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: .9rem;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover:not(.inactive) {
+  background-color: #0056b3;
+}
+
+.nav-button.inactive {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
 @keyframes rotation {
@@ -252,7 +251,7 @@
     padding: unset;
   }
   .project-info {
-    max-width: 70%;
+    max-width: 65%;
   }
 
   .project-info h2 {
@@ -265,17 +264,19 @@
   }
 
   .carousel-container {
-    bottom: -20%;
-    right: -15%;
+    bottom: -40%;
+    right: -5%;
     width: 42%;
     height: 60%;
   }
 
   .controls {
-    height: 27rem;
-    width: 10rem;
-    bottom: 2rem;
-    left: 30%;
+    height: 5rem;
+    margin-bottom: 0rem;
+    margin-right: 0rem;
     flex-wrap: wrap;
+  }
+  .nav-button {
+    font-size: 1.2rem;
   }
 }

@@ -11,9 +11,17 @@ const vogeBackground = '../../carouselassets/vogebackground.png'
 const djSlide = '../../carouselassets/djslide.png'
 const djBackground = '../../carouselassets/djbackground.png'
 const seaSlide = '../../carouselassets/seaslide.png'
-const seaBackground = '../../carouselassets/seabackground.png'
+const seaBackground = '../../carouselassets/seabackground1.png'
 
 export const slideData = [
+  {
+    fullBackground: seaBackground,
+    slideBackground: seaSlide,
+    project: 'Nautica+',
+    content: `Nautica+ is your all-in-one destination for everything boating. From expert tips to community discussions, we're here to enhance your nautical experience. Whether you're a seasoned captain or a curious newcomer, Nautica+ provides the resources and connections you need to navigate the waters with confidence. Set sail with us and explore the boundless possibilities of life on the water.`,
+    liveLink: 'https://ingots.web.app/fishing',
+    githubLink: 'https://github.com/aperdomoll90/ingots/tree/main/src/Archives/SvgPathOnScroll',
+  },
   {
     fullBackground: hikerBackground,
     slideBackground: hikerSlide,
@@ -35,14 +43,6 @@ export const slideData = [
     slideBackground: djSlide,
     project: 'Crossfader',
     content: `Crossfader is your ultimate destination for all things music and DJing. From cutting-edge mixing techniques to industry insights, we're here to amplify your sound. Whether you're a seasoned pro or an aspiring DJ, Crossfader provides the beats, knowledge, and community to elevate your craft. Drop in and ride the wave of musical innovation with us.`,
-    liveLink: '#',
-    githubLink: '#',
-  },
-  {
-    fullBackground: seaBackground,
-    slideBackground: seaSlide,
-    project: 'Nautica+',
-    content: `Nautica+ is your all-in-one destination for everything boating. From expert tips to community discussions, we're here to enhance your nautical experience. Whether you're a seasoned captain or a curious newcomer, Nautica+ provides the resources and connections you need to navigate the waters with confidence. Set sail with us and explore the boundless possibilities of life on the water.`,
     liveLink: '#',
     githubLink: '#',
   },
