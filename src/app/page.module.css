@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
   position: relative;
   box-shadow: inset 0 8rem 100px -8rem rgba(0, 0, 0, 0.933), inset 0 -8rem 100px -8rem rgba(0, 0, 0, 0.933);
@@ -7,6 +7,10 @@
   display: flex;
   align-items: center;
   background: none;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
 }
 
 .main {
@@ -17,15 +21,17 @@
 }
 
 .screen {
-  min-width: 100vw;
-  max-width: 100vw;
-  height: 100vh;
+  min-width: 100svw;
+  max-width: 100svw;
+  height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   position: relative;
   z-index: 0;
+   scroll-snap-align: start;
+  flex: 0 0 100%;
 }
 
 .indicators {
@@ -50,8 +56,8 @@
 }
 
 #heroWrapper {
-  height: 100vh;
-  width: 100vw;
+  height: 100svh;
+  width: 100svw;
   position: relative;
   display: flex;
   justify-content: center;
@@ -65,14 +71,14 @@
   z-index: 1;
   pointer-events: none;
   transition: all 0.5s ease-in-out;
-  height: 65vh;
+  height: 65svh;
   bottom: -5rem;
   left: 2rem;
   transform: none;
 }
 
 .heroImageStageAbout {
-  height: 90vh;
+  height: 90svh;
   bottom: -30%;
   left: -30%;
   transition: all 0.5s ease-in-out;
@@ -141,19 +147,19 @@
 
 @media (width >= 900px) {
   .heroImageStageHero {
-    height: 90vh;
+    height: 90svh;
     left: 5rem;
     bottom: 0;
   }
 
   .heroImageStageAbout {
-    height: 120vh;
+    height: 120svh;
     bottom: -35%;
     left: -4%;
   }
 
   .heroTitle {
-    font-size: 15vw;
+    font-size: 15svw;
   }
 
   .titleHeroSection {
@@ -178,14 +184,14 @@
   }
 
   .titleAboutSection {
-    font-size: 10vw;
+    font-size: 10svw;
     top: unset;
     left: 20%;
     bottom: 5%;
   }
 
   .titlePortfolioSection {
-    font-size: 11.5vh;
+    font-size: 11.5svh;
     top: 2rem;
     left: 1rem;
     margin-right: -0.3em;

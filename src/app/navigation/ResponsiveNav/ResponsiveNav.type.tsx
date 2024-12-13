@@ -30,7 +30,7 @@ export const menuItemsArray: menuItemsArrayPropsTypes[] = [
   },
   {
     label: 'About',
-    link: '#',
+    link: '#about-section',
   },
   {
     label: 'Portfolio',

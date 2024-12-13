@@ -14,7 +14,7 @@ interface HomeProps {
 const titleOptions = ['Adrian', 'About', 'Portfolio']
 const titleClasses = [styles.titleHeroSection, styles.titleAboutSection, styles.titlePortfolioSection]
 const imageClasses = [styles.heroImageStageHero, styles.heroImageStageAbout, styles.heroImageStageGone]
-const backgroundColors = ['radial-gradient(#a7a3d8, #585672)', 'radial-gradient(#a7a3d8, #03254e)', 'radial-gradient(#E7B13B, #885310)']
+const backgroundColors = ['radial-gradient(#a7a3d8, #585672)', 'radial-gradient(#a7a3d8, #03254e)', 'radial-gradient(#a7a3d8, #03254e)']
 
 const HeroSection: React.FC = () => (
   <div id={styles.heroWrapper}>
@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => (
 
 const sections = [<HeroSection key='hero' />, <About key='about' />, <RenderCarrousel key='carrousel' />]
 
-export const Home: React.FC<HomeProps> = () => {
+export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   const { handleMouseMove, handleMouseLeave } = FollowMouse({
@@ -62,4 +62,3 @@ export const Home: React.FC<HomeProps> = () => {
   )
 }
 
-export default Home

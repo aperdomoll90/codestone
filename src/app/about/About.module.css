@@ -45,7 +45,7 @@
 .aboutContentContainer {
   width: 60%;
   height: fit-content;
-  max-height: 60vh;
+  max-height: 60svh;
   font-size: 0.7rem;
   line-height: 1.2rem;
   letter-spacing: 2px;
@@ -114,7 +114,7 @@
 
   .aboutContentContainer {
     width: 100%;
-    max-height: 45vh;
+    max-height: 45svh;
     line-height: 1.2rem;
     font-size: 0.7em;
   }
@@ -134,7 +134,7 @@
   }
 
   .aboutContentContainer {
-    max-height: 40vh;
+    max-height: 40svh;
     line-height: 1.5rem;
     font-size: 0.9em;
   }

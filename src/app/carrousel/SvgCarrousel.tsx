@@ -1,11 +1,11 @@
 'use client'
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import './styles.css'
-import { slideData } from './page'
+import { slideData } from './carrouseldata'
 
 const demo = '../../carouselassets/demo.png'
 const github = '../../carouselassets/github.png'
-
+const mascotUrl = '../../carouselassets/mollie.png'
 interface Slide {
   fullBackground: string
   slideBackground: string
@@ -102,8 +102,8 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
           if (visibleSlideInfo) {
             // If it's a visible slide, calculate its position on the circle
             angle = baseAngle - visibleSlideInfo.position * angleStep
-            scale = visibleSlideInfo.position === 0 ? 1.2 : Math.abs(visibleSlideInfo.position) === 1 ? 0.8 : 0.5
-            opacity = 1
+            scale = visibleSlideInfo.position === 0 ? 1.4 : Math.abs(visibleSlideInfo.position) === 1 ? 0.8 : 0.5
+            opacity = visibleSlideInfo.position === 0 ? 1 : 0.5
             zIndex = visibleSlideInfo.position === 0 ? 10 : Math.abs(visibleSlideInfo.position) === 1 ? 5 : 0
           } else {
             // If it's not visible, place it at the bottom of the circle
@@ -136,11 +136,11 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
       aria-roledescription='carousel'
       aria-label='Project Carousel'
       style={{
-        backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.91), rgba(0,0,0,0)), url(${activeSlide.fullBackground})`,
+        // backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.91), rgba(0,0,0,0)), url(${activeSlide.fullBackground})`,
+        backgroundImage: `url(${activeSlide.fullBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        transition: 'all 0.3s ease-in-out',
       }}>
       <div className='info-container'>
         <div className='project-info'>
@@ -254,14 +254,15 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
             />
           ))} */}
           <div className='carousel-navigation'>
-            <button onClick={handlePrev} className={`nav-button prev ${isFirstSlide ? 'inactive' : ''}`} disabled={isFirstSlide} aria-label='Previous slide'>
+            <button onClick={handlePrev} className={`nav-button nav-button-prev ${isFirstSlide ? 'inactive' : ''}`} disabled={isFirstSlide} aria-label='Previous slide'>
               Prev
             </button>
-            <button onClick={handleNext} className={`nav-button next ${isLastSlide ? 'inactive' : ''}`} disabled={isLastSlide} aria-label='Next slide'>
+            <button onClick={handleNext} className={`nav-button nav-button-next ${isLastSlide ? 'inactive' : ''}`} disabled={isLastSlide} aria-label='Next slide'>
               Next
             </button>
           </div>
         </div>
+        <img className='carrousel-mascot' src={mascotUrl} alt='caricature of a french bulldog'  />
       </div>
     </div>
   )

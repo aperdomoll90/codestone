@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <ResponsiveNav menuItemsArray={menuItemsArray} />
+      {/* <ResponsiveNav menuItemsArray={menuItemsArray} /> */}
       {children}</body>
     </html>
   );

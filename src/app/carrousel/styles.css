@@ -1,7 +1,7 @@
 .slideshow {
   color: #fff;
-  width: 100vw;
-  height: 100vh;
+  width: 100svw;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -15,7 +15,7 @@
 }
 .info-container {
   width: 100%;
-  height: 50vh;
+  height: 50svh;
   display: flex;
   position: relative;
   flex-direction: row;
@@ -136,7 +136,7 @@
 
 .carousel-container {
   width: 100%;
-  height: 35vh;
+  height: 35svh;
   position: relative;
   bottom: -30%;
   right: -25%;
@@ -173,12 +173,12 @@
 .controls {
   display: flex;
   height: 5rem;
-  overflow: scroll;
+  /* overflow: scroll; */
   flex-direction: row;
   align-items: center;
   justify-content: center;
   position: absolute;
-  margin-bottom: 8rem;
+  margin-bottom: 11rem;
   margin-right: 2rem;
   z-index: 15;
   /* background: rgba(255, 255, 255, 0.433); */
@@ -207,24 +207,56 @@
 }
 
 .nav-button {
-  padding: 10px 20px;
-  margin: 0 .5rem;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 10px;
+  margin: 0 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   color: white;
   font-size: .9rem;
-  background-color: #007bff;
-  cursor: pointer;
+  background-color: transparent;
   transition: background-color 0.3s ease;
 }
 
+.nav-button::after {
+  content: '';
+  position: absolute;
+  top: -2%;
+  left: -2%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 2px dashed #250781fa;
+  animation: rotation 20s linear infinite;
+  transform-origin: center center;
+  z-index: 1;
+}
+
+.nav-button-prev::after {
+  animation: rotation 20s linear infinite reverse;
+
+}
+
 .nav-button:hover:not(.inactive) {
-  background-color: #0056b3;
+  background-color: #0057b37b;
 }
 
 .nav-button.inactive {
-  background-color: #cccccc;
+  background-color: #6b686827;
   cursor: not-allowed;
+  color: rgb(135, 129, 129);
+}
+
+.nav-button.inactive::after {
+  border: 2px dashed rgb(135, 129, 129);
+}
+
+.carrousel-mascot {
+  height: 55svh;
+  width: auto;
+  position: absolute;
+  top: -5%;
 }
 
 @keyframes rotation {
@@ -272,7 +304,7 @@
 
   .controls {
     height: 5rem;
-    margin-bottom: 0rem;
+    margin-bottom: -5rem;
     margin-right: 0rem;
     flex-wrap: wrap;
   }

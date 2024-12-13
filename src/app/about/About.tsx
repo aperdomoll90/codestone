@@ -13,7 +13,7 @@ export default function About() {
       <Hexagon className={`${styles.hexagon} ${styles.medHexagon}`} />
       <Hexagon className={`${styles.hexagon} ${styles.smallHexagon}`} />
       <Hexagon className={`${styles.hexagon} ${styles.xsHexagon}`} />
-      <div className={styles.aboutPositioningContainer}>
+      <div id='about-section' className={styles.aboutPositioningContainer}>
         <div className={styles.aboutLinksContainer}>
           <a href='https://www.linkedin.com/in/adrian-perdomo-12997474/'>
             <img src={linkedin} className={styles.aboutLink} alt='linkedin Icon' />
@@ -31,12 +31,13 @@ export default function About() {
         <div className={styles.aboutContentContainer}>
           <h1 className={styles.aboutTitle}>LET’S WORK TOGETHER</h1>
           <p className={styles.aboutContent}>
-            I am a digital visionary, driven to transform ordinary experiences into realms of enchantment. With masterful command over full-stack development and cutting-edge technologies like React, React Native, and Next.js, I craft user interfaces that transcend functionality - igniting awe,
-            delight, and a sense of wonder. My expertise spans both digital and physical realms, bridging the art of software with the science of electronics and microchips through fluency in C++. An innovator at heart, I blend creativity and technology to unlock new frontiers.
+            I am a passionate technologist with a vision for enhancing digital experiences. My expertise in full-stack development, including React, React Native, and Next.js, allows me to create user interfaces that are both functional and engaging. I bridge the gap between software and hardware,
+            applying my knowledge of C++ to work with electronics and microchips. My goal is to improve user experiences by combining creativity with technology. I believe that well-designed digital solutions can have a positive impact on people’s lives, making interactions more enjoyable and
+            intuitive.
           </p>
           <p className={styles.aboutContent}>
-            My true quest, however, is to elevate the human experience by infusing the world with beauty and enchantment. I believe that surrounding our lives with inspiration, joy, and captivating experiences can foster a healthier, more vibrant society. Thus, I am passionate about crafting digital
-            solutions that are not merely functional, but transformative - imbuing every interaction with possibility and magic. Join me in co-creating a future where technology becomes an artistic canvas to manifest our dreams and expand the boundaries of imagination.
+            I’m committed to pushing the boundaries of what’s possible in technology, always looking for innovative ways to solve problems and create new possibilities. I strive to develop applications that are not only practical but also inspiring, aiming to bring a sense of delight to users. By
+            focusing on the intersection of art and technology, I aim to contribute to a future where digital experiences are both useful and enriching.
           </p>
         </div>
       </div>
