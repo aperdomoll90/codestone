@@ -11,6 +11,7 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
+  touch-action: pan-x;
 }
 
 .main {
@@ -30,7 +31,7 @@
   flex-shrink: 0;
   position: relative;
   z-index: 0;
-   scroll-snap-align: start;
+  scroll-snap-align: start;
   flex: 0 0 100%;
 }
 

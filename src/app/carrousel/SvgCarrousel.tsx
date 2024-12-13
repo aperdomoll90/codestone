@@ -6,6 +6,7 @@ import { slideData } from './carrouseldata'
 const demo = '../../carouselassets/demo.png'
 const github = '../../carouselassets/github.png'
 const mascotUrl = '../../carouselassets/mollie.png'
+
 interface Slide {
   fullBackground: string
   slideBackground: string
@@ -199,41 +200,6 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
             </g>
           ))}
         </svg>
-        {/* <svg
-          overflow='visible'
-          width='100%'
-          height='100%'
-          viewBox='-70 -70 130 130'
-          style={{
-            zIndex: 10,
-          }}>
-          <defs>
-            <clipPath id='circleClip'>
-              <circle cx='0' cy='0' r={size * 0.4} />
-            </clipPath>
-          </defs>
-          <path ref={carouselRef} id='carouselPath' d={svgPath} fill='none' />
-          {slides.map((slide, index) => (
-            <g key={`slide-group-${index}`} id={`slide-group-${index}`} transform={`translate(${-size * 0.2}, ${-size * 0.2})`}>
-              <circle cx='0' cy='0' r={size * 0.4} fill='none' stroke='#f1ece8' strokeWidth='2' />
-              <image
-                key={`slide-${index}`}
-                id={`slide-${index}`}
-                href={slide.slideBackground}
-                width={size * 0.8}
-                height={size * 0.8}
-                x={-size * 0.4}
-                y={-size * 0.4}
-                clipPath='url(#circleClip)'
-                preserveAspectRatio='xMidYMid slice'
-                className={`slide ${index === currentSlide ? 'slide-active' : ''}`}
-                style={{
-                  transition: 'all 0.3s ease-in-out',
-                }}
-              />
-            </g>
-          ))}
-        </svg> */}
         <div className='controls' role='tablist' aria-label='Carousel Controls'>
           {/* {slides.map((slide, index) => (
             <button
