@@ -1,18 +1,11 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import styles from './page.module.css'
 import RenderCarrousel from './carrousel/page'
 import About from './about/About'
 import { FollowMouse } from './utils/FollowMouse'
-import UseHorizontalScroll from './utils/UseHorizontalScroll'
 
-interface HomeProps {
-  sections: React.ReactNode[]
-}
-
-const titleOptions = ['Adrian', 'About', 'Portfolio']
-const titleClasses = [styles.titleHeroSection, styles.titleAboutSection, styles.titlePortfolioSection]
 const imageClasses = [styles.heroImageStageHero, styles.heroImageStageAbout, styles.heroImageStageGone]
 const backgroundColors = ['radial-gradient(#a7a3d8, #585672)', 'radial-gradient(#a7a3d8, #03254e)', 'radial-gradient(#a7a3d8, #03254e)']
 
@@ -26,29 +19,52 @@ const HeroSection: React.FC = () => (
 
 const sections = [<HeroSection key='hero' />, <About key='about' />, <RenderCarrousel key='carrousel' />]
 
-export default function Home() {
+const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const [currentSection, setCurrentSection] = useState(0)
 
   const { handleMouseMove, handleMouseLeave } = FollowMouse({
     areaRef: containerRef,
     affectedElements: '.dynamic-text',
   })
 
-  const totalSections = sections.length
-  const currentSection = UseHorizontalScroll({ containerRef, totalSections })
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const sectionElements = container.querySelectorAll(`.screen`)
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = Array.from(sectionElements).indexOf(entry.target as Element)
+            setCurrentSection(index)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    sectionElements.forEach(section => observer.observe(section))
+
+    return () => {
+      sectionElements.forEach(section => observer.unobserve(section))
+    }
+  }, [currentSection])
 
   return (
     <div className={styles.container} ref={containerRef} style={{ background: backgroundColors[currentSection] }} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <h1 data-speed='3' className={`dynamic-text ${styles.heroTitle} ${styles.heroTitleOutline} ${titleClasses[currentSection]}`}>
-        {titleOptions[currentSection]}
+      <h1 data-speed='3' className={`dynamic-text ${styles.heroTitle} ${styles.heroTitleOutline} ${styles.titleHeroSection}`}>
+        Adrian
       </h1>
       <img className={`${styles.heroImage} ${imageClasses[currentSection]}`} src='/me.png' alt='me' />
-      <h1 data-speed='3' className={`dynamic-text ${styles.heroTitle} ${titleClasses[currentSection]}`}>
-        {titleOptions[currentSection]}
+      <h1 data-speed='3' className={`dynamic-text ${styles.heroTitle} ${styles.titleHeroSection}`}>
+        Adrian
       </h1>
-      <main className={styles.main} style={{ transform: `translateX(-${currentSection * 100}vw)` }}>
+      <main className={styles.main}>
         {sections.map((section, index) => (
-          <section key={index} className={styles.screen}>
+          <section key={index} className={`${styles.screen} screen`}>
             {section}
           </section>
         ))}
@@ -62,3 +78,4 @@ export default function Home() {
   )
 }
 
+export default Home

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, TouchEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface UseHorizontalScrollProps {
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -24,7 +24,7 @@ const UseHorizontalScroll = ({ containerRef, totalSections }: UseHorizontalScrol
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 1.0 }
     );
 
     sectionElements.forEach(section => observer.observe(section));
@@ -53,42 +53,11 @@ const UseHorizontalScroll = ({ containerRef, totalSections }: UseHorizontalScrol
       });
     };
 
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartX = e.touches[0].clientX;
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      touchEndX = e.changedTouches[0].clientX;
-      const touchDiff = touchStartX - touchEndX;
-
-      const now = Date.now();
-      if (now - lastScrollTime.current < 1000) return;
-
-      if (Math.abs(touchDiff) > 50) { // Adjust this threshold as needed
-        const direction = touchDiff > 0 ? 1 : -1;
-        setCurrentSection(prev => {
-          const next = prev + direction;
-          if (next >= 0 && next < totalSections) {
-            lastScrollTime.current = now;
-            return next;
-          }
-          return prev;
-        });
-      }
-    };
-
     container.addEventListener('wheel', handleWheel, { passive: false });
-    container.addEventListener('touchstart', handleTouchStart as any);
-    container.addEventListener('touchend', handleTouchEnd as any);
 
     return () => {
       sectionElements.forEach(section => observer.unobserve(section));
       container.removeEventListener('wheel', handleWheel);
-      container.removeEventListener('touchstart', handleTouchStart as any);
-      container.removeEventListener('touchend', handleTouchEnd as any);
     };
   }, [containerRef, totalSections]);
 
