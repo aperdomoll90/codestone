@@ -1,0 +1,31 @@
+:root {
+  --white: #fff;
+  --lightLavender: #a7a3d8;
+  --darkLavender: #585672;
+  --blue: #03254e;
+  --charcoal: #1c1d20;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  /* This references the hashed family that next/font registered */
+  font-family: var(--font-albert), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  width: 100dvw;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--charcoal);
+}

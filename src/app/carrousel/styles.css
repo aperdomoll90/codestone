@@ -1,3 +1,26 @@
+.svg-carrousel-wrapper {
+  box-shadow: inset 0 8rem 100px -8rem rgba(0, 0, 0, 0), inset 0 -8rem 100px -8rem rgba(0, 0, 0, 0.933);
+}
+
+.transition-shade {
+  position: absolute;
+  top: 5vh;
+  width: 100dvw;
+  height: 100dvh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 1%,rgba(13, 13, 13, 0.884) 5%, rgba(13, 13, 13, 0.884) 87%, rgba(0, 0, 0, 0) 100%);
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.636),  rgba(0, 0, 0, 0.995), rgba(0, 0, 0, 0)); */
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.658), rgba(0, 0, 0, 0)); */
+  z-index: 9999999;
+  transform-origin: top;
+  transition: opacity 1s ease-in-out, transform 0.5s ease-in-out, height 1s ease-in-out;
+}
+.transition-shade.active {
+  transform: translateY(-100%);
+  height: 0;
+  /* opacity: 0; */
+  pointer-events: none;
+}
+
 .slideshow {
   color: #fff;
   width: 100svw;
@@ -8,21 +31,20 @@
   justify-content: flex-start;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
-
 }
+
 .carousel-track {
   overflow: visible !important;
 }
 .info-container {
   width: 100%;
-  height: 50svh;
+  height: 60svh;
   display: flex;
   position: relative;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* overflow: hidden; */
-  padding: 4rem 0 0 4rem;
+  padding: 4rem 2rem;
 }
 
 .info-container::before {
@@ -45,18 +67,46 @@
   animation: rotation 200s linear infinite reverse;
 }
 
+.portfolioTitle {
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  position: absolute;
+  font-size: 6em;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: white;
+  text-transform: uppercase;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  margin-right: -0.3em;
+  transform: rotate(180deg) !important;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  top: 1.5rem;
+  left: 1rem;
+}
+
 .project-info {
   display: flex;
   max-width: 90%;
+  min-height: 25rem;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   font-family: 'Inria Sans', sans-serif;
   z-index: 10;
   gap: 1rem;
   backdrop-filter: blur(5px);
+  background: #0000008f;
   padding: 1.5rem;
   border-radius: 8px;
+  opacity: 0;
+  transform: translateX(-3rem);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.project-info.active {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .project-info h2 {
@@ -68,7 +118,7 @@
 
 .project-info p {
   font-size: 0.8rem;
-  line-height: 1.1rem;
+  line-height: 1.2rem;
   font-weight: 200;
   letter-spacing: 2px;
 }
@@ -138,7 +188,7 @@
   width: 100%;
   height: 35svh;
   position: relative;
-  bottom: -30%;
+  bottom: -15%;
   right: -25%;
   display: flex;
   flex-direction: column;
@@ -173,16 +223,13 @@
 .controls {
   display: flex;
   height: 5rem;
-  /* overflow: scroll; */
   flex-direction: row;
   align-items: center;
   justify-content: center;
   position: absolute;
-  margin-bottom: 11rem;
+  margin-bottom: 10rem;
   margin-right: 2rem;
   z-index: 15;
-  /* background: rgba(255, 255, 255, 0.433); */
-  /* backdrop-filter: blur(10px); */
   border-radius: 15px;
 }
 
@@ -214,7 +261,7 @@
   border: none;
   border-radius: 50%;
   color: white;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: transparent;
   transition: background-color 0.3s ease;
 }
@@ -227,7 +274,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  border: 2px dashed #250781fa;
+  border: 2px dashed #fffffffa;
   animation: rotation 20s linear infinite;
   transform-origin: center center;
   z-index: 1;
@@ -235,7 +282,6 @@
 
 .nav-button-prev::after {
   animation: rotation 20s linear infinite reverse;
-
 }
 
 .nav-button:hover:not(.inactive) {
@@ -282,8 +328,14 @@
     height: 100%;
     padding: unset;
   }
+
+  .portfolioTitle {
+    font-size: 12dvh;
+    top: 1rem;
+    left: 1rem;
+  }
   .project-info {
-    max-width: 65%;
+    max-width: 60%;
   }
 
   .project-info h2 {
@@ -292,7 +344,7 @@
 
   .project-info p {
     font-size: 1rem;
-    line-height: 1.3rem;
+    line-height: 1.6rem;
   }
 
   .carousel-container {
@@ -304,11 +356,26 @@
 
   .controls {
     height: 5rem;
-    margin-bottom: -5rem;
+    margin-bottom: 0rem;
     margin-right: 0rem;
     flex-wrap: wrap;
   }
   .nav-button {
     font-size: 1.2rem;
+  }
+}
+
+@media (width >= 1500px) {
+  .project-info {
+    max-width: 55%;
+  }
+
+  .project-info h2 {
+    font-size: 2rem;
+  }
+
+  .project-info p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
   }
 }

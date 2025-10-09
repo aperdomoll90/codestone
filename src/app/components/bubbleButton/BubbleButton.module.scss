@@ -1,0 +1,52 @@
+.c-bubble-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
+  background: linear-gradient(90deg, #202020, #303030);
+  border: none;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 1rem;
+  aspect-ratio: 1;
+
+  &:hover {
+    background: linear-gradient(90deg, #383838, #505050);
+    transform: translateY(-1px);
+  }
+
+  &__label {
+    line-height: 1;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  &:hover &__icon {
+    transform: translateX(3px);
+  }
+}
+
+.button--sm {
+  font-size: 0.75rem;
+}
+
+.button--md {
+  font-size: 0.8rem;
+}
+
+.button--lg {
+  font-size: 1.6rem;
+}

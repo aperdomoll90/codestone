@@ -1,40 +1,54 @@
 'use client'
-import { useState } from 'react'
-import './styles.css'
-import '../../utils/GlobalStyles.css'
-import { ResponsiveNavPropsTypes, menuItemsArrayPropsTypes } from './ResponsiveNav.type'
-import { ToggleButton } from '../ToggleButtonNew'
+import { useRef, useState } from 'react'
+import styles from './ResponsiveNav.module.scss'
+import Link from 'next/link'
+import { SingleItemFollowMouse } from '@/app/utils/FollowMouse'
 
-export const ResponsiveNav: React.FC<ResponsiveNavPropsTypes> = ({ logo, height, width, logoHeight, logoMargin, menuItemsArray, primaryColor, secondaryColor, hoverColor, pressColor, labelColor }) => {
-  const [visible, setVisible] = useState(false)
+export interface menuItemsArrayPropsTypes {
+  label?: string
+  link: string
+}
+const navItemsArray = [
+  { label: 'Work', link: '#c-work' },
+  { label: 'About', link: '#c-about' },
+  { label: 'Contact', link: '#c-contact' },
+]
 
-  const renderMenuItems = menuItemsArray?.map((item: menuItemsArrayPropsTypes, index: number) => (
-    <li key={`${item.label}-${index}`} className='responsiveNav-active'>
-      <a className='responsiveNav-link' href={item.link}>
-        <span aria-hidden='true'>0{index}</span>
-        {item.label}
-      </a>
-    </li>
-  ))
+const NavItemComponent = ({ item, index }: { item: menuItemsArrayPropsTypes; index: number }) => {
+  const areaRef = useRef<HTMLDivElement | null>(null)
+
+  const { handleMouseMove, handleMouseLeave } = SingleItemFollowMouse({
+    areaRef,
+    targetSelector: `.${styles['c-navigation__menu-item-link']}`,
+    options: {
+      intensity: 0.35,                 // how far it can travel (0.5 = half as far)
+      // maxTravelPercent: 60,           // hard cap (±%)
+      followLerpFactor: 0.10,         // chase speed (lower = more delay)
+      // cursorOffsetPercent: { x: 6, y: -4 }, // sit a bit off the cursor
+      clampWithinArea: true,          // keep inside its span
+      returnSpring: { stiffness: 11, damping: 14, precision: 0.01 }, // bounce back feel
+    },
+  })
 
   return (
-    <section id='primary-header' className='primary-header flex-row'>
-      <ToggleButton
-        top={1}
-        right={1}
-        customClass='mobile-nav-toggle'
-        ariaControls='primary-navigation'
-        ariaExpanded={visible}
-        active={visible}
-        setActive={() => {
-          setVisible(!visible)
-        }}
-        buttonBackgroundColor='transparent'
-      />
-      <nav>
-        <ul id='primary-navigation' aria-expanded={visible} data-visible={visible} className='primary-navigation uppercase ff-sans-cond flex-row'>
-          {renderMenuItems}
-        </ul>
+    <span ref={areaRef} key={index} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`${styles['c-navigation__menu-item']}`}>
+      <Link  href={item.link} className={`${styles['c-navigation__menu-item-link']}`}>
+        {item.label}
+      </Link>
+    </span>
+  )
+}
+
+export const ResponsiveNav = () => {
+  const [visible, setVisible] = useState(false)
+
+  return (
+    <section className={`${styles['c-navigation']}`}>
+      <p>© Code by Adrian</p>
+      <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
+        {navItemsArray.map((item, index) => (
+          <NavItemComponent item={item} index={index} />
+        ))}
       </nav>
     </section>
   )

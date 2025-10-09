@@ -1,0 +1,51 @@
+.c-about-section {
+  height: 110svh;
+  width: 100svw;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+  gap: 3rem;
+
+  &_content {
+    display: flex;
+    max-width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 15rem;
+    order: 1;
+    text-align: left;
+
+    &-message-primary {
+      color: black;
+      font-size: 2rem;
+    }
+    &-secondary {
+      font-weight: 200;
+    }
+  }
+  &_container {
+    height: 65svh;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #d9d9d9;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-codepen {
+      position: absolute;
+      left: -40%;
+    }
+
+    &-aboutme {
+      position: absolute;
+      right: -40%;
+      top: -10%;
+    }
+  }
+}

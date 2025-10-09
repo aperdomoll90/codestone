@@ -1,0 +1,56 @@
+.c-hero {
+  height: 100svh;
+  width: 100svw;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  scroll-behavior: smooth;
+  color: white;
+  background: radial-gradient(var(--lightLavender), var(--darkLavender));
+
+  &__portrait {
+    height: 65svh;
+    width: auto;
+    position: absolute;
+    bottom: -5rem;
+    left: 2rem;
+    z-index: 0;
+    pointer-events: none;
+    transform: scaleX(-1);
+  }
+
+  &__occupation {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    font-size: 2svw;
+    margin-right: 6rem;
+    font-weight: 400;
+    line-height: 3svw;
+    pointer-events: none;
+  }
+
+  &__banner {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    bottom: 2rem;
+  }
+}
+
+@media (width >= 900px) {
+  .c-hero {
+    &__ribbon {
+      width: 25svh;
+    }
+
+    &__portrait {
+      height: 115svh;
+      left: 19svw;
+      bottom: -20svh;
+    }
+  }
+}

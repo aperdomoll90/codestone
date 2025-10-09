@@ -2,6 +2,7 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import './styles.css'
 import { slideData } from './carrouseldata'
+import useIntersectionObserver from '../utils/useIntersectionObserver'
 
 const demo = '../../carouselassets/demo.png'
 const github = '../../carouselassets/github.png'
@@ -130,21 +131,26 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
   const isFirstSlide = currentSlide === 0
   const isLastSlide = currentSlide === slidesCount - 1
 
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.7 })
+
   return (
     <div
+      ref={ref as React.RefObject<HTMLDivElement>}
       className='slideshow'
       role='region'
       aria-roledescription='carousel'
       aria-label='Project Carousel'
       style={{
-        // backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.91), rgba(0,0,0,0)), url(${activeSlide.fullBackground})`,
         backgroundImage: `url(${activeSlide.fullBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}>
       <div className='info-container'>
-        <div className='project-info'>
+        <h1 data-speed='3' className={`portfolioTitle`}>
+          Portfolio
+        </h1>
+        <div className={`project-info ${isVisible ? 'active' : ''}`}>
           <h2>{activeSlide.project}</h2>
           <p>{activeSlide.content}</p>
           <div className='project-links'>
@@ -201,24 +207,6 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
           ))}
         </svg>
         <div className='controls' role='tablist' aria-label='Carousel Controls'>
-          {/* {slides.map((slide, index) => (
-            <button
-              key={index}
-              onClick={() => moveToSlide(index)}
-              onKeyDown={e => handleKeyDown(e, index)}
-              aria-selected={index === currentSlide}
-              aria-controls={`slide-${index}`}
-              aria-label={`Go to slide ${index + 1}, ${slide.project}`}
-              role='tab'
-              tabIndex={index === currentSlide ? 0 : -1}
-              className={`control ${index === currentSlide ? 'control-active' : ''}`}
-              style={{
-                backgroundImage: `url(${slide.slideBackground})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            />
-          ))} */}
           <div className='carousel-navigation'>
             <button onClick={handlePrev} className={`nav-button nav-button-prev ${isFirstSlide ? 'inactive' : ''}`} disabled={isFirstSlide} aria-label='Previous slide'>
               Prev
@@ -228,15 +216,17 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
             </button>
           </div>
         </div>
-        <img className='carrousel-mascot' src={mascotUrl} alt='caricature of a french bulldog'  />
+        <img className='carrousel-mascot' src={mascotUrl} alt='caricature of a french bulldog' />
       </div>
     </div>
   )
 }
 
 export const SvgCarrousel = () => {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 })
   return (
-    <div id='svg-carrousel-wrapper'>
+    <div ref={ref as React.RefObject<HTMLDivElement>} id='svg-carrousel-wrapper'>
+      <div className={`transition-shade ${isVisible ? 'active' : ''}`} />
       <Carousel slides={slideData} size={70} />
     </div>
   )
