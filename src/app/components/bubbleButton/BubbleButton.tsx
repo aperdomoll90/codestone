@@ -3,7 +3,7 @@ import styles from "./BubbleButton.module.scss";
 
 interface BubbleButtonProps {
   label: string;
-  size?: "sm" | "md" | "lg";
+  size?: "xsm" |"sm" | "md" | "lg" | "xlg";
   className?: string;
   onClick?: () => void;
 }
