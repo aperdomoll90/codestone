@@ -4,32 +4,46 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 20%;
   scroll-behavior: smooth;
   color: white;
   background: radial-gradient(var(--lightLavender), var(--darkLavender));
 
+  &__ribbon {
+    position: absolute;
+    z-index: 100;
+    top: 40%;
+    width: 20svh;
+  }
+
   &__portrait {
-    height: 65svh;
+    height: 75svh;
     width: auto;
     position: absolute;
     bottom: -5rem;
-    left: 2rem;
+    left: 1rem;
     z-index: 0;
     pointer-events: none;
     transform: scaleX(-1);
   }
 
   &__occupation {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    font-size: 2svw;
-    margin-right: 6rem;
+    font-size: 4svw;
     font-weight: 400;
-    line-height: 3svw;
+    line-height: 5.5svw;
     pointer-events: none;
+    top: 15%;
+    right: 50%;
+
+    h4 {
+      font-weight: 300;
+    }
   }
 
   &__banner {
@@ -43,14 +57,27 @@
 
 @media (width >= 900px) {
   .c-hero {
+    align-items: center;
+
     &__ribbon {
-      width: 25svh;
+      top: unset;
     }
 
     &__portrait {
       height: 115svh;
       left: 19svw;
       bottom: -20svh;
+    }
+
+    &__occupation {
+      gap: 4rem;
+      font-size: 2svw;
+      margin-right: 6rem;
+      font-weight: 400;
+      line-height: 3svw;
+      pointer-events: none;
+      top: auto;
+      right: auto;
     }
   }
 }

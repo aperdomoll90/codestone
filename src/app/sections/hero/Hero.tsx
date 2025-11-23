@@ -7,7 +7,7 @@ import { ResponsiveNav } from '@/app/navigation/ResponsiveNav/ResponsiveNav'
 
 const arrowSvg = (
   <svg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-    <path d='M1 1L21 21M21 21V5.5M21 21H5.5' stroke='white' stroke-width='1.5' />
+    <path d='M1 1L21 21M21 21V5.5M21 21H5.5' stroke='white' stroke-width='2' />
   </svg>
 )
 
@@ -15,10 +15,10 @@ export const Hero = () => {
   return (
     <section className={`${styles['c-hero']}`}>
       <ResponsiveNav />
-      <Ribbon />
+      <Ribbon className={`${styles['c-hero__ribbon']}`} />
       <div className={`${styles['c-hero__occupation']}`}>
         {arrowSvg}
-        <h4 className={`${styles['c-hero__occupation']}`}>
+        <h4>
           Full-Stack <br /> Software Engineer
         </h4>
       </div>

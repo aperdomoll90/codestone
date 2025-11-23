@@ -6,21 +6,26 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0rem 3rem;
+  padding: .5rem 2rem;
   font-weight: 250;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   letter-spacing: 0.9px;
+
+  p {
+    font-size: 0.7rem;
+  }
 
   &__menu {
     display: flex;
     flex-direction: row;
     align-items: center;
     list-style: none;
+    font-size: 0.8rem;
     margin: 0;
     padding: 0;
 
     &-item {
-      padding: 2rem;
+      padding: 1rem;
       cursor: pointer;
       position: relative;
 
@@ -45,6 +50,22 @@
         &:hover::after {
           transform: translateX(-50%) scale(1);
         }
+      }
+    }
+  }
+}
+
+@media (width >= 900px) {
+  .c-navigation {
+    padding: 0rem 3rem;
+
+    p {
+      font-size: 1.2rem;
+    }
+    &__menu {
+      font-size: 1.2rem;
+      &-item {
+        padding: 2rem;
       }
     }
   }
