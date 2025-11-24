@@ -1,0 +1,69 @@
+.c-toggle-button {
+  width: var(--size);
+  aspect-ratio: 1;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  z-index: 9999;
+  border: none;
+  outline: none;
+  pointer-events: all;
+
+  &:hover {
+    background: transparent;
+  }
+
+  span {
+    position: absolute;
+    width: 80%;
+    height: 4px;
+    border-radius: 4px;
+    background: #fff;
+    transition: 0.5s ease-in-out;
+
+    &:nth-child(1) {
+      width: 50%;
+      left: 12%;
+      transform: translateY(calc(var(--size) / -3.5));
+    }
+
+    &:nth-child(2) {
+      width: 35%;
+      left: 12%;
+      transform: translateY(calc(var(--size) / 3.5));
+    }
+  }
+}
+
+.c-toggle-button[data-active='true'] {
+  span:nth-child(1) {
+    width: 75%;
+    transform: translateY(0px) rotate(45deg);
+    transition-delay: 0.125s;
+  }
+
+  span:nth-child(2) {
+    width: 75%;
+    transform: translateY(0px) rotate(315deg);
+    transition-delay: 0.25s;
+  }
+
+  span:nth-child(3) {
+    transform: translateX(120%);
+  }
+}
+
+
+@media (width >= 900px) {
+  .c-toggle-button {
+    display: none;
+  }
+}
