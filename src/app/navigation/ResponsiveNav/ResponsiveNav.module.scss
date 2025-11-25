@@ -68,7 +68,8 @@
     left: 0;
     right: 0;
     bottom: auto;
-    padding: 1.5rem clamp(3rem, 4vw, 10rem);
+    padding: 1.2rem clamp(3rem, 4vw, 10rem);
+    padding-left: 3rem;
     background: transparent;
     backdrop-filter: unset;
     flex-direction: row;

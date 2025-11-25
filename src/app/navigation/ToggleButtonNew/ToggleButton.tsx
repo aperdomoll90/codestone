@@ -9,7 +9,7 @@ export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ active, setActiv
       data-active={active}
       style={
         {
-          '--size': '2rem',
+          '--size': '3rem',
         } as React.CSSProperties
       }
       onClick={() => setActive(prev => !prev)}

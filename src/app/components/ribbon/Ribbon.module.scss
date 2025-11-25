@@ -87,6 +87,10 @@
 }
 
 @media (width >= 900px) {
+  .c-ribbon {
+    height: auto;
+    width: 15dvw;
+  }
   .c-globe {
     height: 50%;
   }
