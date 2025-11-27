@@ -1,22 +1,21 @@
 .c-about-section {
-  height: 110svh;
+  height: 100svh;
   width: 100svw;
   position: relative;
   display: flex;
   flex-direction: column-reverse;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 16rem;
 
   &_content {
     display: flex;
     max-width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
     order: 1;
     text-align: left;
-    margin-top: 3rem;
+    margin-top: 5rem;
 
     &-message-primary {
       color: black;
@@ -27,6 +26,7 @@
       font-size: 0.8rem;
       font-weight: 200;
       padding-right: 6.5rem;
+      width: 80%;
     }
   }
   &_container {
@@ -39,24 +39,14 @@
     align-items: center;
     justify-content: center;
 
-    &-mascot {
-      height: 50%;
-      aspect-ratio: 1;
+    &-aboutme {
       position: absolute;
-      top: -20%;
-      left: -20%;
+      transform: translate(40%, -200%);
     }
 
     &-codepen {
       position: absolute;
-      top: -95%;
-      right: 4%;
-    }
-
-    &-aboutme {
-      position: absolute;
-      right: -16%;
-      top: -150%;
+      transform: translate(25%, -160%);
     }
 
     &-featured {
@@ -64,8 +54,7 @@
       aspect-ratio: 1;
       border-radius: 50%;
       position: absolute;
-      right: 60%;
-      bottom: 120%;
+      transform: translate(-65%, -160%);
       border: 1px solid #d9d9d9;
       display: flex;
       align-items: center;
@@ -76,21 +65,19 @@
         content: 'Featured Open-Source';
         font-size: 0.7rem;
         position: absolute;
-        top: -40%;
-        left: -10%;
+        transform: translate(-60%, -390%);
         color: #6f7074;
-      }
-
-      &-npm {
-        position: absolute;
-        right: 15%;
-        bottom: -15%;
+        width: 50%;
       }
 
       &-github {
         position: absolute;
-        right: -40%;
-        top: 15%;
+        transform: translate(35%, -25%);
+      }
+
+      &-npm {
+        position: absolute;
+        transform: translate(25%, 30%);
       }
     }
   }
@@ -103,6 +90,7 @@
 
     &_content {
       flex-direction: row;
+      margin-top: 10rem;
       gap: 15rem;
 
       &-message-primary {
@@ -118,43 +106,63 @@
       height: 65svh;
       margin-bottom: 2rem;
 
-      &-mascot {
-        height: 60%;
-        top: -20%;
-        left: -40%;
-      }
-
       &-codepen {
-        top: auto;
-        right: auto;
-        left: -40%;
+        transform: translate(-160%, 0%);
       }
 
       &-aboutme {
-        right: -30%;
-        top: -10%;
+        transform: translate(120%, -70%);
       }
 
       &-featured {
         font-size: 1rem;
-        height: 35%;
-        right: -50%;
-        bottom: 10%;
+        height: 45%;
+        transform: translate(250%, 70%);
 
         &::before {
           font-size: 1rem;
-          top: -30%;
-          left: -10%;
-        }
-
-        &-npm {
-          right: 0%;
-          bottom: 0;
+          transform: translate(-50%, -600%);
+          width: auto;
         }
 
         &-github {
-          right: -30%;
-          top: 10%;
+          transform: translate(45%, -10%);
+        }
+
+        &-npm {
+          transform: translate(20%, 40%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .c-about-section {
+    &_container {
+      &-codepen {
+        transform: translate(-250%, 0%);
+      }
+
+      &-aboutme {
+        transform: translate(150%, -100%);
+      }
+
+      &-featured {
+        height: 30%;
+        transform: translate(300%, 90%);
+
+        &::before {
+          transform: translate(-100%, -800%);
+        }
+
+        &-github {
+          transform: translate(60%, -10%);
+        }
+
+        &-npm {
+          right: 20%;
+          bottom: -10%;
         }
       }
     }
