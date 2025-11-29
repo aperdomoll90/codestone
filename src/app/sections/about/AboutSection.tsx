@@ -27,6 +27,7 @@ export const AboutSection = () => {
         />
         <BubbleButton
           label='Code Pen'
+          href='https://codepen.io/fuzzy-wolfpup/collections/'
           fontSize={{
             default: '1.2rem',
             md: '1.5rem',
@@ -40,6 +41,7 @@ export const AboutSection = () => {
 
           <BubbleButton
             label='GitHub'
+            href='https://github.com/aperdomoll90'
             fontSize={{
               default: '1.2rem',
               md: '1.6rem',
@@ -50,6 +52,7 @@ export const AboutSection = () => {
 
           <BubbleButton
             label='npm'
+            href='https://www.npmjs.com/~aperdomoll90'
             fontSize={{
               default: '.9rem',
               md: '1.1rem',

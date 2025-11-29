@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import styles from './BubbleButton.module.scss'
 import { SingleItemFollowMouse } from '@/app/utils/FollowMouse'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 interface BubbleButtonFontSize {
   default?: string
@@ -21,10 +23,12 @@ interface BubbleButtonProps {
   fontSize?: string | BubbleButtonFontSize
   className?: string
   onClick?: () => void
+  href?: string
 }
 
-const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem', className = '', onClick }) => {
+const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem', className = '', onClick, href }) => {
   const areaRef = useRef<HTMLDivElement | null>(null)
+  const router = useRouter()
 
   const { handleMouseMove: handleLabelMouseMove, handleMouseLeave: handleLabelMouseLeave } = SingleItemFollowMouse({
     areaRef,
@@ -71,11 +75,18 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
           '--fs-lg': fontSize?.lg,
         }
 
+
   return (
     <div ref={areaRef} className={`${className} ${styles['c-bubble']}`} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <button type='button' onClick={onClick} className={`${styles['c-bubble-button']}`} style={sizeVars}>
-        <span className={styles['c-bubble-button__label']}>{label}</span>
-      </button>
+      {href ? (
+        <Link href={href} target='_blank' rel='noopener noreferrer' className={styles['c-bubble-button']} style={sizeVars} onClick={onClick}>
+          <span className={styles['c-bubble-button__label']}>{label}</span>
+        </Link>
+      ) : (
+        <button type='button' onClick={onClick} className={styles['c-bubble-button']} style={sizeVars}>
+          <span className={styles['c-bubble-button__label']}>{label}</span>
+        </button>
+      )}
     </div>
   )
 }
