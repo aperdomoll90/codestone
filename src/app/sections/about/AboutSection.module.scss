@@ -41,11 +41,10 @@
     justify-content: center;
 
     &-aboutme {
-      position: absolute;
       --aboutme-x: 40%;
       --aboutme-x-to: 40%;
-      --aboutme-y-from: -180%;
-      --aboutme-y-to: -200%;
+      --aboutme-y-from: -150%;
+      --aboutme-y-to: -180%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -56,12 +55,10 @@
     }
 
     &-codepen {
-      position: absolute;
-
       --aboutme-x: 35%;
       --aboutme-x-to: 25%;
-      --aboutme-y-from: -140%;
-      --aboutme-y-to: -160%;
+      --aboutme-y-from: -110%;
+      --aboutme-y-to: -140%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -98,18 +95,16 @@
         content: 'Featured Open-Source';
         font-size: 0.7rem;
         position: absolute;
-        transform: translate(-60%, -390%);
+        transform: translate(-40%, -300%);
         color: #6f7074;
-        width: 50%;
+        width: 70%;
       }
 
       &-github {
-        position: absolute;
-        transform: translate(35%, -25%);
+        transform: translate(35%, -15%);
       }
 
       &-npm {
-        position: absolute;
         transform: translate(25%, 30%);
       }
     }

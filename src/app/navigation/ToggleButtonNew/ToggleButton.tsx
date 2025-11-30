@@ -1,5 +1,4 @@
 import styles from './ToggleButton.module.scss'
-import '../../utils/GlobalStyles.css'
 import { ToggleButtonPropsType } from './ToggleButton.types'
 
 export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ active, setActive }) => {

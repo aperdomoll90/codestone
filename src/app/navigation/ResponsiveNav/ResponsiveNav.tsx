@@ -4,6 +4,7 @@ import styles from './ResponsiveNav.module.scss'
 import Link from 'next/link'
 import { SingleItemFollowMouse } from '@/app/utils/FollowMouse'
 import { ToggleButton } from '../ToggleButtonNew'
+import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -18,17 +19,19 @@ const navItemsArray = [
 const NavItemComponent = ({ item, index }: { item: menuItemsArrayPropsTypes; index: number }) => {
   const areaRef = useRef<HTMLDivElement | null>(null)
 
-  const { handleMouseMove, handleMouseLeave } = SingleItemFollowMouse({
+  const { handleMouseMove, handleMouseLeave } = MagnetizeComponent({
     areaRef,
-    targetSelector: `.${styles['c-navigation__menu-item-link']}`,
-    options: {
-      intensity: 0.35, // how far it can travel (0.5 = half as far)
-      // maxTravelPercent: 60,           // hard cap (±%)
-      followLerpFactor: 0.1, // chase speed (lower = more delay)
-      // cursorOffsetPercent: { x: 6, y: -4 }, // sit a bit off the cursor
-      clampWithinArea: true, // keep inside its span
-      returnSpring: { stiffness: 11, damping: 14, precision: 0.01 }, // bounce back feel
-    },
+    targets: [
+      {
+        selector: `.${styles['c-navigation__menu-item-link']}`,
+        options: {
+          intensity: 0.35,
+          followLerpFactor: 0.1,
+          clampWithinArea: true,
+          returnSpring: { stiffness: 11, damping: 14, precision: 0.01 },
+        },
+      },
+    ],
   })
 
   return (

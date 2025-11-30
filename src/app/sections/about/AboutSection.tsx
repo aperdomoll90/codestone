@@ -19,19 +19,27 @@ export const AboutSection = () => {
         <BubbleButton
           label='About Me'
           fontSize={{
-            default: '1.6rem',
-            md: '2.2rem',
+            default: '1rem',
+            md: '1.8rem',
+            lg: '2.2rem',
+          }}
+          padding={{
+            default: '2rem',
             lg: '3rem',
           }}
           className={`${styles['c-about-section_container-aboutme']}`}
         />
         <BubbleButton
-          label='Code Pen'
+          label='CodePen'
           href='https://codepen.io/fuzzy-wolfpup/collections/'
           fontSize={{
-            default: '1.2rem',
+            default: '.8rem',
             md: '1.5rem',
             lg: '2rem',
+          }}
+          padding={{
+            default: '1.4rem',
+            md: '2rem',
           }}
           className={`${styles['c-about-section_container-codepen']}`}
         />
@@ -43,9 +51,12 @@ export const AboutSection = () => {
             label='GitHub'
             href='https://github.com/aperdomoll90'
             fontSize={{
-              default: '1.2rem',
+              default: '.8rem',
               md: '1.6rem',
               lg: '2rem',
+            }}
+            padding={{
+              default: '1.3rem',
             }}
             className={`${styles['c-about-section_container-featured-github']}`}
           />
