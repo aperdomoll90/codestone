@@ -16,7 +16,7 @@ export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ active, setActiv
       <span></span>
       <span></span>
       <span></span>
-      <span className='sr-only'>menu</span>
+      <span  className={styles['sr-only']}>menu</span>
     </button>
   )
 }

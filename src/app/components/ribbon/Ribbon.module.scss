@@ -1,5 +1,5 @@
 .c-ribbon {
-  height: 7rem;
+  width: 45dvw;
   position: relative;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 
 .c-globe {
-  height: 35%;
+  height: 50%;
   aspect-ratio: 1;
   border: 1.5px solid var(--white);
   border-radius: 50%;
@@ -88,10 +88,6 @@
 
 @media (width >= 900px) {
   .c-ribbon {
-    height: auto;
     width: 15dvw;
-  }
-  .c-globe {
-    height: 50%;
   }
 }

@@ -27,6 +27,10 @@ export const AboutSection = () => {
             default: '2rem',
             lg: '3rem',
           }}
+          magnetArea={{
+            default: '0',
+            md: '4rem',
+          }}
           className={`${styles['c-about-section_container-aboutme']}`}
         />
         <BubbleButton
@@ -40,6 +44,10 @@ export const AboutSection = () => {
           padding={{
             default: '1.4rem',
             md: '2rem',
+          }}
+          magnetArea={{
+            default: '0',
+            md: '4rem',
           }}
           className={`${styles['c-about-section_container-codepen']}`}
         />
@@ -58,6 +66,10 @@ export const AboutSection = () => {
             padding={{
               default: '1.3rem',
             }}
+            magnetArea={{
+              default: '0',
+              md: '4rem',
+            }}
             className={`${styles['c-about-section_container-featured-github']}`}
           />
 
@@ -68,6 +80,10 @@ export const AboutSection = () => {
               default: '.9rem',
               md: '1.1rem',
               lg: '1.6rem',
+            }}
+            magnetArea={{
+              default: '0',
+              md: '4rem',
             }}
             className={`${styles['c-about-section_container-featured-npm']}`}
           />

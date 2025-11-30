@@ -41,31 +41,31 @@
     justify-content: center;
 
     &-aboutme {
-      --aboutme-x: 40%;
-      --aboutme-x-to: 40%;
-      --aboutme-y-from: -150%;
-      --aboutme-y-to: -180%;
+      --aboutme-x: 60%;
+      --aboutme-x-to: 60%;
+      --aboutme-y-from: -250%;
+      --aboutme-y-to: -290%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
       animation: aboutme-scroll-move linear forwards;
       animation-timeline: scroll(root block);
       animation-duration: 5s;
-      animation-range: 0% 20%;
+      animation-range: 0% 30%;
     }
 
     &-codepen {
       --aboutme-x: 35%;
       --aboutme-x-to: 25%;
-      --aboutme-y-from: -110%;
-      --aboutme-y-to: -140%;
+      --aboutme-y-from: -230%;
+      --aboutme-y-to: -270%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
       animation: aboutme-scroll-move linear forwards;
       animation-timeline: scroll(root block);
       animation-duration: 5s;
-      animation-range: 0% 20%;
+      animation-range: 0% 30%;
     }
 
     &-featured {
@@ -79,17 +79,17 @@
       justify-content: center;
       font-size: 0.7rem;
 
-      --featured-x-from: -65%;
-      --featured-x-to: -65%;
-      --featured-y-from: -160%;
-      --featured-y-to: -160%;
+      --featured-x-from: -70%;
+      --featured-x-to: -70%;
+      --featured-y-from: -130%;
+      --featured-y-to: -130%;
 
       transform: translate(var(--featured-x-from), var(--featured-y-from));
 
       animation: featured-scroll-move linear forwards;
       animation-timeline: scroll(root block);
       animation-duration: 5s;
-      animation-range: 0% 25%;
+      animation-range: 0% 30%;
 
       &::before {
         content: 'Featured Open-Source';
@@ -101,11 +101,44 @@
       }
 
       &-github {
-        transform: translate(35%, -15%);
+        transform: translate(95%, -5%);
       }
 
       &-npm {
-        transform: translate(25%, 30%);
+        transform: translate(5%, 100%);
+      }
+    }
+  }
+}
+
+@media (min-width: 420px) {
+  .c-about-section {
+    &_container {
+      &-aboutme {
+        --aboutme-x: 85%;
+        --aboutme-x-to: 85%;
+        --aboutme-y-from: -380%;
+        --aboutme-y-to: -420%;
+      }
+
+      &-codepen {
+        --aboutme-y-from: -330%;
+        --aboutme-y-to: -370%;
+      }
+
+      &-featured {
+        --featured-x-from: -60%;
+        --featured-x-to: -60%;
+        --featured-y-from: -150%;
+        --featured-y-to: -150%;
+
+        &-github {
+          transform: translate(80%, -50%);
+        }
+
+        &-npm {
+          transform: translate(0%, 120%);
+        }
       }
     }
   }
@@ -201,8 +234,8 @@
       &-featured {
         --featured-x-from: 300%;
         --featured-x-to: 300%;
-        --featured-y-from: 150%;
-        --featured-y-to: 150%;
+        --featured-y-from: 100%;
+        --featured-y-to: 100%;
 
         animation-range: 0% 45%;
         height: 30%;
@@ -235,7 +268,7 @@
 
 @keyframes featured-scroll-move {
   from {
-    transform: translate(var(--featured-x-from), var(--featured-y-from)) scale(0.8);
+    transform: translate(var(--featured-x-from), var(--featured-y-from)) scale(0.6);
   }
   to {
     transform: translate(var(--featured-x-to), var(--featured-y-to)) scale(1);
