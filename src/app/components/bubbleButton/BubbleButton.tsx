@@ -8,6 +8,7 @@ interface ValuePerBreakpoint {
   default?: string
   sm?: string
   md?: string
+  mdx?: string
   lg?: string
 }
 
@@ -17,16 +18,19 @@ interface CSSVarFontSizes extends React.CSSProperties {
   '--fs-default'?: string
   '--fs-sm'?: string
   '--fs-md'?: string
+  '--fs-mdx'?: string
   '--fs-lg'?: string
 
   '--area-default'?: string
   '--area-sm'?: string
   '--area-md'?: string
+  '--area-mdx'?: string
   '--area-lg'?: string
 
   '--pad-default'?: string
   '--pad-sm'?: string
   '--pad-md'?: string
+  '--pad-mdx'?: string
   '--pad-lg'?: string
 }
 
@@ -75,6 +79,7 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
           '--fs-default': fontSize?.default,
           '--fs-sm': fontSize?.sm,
           '--fs-md': fontSize?.md,
+          '--fs-mdx': fontSize?.mdx,
           '--fs-lg': fontSize?.lg,
         }),
 
@@ -84,6 +89,7 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
           '--area-default': magnetArea?.default,
           '--area-sm': magnetArea?.sm,
           '--area-md': magnetArea?.md,
+          '--area-mdx': magnetArea?.mdx,
           '--area-lg': magnetArea?.lg,
       }),
     
@@ -93,6 +99,7 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
           '--pad-default': padding?.default,
           '--pad-sm': padding?.sm,
           '--pad-md': padding?.md,
+          '--pad-mdx': padding?.mdx,
           '--pad-lg': padding?.lg,
         }),
   }

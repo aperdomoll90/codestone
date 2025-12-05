@@ -85,6 +85,11 @@
     transform: rotateY(360deg);
   }
 }
+@media (width >= 800px) {
+  .c-ribbon {
+    width: 35dvw;
+  }
+}
 
 @media (width >= 900px) {
   .c-ribbon {

@@ -79,21 +79,31 @@
     }
   }
 }
-@media (min-width: 900px) {
+@media (min-width: 800px) {
   .c-bubble {
     padding: var(--area-md, var(--area-sm, var(--area-default, 1rem)));
     &-button {
       font-size: var(--fs-md, var(--fs-sm, var(--fs-base, 1rem)));
-       padding: var(--pad-md, var(--pad-sm, var(--pad-default, 1rem)));
+      padding: var(--pad-md, var(--pad-sm, var(--pad-default, 1rem)));
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .c-bubble {
+    padding: var(--area-mdx, var(--area-md, var(--area-sm, var(--area-default, 1rem))));
+    &-button {
+      font-size: var(--fs-mdx, var(--fs-md, var(--fs-sm, var(--fs-base, 1rem))));
+      padding: var(--pad-mdx, var(--pad-md, var(--pad-sm, var(--pad-default, 1rem))));
     }
   }
 }
 @media (min-width: 1600px) {
   .c-bubble {
-    padding: var(--area-lg, var(--area-md, var(--area-sm, var(--area-default, 1rem))));
+    padding: var(--area-lg, var(--area-mdx, var(--area-md, var(--area-sm, var(--area-default, 1rem)))));
     &-button {
-      font-size: var(--fs-lg, var(--fs-md, var(--fs-sm, var(--fs-base, 1rem))));
-      padding: var(--pad-lg, var(--pad-md, var(--pad-sm, var(--pad-default, 1rem))));
+      font-size: var(--fs-lg, var(--fs-mdx, var(--fs-md, var(--fs-sm, var(--fs-base, 1rem)))));
+      padding: var(--pad-lg, var(--pad-mdx, var(--pad-md, var(--pad-sm, var(--pad-default, 1rem)))));
     }
   }
 }

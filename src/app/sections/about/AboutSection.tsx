@@ -20,16 +20,18 @@ export const AboutSection = () => {
           label='About Me'
           fontSize={{
             default: '1rem',
-            md: '1.8rem',
+            md: '1.2rem',
+            mdx: '1.5rem',
             lg: '2.2rem',
           }}
           padding={{
             default: '2rem',
-            lg: '3rem',
+            md: '3rem',
+            mdx: '2.5rem',
           }}
           magnetArea={{
             default: '0',
-            md: '4rem',
+            mdx: '4rem',
           }}
           className={`${styles['c-about-section_container-aboutme']}`}
         />
@@ -38,7 +40,7 @@ export const AboutSection = () => {
           href='https://codepen.io/fuzzy-wolfpup/collections/'
           fontSize={{
             default: '.8rem',
-            md: '1.5rem',
+            mdx: '1.5rem',
             lg: '2rem',
           }}
           padding={{
@@ -47,7 +49,7 @@ export const AboutSection = () => {
           }}
           magnetArea={{
             default: '0',
-            md: '4rem',
+            mdx: '4rem',
           }}
           className={`${styles['c-about-section_container-codepen']}`}
         />
@@ -60,7 +62,7 @@ export const AboutSection = () => {
             href='https://github.com/aperdomoll90'
             fontSize={{
               default: '.8rem',
-              md: '1.6rem',
+              mdx: '1.6rem',
               lg: '2rem',
             }}
             padding={{
@@ -68,7 +70,7 @@ export const AboutSection = () => {
             }}
             magnetArea={{
               default: '0',
-              md: '4rem',
+              mdx: '4rem',
             }}
             className={`${styles['c-about-section_container-featured-github']}`}
           />
@@ -78,12 +80,12 @@ export const AboutSection = () => {
             href='https://www.npmjs.com/~aperdomoll90'
             fontSize={{
               default: '.9rem',
-              md: '1.1rem',
+              mdx: '1.1rem',
               lg: '1.6rem',
             }}
             magnetArea={{
               default: '0',
-              md: '4rem',
+              mdx: '4rem',
             }}
             className={`${styles['c-about-section_container-featured-npm']}`}
           />

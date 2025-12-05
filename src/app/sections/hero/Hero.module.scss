@@ -24,8 +24,8 @@
     z-index: 0;
     pointer-events: none;
 
-    --portrait-x-from: 0%;
-    --portrait-x-to: 0%;
+    --portrait-x-from: 10%;
+    --portrait-x-to: 10%;
     --portrait-y-from: 40%;
     --portrait-y-to: 60%;
 
@@ -86,6 +86,21 @@
     z-index: 1;
     pointer-events: none;
     bottom: 2rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .c-hero {
+    &__portrait {
+      height: 85svh;
+      --portrait-x-from: 30%;
+      --portrait-x-to: 30%;
+      --portrait-y-from: 25%;
+      --portrait-y-to: 40%;
+    }
+    &__ribbon {
+      transform: translateY(50%);
+    }
   }
 }
 
