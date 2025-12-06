@@ -16,7 +16,7 @@
     gap: 4rem;
     order: 1;
     text-align: left;
-    margin-top: 5rem;
+    margin-top: 2rem;
 
     &-message-primary {
       color: black;
@@ -39,12 +39,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translateY(50%);
 
     &-aboutme {
       --aboutme-x: 60%;
       --aboutme-x-to: 60%;
-      --aboutme-y-from: -250%;
-      --aboutme-y-to: -290%;
+      --aboutme-y-from: -300%;
+      --aboutme-y-to: -360%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -55,10 +56,10 @@
     }
 
     &-codepen {
-      --aboutme-x: 35%;
+      --aboutme-x: 45%;
       --aboutme-x-to: 25%;
-      --aboutme-y-from: -230%;
-      --aboutme-y-to: -270%;
+      --aboutme-y-from: -300%;
+      --aboutme-y-to: -350%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -81,8 +82,8 @@
 
       --featured-x-from: -70%;
       --featured-x-to: -70%;
-      --featured-y-from: -130%;
-      --featured-y-to: -130%;
+      --featured-y-from: -180%;
+      --featured-y-to: -180%;
 
       transform: translate(var(--featured-x-from), var(--featured-y-from));
 
@@ -96,7 +97,7 @@
         font-size: 0.7rem;
         position: absolute;
         transform: translate(-40%, -300%);
-        color: #6f7074;
+        color: var(--gray300);
         width: 70%;
       }
 
@@ -111,26 +112,26 @@
   }
 }
 
-@media (min-width: 420px) {
+@media (min-width: 400px) {
   .c-about-section {
     &_container {
       &-aboutme {
         --aboutme-x: 85%;
         --aboutme-x-to: 85%;
-        --aboutme-y-from: -380%;
-        --aboutme-y-to: -420%;
+        --aboutme-y-from: -450%;
+        --aboutme-y-to: -500%;
       }
 
       &-codepen {
-        --aboutme-y-from: -330%;
-        --aboutme-y-to: -370%;
+        --aboutme-y-from: -400%;
+        --aboutme-y-to: -450%;
       }
 
       &-featured {
         --featured-x-from: -60%;
         --featured-x-to: -60%;
-        --featured-y-from: -150%;
-        --featured-y-to: -150%;
+        --featured-y-from: -200%;
+        --featured-y-to: -200%;
 
         &-github {
           transform: translate(80%, -50%);
@@ -147,7 +148,7 @@
 @media (min-width: 800px) {
   .c-about-section {
     &_content {
-      margin-top: 10rem;
+      margin-top: 3rem;
       &-message-primary {
         font-size: 2rem;
         font-weight: 400;
@@ -161,25 +162,25 @@
       &-aboutme {
         --aboutme-x: 140%;
         --aboutme-x-to: 140%;
-        --aboutme-y-from: -240%;
-        --aboutme-y-to: -300%;
+        --aboutme-y-from: -380%;
+        --aboutme-y-to: -420%;
       }
 
       &-codepen {
-        --aboutme-x: 100%;
-        --aboutme-x-to: 50%;
-        --aboutme-y-from: -280%;
-        --aboutme-y-to: -280%;
+        --aboutme-x: 170%;
+        --aboutme-x-to: 100%;
+        --aboutme-y-from: -420%;
+        --aboutme-y-to: -420%;
       }
 
       &-featured {
-        --featured-x-from: -120%;
-        --featured-x-to: -120%;
-        --featured-y-from: -120%;
-        --featured-y-to: -120%;
+        --featured-x-from: -60%;
+        --featured-x-to: -60%;
+        --featured-y-from: -180%;
+        --featured-y-to: -180%;
 
         &::before {
-        transform: translate(-50%, -900%);
+          transform: translate(-50%, -900%);
         }
 
         &-github {
@@ -201,7 +202,7 @@
 
     &_content {
       flex-direction: row;
-      margin-top: 10rem;
+      margin-top: 5rem;
       gap: 15rem;
 
       &-secondary {
@@ -212,7 +213,7 @@
     &_container {
       height: 65svh;
       margin-bottom: 2rem;
-
+      transform: translateY(0%);
       &-aboutme {
         --aboutme-x: 120%;
         --aboutme-x-to: 120%;
@@ -232,8 +233,8 @@
       &-featured {
         --featured-x-from: 220%;
         --featured-x-to: 220%;
-        --featured-y-from: 130%;
-        --featured-y-to: 130%;
+        --featured-y-from: 70%;
+        --featured-y-to: 70%;
 
         font-size: 1rem;
         height: 45%;

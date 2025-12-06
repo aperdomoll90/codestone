@@ -1,20 +1,7 @@
 .c-content-section {
-  height: 210svh;
   width: 100svw;
   position: relative;
   background: var(--white);
   z-index: 99;
-  // &::after {
-  //   content: '';
-  //   height: 50svh;
-  //   width: 110svw;
-  //   position: absolute;
-  //   bottom: -10%;
-  //   left: -6%;
-  //   border-top-left-radius: 0;
-  //   border-top-right-radius: 0;
-  //   border-bottom-left-radius: 50%;
-  //   border-bottom-right-radius: 50%;
-  //    background: var(--white);
-  // }
+  padding: 3rem 0;
 }
