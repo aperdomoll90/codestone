@@ -1,41 +1,66 @@
 'use client'
-import { useState } from 'react'
-import './styles.css'
-import '../../utils/GlobalStyles.css'
-import { ResponsiveNavPropsTypes, menuItemsArrayPropsTypes } from './ResponsiveNav.type'
+import { useRef, useState } from 'react'
+import styles from './ResponsiveNav.module.scss'
 import { ToggleButton } from '../ToggleButtonNew'
+import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
+import { DrawButton } from '@/app/components/drawButton/DrawButton'
 
-export const ResponsiveNav: React.FC<ResponsiveNavPropsTypes> = ({ logo, height, width, logoHeight, logoMargin, menuItemsArray, primaryColor, secondaryColor, hoverColor, pressColor, labelColor }) => {
-  const [visible, setVisible] = useState(false)
+export interface menuItemsArrayPropsTypes {
+  label?: string
+  link: string
+}
+const navItemsArray = [
+  { label: 'Work', link: '#c-work' },
+  { label: 'About', link: '#c-about' },
+  { label: 'Contact', link: '#c-contact' },
+]
 
-  const renderMenuItems = menuItemsArray?.map((item: menuItemsArrayPropsTypes, index: number) => (
-    <li key={`${item.label}-${index}`} className='responsiveNav-active'>
-      <a className='responsiveNav-link' href={item.link}>
-        <span aria-hidden='true'>0{index}</span>
-        {item.label}
-      </a>
-    </li>
-  ))
+const linkFontSizes = {
+  default: '1.5rem',
+  mdx: '1.2rem',
+}
+
+const NavItemComponent = ({ item, index }: { item: menuItemsArrayPropsTypes; index: number }) => {
+  const areaRef = useRef<HTMLDivElement | null>(null)
+
+  const { handleMouseMove, handleMouseLeave } = MagnetizeComponent({
+    areaRef,
+    targets: [
+      {
+        selector: `.${styles['c-navigation__menu-item-link']}`,
+        options: {
+          intensity: 0.35,
+          followLerpFactor: 0.1,
+          clampWithinArea: true,
+          returnSpring: { stiffness: 11, damping: 14, precision: 0.01 },
+        },
+      },
+    ],
+  })
 
   return (
-    <section id='primary-header' className='primary-header flex-row'>
-      <ToggleButton
-        top={1}
-        right={1}
-        customClass='mobile-nav-toggle'
-        ariaControls='primary-navigation'
-        ariaExpanded={visible}
-        active={visible}
-        setActive={() => {
-          setVisible(!visible)
-        }}
-        buttonBackgroundColor='transparent'
-      />
-      <nav>
-        <ul id='primary-navigation' aria-expanded={visible} data-visible={visible} className='primary-navigation uppercase ff-sans-cond flex-row'>
-          {renderMenuItems}
-        </ul>
-      </nav>
-    </section>
+    <span ref={areaRef} key={index} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`${styles['c-navigation__menu-item']}`}>
+      <DrawButton fontSize={linkFontSizes} href={item.link} className={styles['c-navigation__menu-item-link']}>
+        {item.label}
+      </DrawButton>
+    </span>
+  )
+}
+
+export const ResponsiveNav = () => {
+  const [visible, setVisible] = useState(false)
+
+  return (
+    <>
+      <ToggleButton active={visible} setActive={setVisible} />
+      <section className={`${styles['c-navigation']}`} data-visible={visible}>
+        <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
+        <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
+          {navItemsArray.map((item, index) => (
+            <NavItemComponent item={item} index={index} key={index} />
+          ))}
+        </nav>
+      </section>
+    </>
   )
 }

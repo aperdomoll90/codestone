@@ -1,0 +1,29 @@
+.c-marquee {
+  width: 100%;
+  gap: 1rem;
+  overflow: clip;
+
+  &__track {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    padding-left: 1rem;
+    gap: 1rem;
+    animation: slide-marquee 25s linear infinite;
+    // animation-direction: reverse;
+
+    h1 {
+      font-size: 13svw;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      pointer-events: none;
+      text-wrap: nowrap;
+    }
+  }
+}
+
+@keyframes slide-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

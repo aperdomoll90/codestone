@@ -1,0 +1,173 @@
+.hexagon {
+  position: absolute;
+  aspect-ratio: 1;
+}
+
+.largeHexagon {
+  height: 15%;
+  left: 0%;
+  top: 35%;
+  rotate: -10deg;
+  animation: float 6s infinite ease-in-out alternate;
+  animation-delay: 0.5s;
+}
+
+.medHexagon {
+  height: 10%;
+  right: 15%;
+  top: -5%;
+  rotate: -10deg;
+  animation: float 4s infinite ease-in-out alternate;
+}
+
+.smallHexagon {
+  height: 8%;
+  left: 15%;
+  top: 5%;
+  animation: float 2s infinite ease-in-out alternate, sway 3s infinite ease-in-out alternate;
+  /* animation-delay: 1s; */
+}
+
+.xsHexagon {
+  height: 6%;
+  right: -6%;
+  bottom: 25%;
+  animation: sway 3s infinite ease-in-out alternate;
+}
+
+.aboutPositioningContainer {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  margin: 20% 0 0 20%;
+  z-index: 99;
+  align-items: flex-start;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.aboutPositioningContainer.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.aboutContentContainer {
+  width: 60%;
+  height: fit-content;
+  max-height: 60svh;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  overflow-y: scroll;
+}
+
+.aboutLinksContainer {
+  width: 10%;
+  margin-top: 2.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.aboutLink {
+  height: 1.5rem;
+  aspect-ratio: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.aboutLink:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.aboutLink:active {
+  transform: scale(0.8);
+  transition: all 0.2s ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(5%);
+  }
+  100% {
+    transform: translateY(-10%);
+  }
+}
+
+@keyframes sway {
+  0% {
+    rotate: 10deg;
+  }
+  100% {
+    rotate: -10deg;
+  }
+}
+@media (width >= 900px) {
+  .largeHexagon {
+    height: 35%;
+    left: 7%;
+    top: 15%;
+    rotate: -10deg;
+  }
+
+  .medHexagon {
+    height: 20%;
+    right: 7%;
+    top: 15%;
+    rotate: -10deg;
+  }
+
+  .smallHexagon {
+    height: 10%;
+    left: 45%;
+    top: 5%;
+  }
+
+  .xsHexagon {
+    height: 5%;
+    right: 7%;
+    bottom: 15%;
+  }
+  .aboutPositioningContainer {
+    flex-direction: column-reverse;
+    width: 50%;
+    margin: 10% 0 0 10%;
+  }
+
+  .aboutContentContainer {
+    width: 100%;
+    max-height: 45svh;
+    line-height: 1.2rem;
+    font-size: 0.7em;
+  }
+  .aboutLinksContainer {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .aboutLink {
+    height: 2rem;
+  }
+}
+
+@media (width >= 1500px) {
+  .aboutPositioningContainer {
+    width: 40%;
+    margin: 13% 0 0 10%;
+  }
+
+  .aboutContentContainer {
+    max-height: 40svh;
+    line-height: 1.5rem;
+    font-size: 0.9em;
+  }
+}
+
+

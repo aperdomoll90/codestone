@@ -1,0 +1,323 @@
+.c-about-section {
+  height: 100svh;
+  width: 100svw;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  scroll-timeline: aboutScroll block;
+
+  &_content {
+    display: flex;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    order: 1;
+    text-align: left;
+    margin-top: 2rem;
+
+    &-message-primary {
+      color: black;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+    &-secondary {
+      font-size: 0.8rem;
+      font-weight: 200;
+      padding-right: 6.5rem;
+      width: 80%;
+    }
+  }
+  &_container {
+    height: 30svh;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #d9d9d9;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(50%);
+
+    &-aboutme {
+      --aboutme-x: 60%;
+      --aboutme-x-to: 60%;
+      --aboutme-y-from: -300%;
+      --aboutme-y-to: -360%;
+
+      transform: translate(var(--aboutme-x), var(--aboutme-y-from));
+
+      animation: aboutme-scroll-move linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 30%;
+    }
+
+    &-codepen {
+      --aboutme-x: 45%;
+      --aboutme-x-to: 25%;
+      --aboutme-y-from: -300%;
+      --aboutme-y-to: -350%;
+
+      transform: translate(var(--aboutme-x), var(--aboutme-y-from));
+
+      animation: aboutme-scroll-move linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 30%;
+    }
+
+    &-featured {
+      height: 55%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: absolute;
+      border: 1px solid #d9d9d9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+
+      --featured-x-from: -70%;
+      --featured-x-to: -70%;
+      --featured-y-from: -180%;
+      --featured-y-to: -180%;
+
+      transform: translate(var(--featured-x-from), var(--featured-y-from));
+
+      animation: featured-scroll-move linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 30%;
+
+      &::before {
+        content: 'Featured Open-Source';
+        font-size: 0.7rem;
+        position: absolute;
+        transform: translate(-40%, -300%);
+        color: var(--gray300);
+        width: 70%;
+      }
+
+      &-github {
+        transform: translate(95%, -5%);
+      }
+
+      &-npm {
+        transform: translate(5%, 100%);
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .c-about-section {
+    &_container {
+      &-aboutme {
+        --aboutme-x: 85%;
+        --aboutme-x-to: 85%;
+        --aboutme-y-from: -450%;
+        --aboutme-y-to: -500%;
+      }
+
+      &-codepen {
+        --aboutme-y-from: -400%;
+        --aboutme-y-to: -450%;
+      }
+
+      &-featured {
+        --featured-x-from: -60%;
+        --featured-x-to: -60%;
+        --featured-y-from: -200%;
+        --featured-y-to: -200%;
+
+        &-github {
+          transform: translate(80%, -50%);
+        }
+
+        &-npm {
+          transform: translate(0%, 120%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .c-about-section {
+    &_content {
+      margin-top: 3rem;
+      &-message-primary {
+        font-size: 2rem;
+        font-weight: 400;
+      }
+      &-secondary {
+        font-size: 1.1rem;
+        font-weight: 200;
+      }
+    }
+    &_container {
+      &-aboutme {
+        --aboutme-x: 140%;
+        --aboutme-x-to: 140%;
+        --aboutme-y-from: -380%;
+        --aboutme-y-to: -420%;
+      }
+
+      &-codepen {
+        --aboutme-x: 170%;
+        --aboutme-x-to: 100%;
+        --aboutme-y-from: -420%;
+        --aboutme-y-to: -420%;
+      }
+
+      &-featured {
+        --featured-x-from: -60%;
+        --featured-x-to: -60%;
+        --featured-y-from: -180%;
+        --featured-y-to: -180%;
+
+        &::before {
+          transform: translate(-50%, -900%);
+        }
+
+        &-github {
+          transform: translate(120%, -50%);
+        }
+
+        &-npm {
+          transform: translate(50%, 160%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .c-about-section {
+    justify-content: flex-start;
+    gap: 5rem;
+
+    &_content {
+      flex-direction: row;
+      margin-top: 5rem;
+      gap: 15rem;
+
+      &-secondary {
+        font-size: 1.3rem;
+        font-weight: 200;
+      }
+    }
+    &_container {
+      height: 65svh;
+      margin-bottom: 2rem;
+      transform: translateY(0%);
+      &-aboutme {
+        --aboutme-x: 120%;
+        --aboutme-x-to: 120%;
+        --aboutme-y-from: -40%;
+        --aboutme-y-to: -70%;
+        animation-range: 0% 55%;
+      }
+
+      &-codepen {
+        --aboutme-x: -140%;
+        --aboutme-x-to: -160%;
+        --aboutme-y-from: 10%;
+        --aboutme-y-to: 0%;
+        animation-range: 0% 35%;
+      }
+
+      &-featured {
+        --featured-x-from: 220%;
+        --featured-x-to: 220%;
+        --featured-y-from: 70%;
+        --featured-y-to: 70%;
+
+        font-size: 1rem;
+        height: 45%;
+        animation-range: 0% 35%;
+
+        &::before {
+          font-size: 1rem;
+          transform: translate(-50%, -600%);
+          width: auto;
+        }
+
+        &-github {
+          transform: translate(45%, -10%);
+        }
+
+        &-npm {
+          transform: translate(20%, 40%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .c-about-section {
+    &_container {
+      &-codepen {
+        --aboutme-x: -220%;
+        --aboutme-x-to: -250%;
+        --aboutme-y-from: 10%;
+        --aboutme-y-to: 0%;
+
+        transform: translate(-250%, 0%);
+      }
+
+      &-aboutme {
+        --aboutme-x: 150%;
+        --aboutme-x-to: 150%;
+        --aboutme-y-from: -50%;
+        --aboutme-y-to: -100%;
+        animation-range: 0% 30%;
+      }
+
+      &-featured {
+        --featured-x-from: 300%;
+        --featured-x-to: 300%;
+        --featured-y-from: 100%;
+        --featured-y-to: 100%;
+
+        animation-range: 0% 45%;
+        height: 30%;
+
+        &::before {
+          transform: translate(-100%, -800%);
+        }
+
+        &-github {
+          transform: translate(60%, -10%);
+        }
+
+        &-npm {
+          right: 20%;
+          bottom: -10%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes aboutme-scroll-move {
+  from {
+    transform: translate(var(--aboutme-x), var(--aboutme-y-from));
+  }
+  to {
+    transform: translate(var(--aboutme-x-to), var(--aboutme-y-to));
+  }
+}
+
+@keyframes featured-scroll-move {
+  from {
+    transform: translate(var(--featured-x-from), var(--featured-y-from)) scale(0.6);
+  }
+  to {
+    transform: translate(var(--featured-x-to), var(--featured-y-to)) scale(1);
+  }
+}

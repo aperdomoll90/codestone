@@ -1,7 +1,30 @@
+.svg-carrousel-wrapper {
+  box-shadow: inset 0 8rem 100px -8rem rgba(0, 0, 0, 0), inset 0 -8rem 100px -8rem rgba(0, 0, 0, 0.933);
+}
+
+.transition-shade {
+  position: absolute;
+  top: 5vh;
+  width: 100dvw;
+  height: 100dvh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 1%,rgba(13, 13, 13, 0.884) 5%, rgba(13, 13, 13, 0.884) 87%, rgba(0, 0, 0, 0) 100%);
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.636),  rgba(0, 0, 0, 0.995), rgba(0, 0, 0, 0)); */
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.658), rgba(0, 0, 0, 0)); */
+  z-index: 9999999;
+  transform-origin: top;
+  transition: opacity 1s ease-in-out, transform 0.5s ease-in-out, height 1s ease-in-out;
+}
+.transition-shade.active {
+  transform: translateY(-100%);
+  height: 0;
+  /* opacity: 0; */
+  pointer-events: none;
+}
+
 .slideshow {
   color: #fff;
-  width: 100vw;
-  height: 100vh;
+  width: 100svw;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,16 +33,18 @@
   transition: all 0.5s ease-in-out;
 }
 
+.carousel-track {
+  overflow: visible !important;
+}
 .info-container {
   width: 100%;
-  height: 50vh;
+  height: 60svh;
   display: flex;
   position: relative;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  padding: 4rem 0 0 4rem;
+  padding: 4rem 2rem;
 }
 
 .info-container::before {
@@ -42,18 +67,46 @@
   animation: rotation 200s linear infinite reverse;
 }
 
+.portfolioTitle {
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  position: absolute;
+  font-size: 6em;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: white;
+  text-transform: uppercase;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  margin-right: -0.3em;
+  transform: rotate(180deg) !important;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  top: 1.5rem;
+  left: 1rem;
+}
+
 .project-info {
   display: flex;
   max-width: 90%;
+  min-height: 25rem;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   font-family: 'Inria Sans', sans-serif;
   z-index: 10;
   gap: 1rem;
   backdrop-filter: blur(5px);
+  background: #0000008f;
   padding: 1.5rem;
   border-radius: 8px;
+  opacity: 0;
+  transform: translateX(-3rem);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.project-info.active {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .project-info h2 {
@@ -64,8 +117,8 @@
 }
 
 .project-info p {
-  font-size: .8rem;
-  line-height: 1.1rem;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
   font-weight: 200;
   letter-spacing: 2px;
 }
@@ -98,7 +151,7 @@
 }
 
 .project-button span {
-  font-size: .5rem;
+  font-size: 0.5rem;
   font-weight: bold;
   display: none;
   transition: all 0.5s ease-in-out;
@@ -133,74 +186,56 @@
 
 .carousel-container {
   width: 100%;
-  height: 50vh;
+  height: 35svh;
   position: relative;
+  bottom: -15%;
+  right: -25%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  bottom: -40%;
-  right: -30%;
-}
-
-.carousel::before {
+.carousel-container::before {
   content: '';
   position: absolute;
-  width: 90%;
+  width: 120%;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
   border: 2px dashed #f1ece8;
   animation: rotation 200s linear infinite;
   transform-origin: center center;
+  z-index: 1;
 }
 
-.carousel::after {
+.carousel-container::after {
   content: '';
-  width: 70%;
+  position: absolute;
+  width: 90%;
   aspect-ratio: 1 / 1;
-  border-radius: 100%;
+  border-radius: 90%;
   border: 2px dashed #f1ece8;
   animation: rotation 200s linear infinite reverse;
   transform-origin: center center;
-}
-
-.slide {
-  outline: 0.2px solid #f1ece8;
-  border-radius: 50%;
-  position: absolute;
-  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-  z-index: 10;
-}
-
-.slide-active {
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.726);
+  z-index: 1;
 }
 
 .controls {
   display: flex;
-  width: 20rem;
-  overflow-x: scroll;
+  height: 5rem;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   position: absolute;
-  bottom: 2rem;
-  right: 1%;
+  margin-bottom: 10rem;
+  margin-right: 2rem;
   z-index: 15;
-  background: rgba(255, 255, 255, 0.433);
   border-radius: 15px;
 }
 
 .control {
-  height: 3rem;
-  width: 3rem;
+  min-height: 3rem;
+  min-width: 3rem;
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
@@ -211,6 +246,63 @@
 
 .control-active {
   outline: 0.3rem solid #7dbd77;
+}
+
+.carousel-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button {
+  cursor: pointer;
+  position: relative;
+  padding: 20px 10px;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.9rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button::after {
+  content: '';
+  position: absolute;
+  top: -2%;
+  left: -2%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 2px dashed #fffffffa;
+  animation: rotation 20s linear infinite;
+  transform-origin: center center;
+  z-index: 1;
+}
+
+.nav-button-prev::after {
+  animation: rotation 20s linear infinite reverse;
+}
+
+.nav-button:hover:not(.inactive) {
+  background-color: #0057b37b;
+}
+
+.nav-button.inactive {
+  background-color: #6b686827;
+  cursor: not-allowed;
+  color: rgb(135, 129, 129);
+}
+
+.nav-button.inactive::after {
+  border: 2px dashed rgb(135, 129, 129);
+}
+
+.carrousel-mascot {
+  height: 55svh;
+  width: auto;
+  position: absolute;
+  top: -5%;
 }
 
 @keyframes rotation {
@@ -226,6 +318,7 @@
   .slideshow {
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
   }
   .slideshow::before {
     font-size: 6.5rem;
@@ -235,8 +328,14 @@
     height: 100%;
     padding: unset;
   }
+
+  .portfolioTitle {
+    font-size: 12dvh;
+    top: 1rem;
+    left: 1rem;
+  }
   .project-info {
-    max-width: 70%;
+    max-width: 60%;
   }
 
   .project-info h2 {
@@ -245,11 +344,38 @@
 
   .project-info p {
     font-size: 1rem;
-    line-height: 1.3rem;
+    line-height: 1.6rem;
   }
 
   .carousel-container {
+    bottom: -40%;
+    right: -5%;
     width: 42%;
-    height: 100%;
+    height: 60%;
+  }
+
+  .controls {
+    height: 5rem;
+    margin-bottom: 0rem;
+    margin-right: 0rem;
+    flex-wrap: wrap;
+  }
+  .nav-button {
+    font-size: 1.2rem;
+  }
+}
+
+@media (width >= 1500px) {
+  .project-info {
+    max-width: 55%;
+  }
+
+  .project-info h2 {
+    font-size: 2rem;
+  }
+
+  .project-info p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
   }
 }
