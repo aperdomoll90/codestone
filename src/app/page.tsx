@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import { Hero } from './sections/hero/Hero'
-import { ContentSection } from './sections/content/ContentSection'
-import { ContactSection } from './sections/contact/ContactSection'
+import { Hero } from './landingSections/hero/Hero'
+import { ContentSection } from './landingSections/content/ContentSection'
+import { ContactSection } from './landingSections/contact/ContactSection'
 
 const Home: React.FC = () => {
   return (

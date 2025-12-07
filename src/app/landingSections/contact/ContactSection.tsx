@@ -2,8 +2,6 @@
 import React from 'react'
 import styles from './ContactSection.module.scss'
 import { FrenchBulldog } from './FrenchBulldog'
-import { Footer } from '@/app/navigation/footer/Footer'
-
 
 export const ContactSection = () => {
   return (
@@ -15,8 +13,6 @@ export const ContactSection = () => {
         </h2>
         <FrenchBulldog />
       </div>
-
-   
     </section>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 
-import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
+import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
 import styles from './BubbleButton.module.scss'
 
 interface ValuePerBreakpoint {

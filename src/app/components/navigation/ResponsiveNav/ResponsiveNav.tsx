@@ -2,8 +2,9 @@
 import { useRef, useState } from 'react'
 import styles from './ResponsiveNav.module.scss'
 import { ToggleButton } from '../ToggleButtonNew'
-import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
+import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
 import { DrawButton } from '@/app/components/drawButton/DrawButton'
+import { usePathname } from 'next/navigation'
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -49,11 +50,13 @@ const NavItemComponent = ({ item, index }: { item: menuItemsArrayPropsTypes; ind
 
 export const ResponsiveNav = () => {
   const [visible, setVisible] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === '/'
 
   return (
     <>
       <ToggleButton active={visible} setActive={setVisible} />
-      <section className={`${styles['c-navigation']}`} data-visible={visible}>
+      <section className={`${styles['c-navigation']}`} data-visible={visible} data-route={isHome ? 'home' : 'other'}>
         <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
         <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
           {navItemsArray.map((item, index) => (

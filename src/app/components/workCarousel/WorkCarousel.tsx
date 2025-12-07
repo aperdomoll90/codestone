@@ -2,7 +2,7 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
 import styles from './WorkCarousel.module.scss'
-import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
+import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
 
 export interface ProjectItem {
   id: string

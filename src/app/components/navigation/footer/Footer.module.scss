@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3rem 0.05rem;
-  padding: 0 1.5rem 3rem;
+  padding: 1rem 1.5rem 3rem;
 
   &__group {
     display: flex;
@@ -53,7 +53,7 @@
 
 @media (min-width: 800px) {
   .c-footer {
-    padding: 0 7rem 4rem;
+    padding: 1rem  7rem 4rem;
     flex-wrap: nowrap;
     gap: 4rem;
 
@@ -81,7 +81,7 @@
 
 @media (min-width: 900px) {
   .c-footer {
-     padding: 0% 15% 4%;
+     padding: 2% 15% 3%;
     flex-wrap: nowrap;
 
     &__group {

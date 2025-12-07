@@ -7,8 +7,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 20%;
-  scroll-behavior: smooth;
-  color: white;
+  color: var(--white);
   background: radial-gradient(var(--lightLavender), var(--darkLavender));
 
   &__ribbon {

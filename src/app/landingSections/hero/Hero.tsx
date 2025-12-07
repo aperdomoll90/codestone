@@ -3,7 +3,6 @@ import React from 'react'
 import styles from './Hero.module.scss'
 import Ribbon from '@/app/components/ribbon/Ribbon'
 import { Marquee } from '@/app/components/marquee/Marquee'
-import { ResponsiveNav } from '@/app/navigation/ResponsiveNav/ResponsiveNav'
 
 const arrowSvg = (
   <svg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -14,7 +13,6 @@ const arrowSvg = (
 export const Hero = () => {
   return (
     <section className={`${styles['c-hero']}`}>
-      <ResponsiveNav />
       <Ribbon className={`${styles['c-hero__ribbon']}`} />
       <div className={`${styles['c-hero__occupation']}`}>
         {arrowSvg}
