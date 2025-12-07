@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.scss'
 import { Albert_Sans } from 'next/font/google'
+import { Footer } from './navigation/footer/Footer'
 
 export const albertSans = Albert_Sans({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={albertSans.className}>
       <body>{children}</body>
+      <Footer />
     </html>
   )
 }
