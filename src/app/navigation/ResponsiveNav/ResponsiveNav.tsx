@@ -1,10 +1,9 @@
 'use client'
 import { useRef, useState } from 'react'
 import styles from './ResponsiveNav.module.scss'
-import Link from 'next/link'
-import { SingleItemFollowMouse } from '@/app/utils/FollowMouse'
 import { ToggleButton } from '../ToggleButtonNew'
 import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
+import { DrawButton } from '@/app/components/drawButton/DrawButton'
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -15,6 +14,11 @@ const navItemsArray = [
   { label: 'About', link: '#c-about' },
   { label: 'Contact', link: '#c-contact' },
 ]
+
+const linkFontSizes = {
+  default: '1.5rem',
+  mdx: '1.2rem',
+}
 
 const NavItemComponent = ({ item, index }: { item: menuItemsArrayPropsTypes; index: number }) => {
   const areaRef = useRef<HTMLDivElement | null>(null)
@@ -36,9 +40,9 @@ const NavItemComponent = ({ item, index }: { item: menuItemsArrayPropsTypes; ind
 
   return (
     <span ref={areaRef} key={index} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`${styles['c-navigation__menu-item']}`}>
-      <Link href={item.link} className={`${styles['c-navigation__menu-item-link']}`}>
+      <DrawButton fontSize={linkFontSizes} href={item.link} className={styles['c-navigation__menu-item-link']}>
         {item.label}
-      </Link>
+      </DrawButton>
     </span>
   )
 }
@@ -53,7 +57,7 @@ export const ResponsiveNav = () => {
         <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
         <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
           {navItemsArray.map((item, index) => (
-            <NavItemComponent item={item} index={index} />
+            <NavItemComponent item={item} index={index} key={index} />
           ))}
         </nav>
       </section>

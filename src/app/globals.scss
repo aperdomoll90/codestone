@@ -17,6 +17,7 @@
 html {
   /* This references the hashed family that next/font registered */
   font-family: var(--font-albert), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {

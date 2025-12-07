@@ -5,7 +5,7 @@ import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
 
 export const AboutSection = () => {
   return (
-    <section className={`${styles['c-about-section']}`}>
+    <section id="c-about" className={`${styles['c-about-section']}`}>
       <div className={`${styles['c-about-section_content']}`}>
         <p className={`${styles['c-about-section_content-message-primary']}`}>
           Together, we will craft an intuitive, accessible experience that speaks directly to your customers.
