@@ -1,10 +1,7 @@
 .c-about {
-  width: 100dvw;
-  height: 100dvh;
-  position: relative;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20%;
-  background: var(--white);
 }

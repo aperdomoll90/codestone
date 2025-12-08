@@ -43,9 +43,11 @@ interface BubbleButtonProps {
   className?: string
   onClick?: () => void
   href?: string
+  target?: string
 }
 
-const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem', className = '', onClick, href, magnetArea = '4rem' , padding = "1rem"}) => {
+const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem', className = '', onClick, href, magnetArea = '4rem', padding = "1rem", target }) => {
+  const isExternal = href?.startsWith('http') || href?.startsWith('mailto:') || href?.startsWith('tel:')
   const areaRef = useRef<HTMLDivElement | null>(null)
 
   const { handleMouseMove, handleMouseLeave } = MagnetizeComponent({
@@ -112,7 +114,7 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}>
       {href ? (
-        <Link href={href} target='_blank' rel='noopener noreferrer' className={styles['c-bubble-button']} onClick={onClick}>
+        <Link href={href} target={target || (isExternal ? '_blank' : undefined)} rel={isExternal ? 'noopener noreferrer' : undefined} className={styles['c-bubble-button']} onClick={onClick}>
           <span className={styles['c-bubble-button__label']}>{label}</span>
         </Link>
       ) : (

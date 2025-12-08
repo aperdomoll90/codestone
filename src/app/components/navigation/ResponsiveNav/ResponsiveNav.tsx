@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import styles from './ResponsiveNav.module.scss'
 import { ToggleButton } from '../ToggleButtonNew'
 import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
@@ -10,10 +10,18 @@ export interface menuItemsArrayPropsTypes {
   label?: string
   link: string
 }
-const navItemsArray = [
+
+const homeNavItems = [
   { label: 'Work', link: '#c-work' },
   { label: 'About', link: '#c-about' },
   { label: 'Contact', link: '#c-contact' },
+]
+
+const otherNavItems = [
+  { label: 'Home', link: '/' },
+  { label: 'Work', link: '/work' },
+  { label: 'About', link: '/#c-about' },
+  { label: 'Contact', link: '/#c-contact' },
 ]
 
 const linkFontSizes = {
@@ -53,13 +61,19 @@ export const ResponsiveNav = () => {
   const pathname = usePathname()
   const isHome = pathname === '/'
 
+  const navItems = useMemo(() => {
+    if (isHome) return homeNavItems
+    // Filter out current route from nav items
+    return otherNavItems.filter((item) => item.link !== pathname)
+  }, [isHome, pathname])
+
   return (
     <>
       <ToggleButton active={visible} setActive={setVisible} />
       <section className={`${styles['c-navigation']}`} data-visible={visible} data-route={isHome ? 'home' : 'other'}>
         <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
         <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
-          {navItemsArray.map((item, index) => (
+          {navItems.map((item, index) => (
             <NavItemComponent item={item} index={index} key={index} />
           ))}
         </nav>

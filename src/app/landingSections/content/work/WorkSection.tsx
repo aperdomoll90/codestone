@@ -36,7 +36,7 @@ export const WorkSection = () => {
 
         <BubbleButton
           label='More Work'
-          href='#'
+          href='/work'
           className={styles['c-work-section__button']}
           fontSize={{ default: '0.7rem', md: '1rem', mdx: '1.1rem', lg: '1.3rem' }}
           padding={{ default: '1rem', md: '2rem', mdx: '2.5rem' }}
