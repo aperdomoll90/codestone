@@ -3,6 +3,7 @@ import './globals.scss'
 import { Albert_Sans } from 'next/font/google'
 import { Footer } from './components/navigation/footer/Footer'
 import { ResponsiveNav } from './components/navigation/ResponsiveNav/ResponsiveNav'
+import { LoadingScreen } from './components/loadingScreen/LoadingScreen'
 
 export const albertSans = Albert_Sans({
   subsets: ['latin'],
@@ -26,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang='en' className={albertSans.className}>
       <ResponsiveNav />
-      <body>{children}</body>
+      <body>
+        <LoadingScreen />
+        {children}
+      </body>
       <Footer />
     </html>
   )

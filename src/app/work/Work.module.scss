@@ -1,47 +1,72 @@
 .c-work {
   min-height: 100dvh;
   padding: 6rem 1.5rem 0;
+  margin-bottom: 5rem;
 
-  &__hero {
+  &__header {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 3rem;
+
+    &--title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
   }
 
-  &__title {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--charcoal);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-
-  &__view-toggle {
+  &__view-toggler {
     display: flex;
     gap: 0.5rem;
-  }
+    &-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: 1px solid var(--gray200);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      color: var(--charcoal);
+      transition: background 0.2s ease, color 0.2s ease;
 
-  &__view-btn {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    border: 1px solid var(--charcoal);
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--charcoal);
-    transition: background 0.2s ease, color 0.2s ease;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0%;
+        width: 100%;
+        height: 305%;
 
-    &--active {
-      background: var(--charcoal);
-      color: var(--white);
-    }
+        background: radial-gradient(circle, rgba(88, 86, 114, 1) 32%, transparent 0%);
 
-    &:hover:not(&--active) {
-      background: var(--charcoal-transp);
+        background-size: 100% 100%;
+        background-position: center bottom;
+        border-radius: 0;
+
+        z-index: -1;
+        transform: translateY(0);
+        transition: transform 0.4s ease;
+      }
+
+      &[data-active='true'] {
+        background: var(--charcoal);
+        border: none;
+        color: var(--white);
+      }
+
+      &:hover::before {
+        transform: translateY(-34%);
+      }
+
+      // &:hover:not([data-active='true']) {
+      //   background: var(--charcoal-transp);
+      // }
     }
   }
 
@@ -201,7 +226,7 @@
       font-weight: 500;
     }
 
-    &--hovered {
+    &[data-hovered='true'] {
       opacity: 0.5;
     }
   }
@@ -239,7 +264,7 @@
 
 @media (min-width: 400px) {
   .c-work {
-    &__title {
+    &__header--title {
       font-size: 1.8rem;
     }
   }
@@ -249,17 +274,17 @@
   .c-work {
     padding: 8rem 4rem 0;
 
-    &__hero {
+    &__header {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
+
+      &--title {
+        font-size: 2.5rem;
+      }
     }
 
-    &__title {
-      font-size: 2.5rem;
-    }
-
-    &__view-btn {
+    &__view-toggler-btn {
       width: 3rem;
       height: 3rem;
     }
@@ -326,9 +351,9 @@
 
 @media (min-width: 900px) {
   .c-work {
-    padding: 10rem 10% 0;
+    padding: 10% 10% 5%;
 
-    &__title {
+    &__header--title {
       font-size: 3rem;
     }
 
@@ -380,7 +405,7 @@
   .c-work {
     padding: 12rem 15% 0;
 
-    &__title {
+    &__header--title {
       font-size: 4rem;
     }
 
