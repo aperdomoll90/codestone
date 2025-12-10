@@ -1,14 +1,14 @@
 import styles from './ToggleButton.module.scss'
 import { ToggleButtonPropsType } from './ToggleButton.types'
 
-export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ active, setActive }) => {
+export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ active, setActive, yPosition='2rem' }) => {
   return (
     <button
       className={styles['c-toggle-button']}
       data-active={active}
       style={
         {
-          '--size': '3rem',
+          '--top': yPosition,
         } as React.CSSProperties
       }
       onClick={() => setActive(prev => !prev)}

@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useState, useMemo, useEffect } from 'react'
 import styles from './ResponsiveNav.module.scss'
 import { ToggleButton } from '../ToggleButtonNew'
 import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
@@ -63,21 +63,22 @@ export const ResponsiveNav = () => {
 
   const navItems = useMemo(() => {
     if (isHome) return homeNavItems
-    // Filter out current route from nav items
-    return otherNavItems.filter((item) => item.link !== pathname)
+    return otherNavItems.filter(item => item.link !== pathname)
   }, [isHome, pathname])
 
+  useEffect(() => {
+    setVisible(false)
+  }, [pathname])
+
   return (
-    <>
-      <ToggleButton active={visible} setActive={setVisible} />
-      <section className={`${styles['c-navigation']}`} data-visible={visible} data-route={isHome ? 'home' : 'other'}>
-        <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
-        <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
-          {navItems.map((item, index) => (
-            <NavItemComponent item={item} index={index} key={index} />
-          ))}
-        </nav>
-      </section>
-    </>
+    <section className={`${styles['c-navigation']}`} data-visible={visible} data-route={isHome ? 'home' : 'other'}>
+      <ToggleButton yPosition={isHome ? '4rem' : '2rem'} active={visible} setActive={setVisible} />
+      <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
+      <nav className={`${styles['c-navigation__menu']}`} aria-expanded={visible} data-visible={visible}>
+        {navItems.map((item, index) => (
+          <NavItemComponent item={item} index={index} key={index} />
+        ))}
+      </nav>
+    </section>
   )
 }

@@ -7,8 +7,8 @@ import { LoadingScreen } from './components/loadingScreen/LoadingScreen'
 
 export const albertSans = Albert_Sans({
   subsets: ['latin'],
-  weight: ['100','200','300','400','500','600','700','800','900'],
-  style: ['normal','italic'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-albert',
 })
@@ -26,8 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={albertSans.className}>
-      <ResponsiveNav />
       <body>
+        <ResponsiveNav />
         <LoadingScreen />
         {children}
       </body>

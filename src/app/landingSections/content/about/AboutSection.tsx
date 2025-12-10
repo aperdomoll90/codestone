@@ -18,6 +18,7 @@ export const AboutSection = () => {
       <div className={`${styles['c-about-section_container']}`}>
         <BubbleButton
           label='About Me'
+          href='/about'
           fontSize={{
             default: '1rem',
             md: '1.2rem',

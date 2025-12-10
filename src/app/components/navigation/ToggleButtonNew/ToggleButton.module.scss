@@ -1,8 +1,9 @@
 .c-toggle-button {
+  --size: 3rem;
   width: var(--size);
   aspect-ratio: 1;
   position: absolute;
-  top: 4rem;
+  top: var(--top);
   right: 2rem;
   display: flex;
   justify-content: center;
@@ -45,7 +46,6 @@
 }
 
 .c-toggle-button[data-active='true'] {
-  top: 2rem;
   right: 1rem;
   background: transparent;
 
