@@ -13,7 +13,7 @@ const npmProjects: Project[] = [
     services: 'Image Zoom & Focus React Component',
     href: 'https://www.npmjs.com/package/point-focus',
     year: '2020',
-    image: '/carouselassets/hikerslide.png',
+    image: '/pointFocus.png',
     isExternal: true,
   },
 ]
@@ -55,7 +55,44 @@ const webProjects: Project[] = [
     image: '/carouselassets/djslide.png',
     href: '/work/nymph',
   },
-    {
+  {
+    id: 'posidon',
+    name: 'Posidon',
+    location: 'USA',
+    services: 'Design & Development',
+    year: '2020',
+    image: '/carouselassets/djslide.png',
+    href: '/work/posidon',
+  },
+  {
+    id: 'five4free',
+    name: 'Five4Free',
+    location: 'USA',
+    services: 'Design & Development',
+    year: '2020',
+    image: '/carouselassets/hikerslide.png',
+    href: '/work/five4free',
+  },
+
+  {
+    id: 'wonderlust',
+    name: 'Wonderlust',
+    location: 'USA',
+    services: 'Design & Development',
+    year: '2020',
+    image: '/carouselassets/hikerslide.png',
+    href: '/work/wonderlust',
+  },
+  {
+    id: 'nymph',
+    name: 'Nymph',
+    location: 'USA',
+    services: 'Design & Development',
+    year: '2020',
+    image: '/carouselassets/djslide.png',
+    href: '/work/nymph',
+  },
+  {
     id: 'five4free',
     name: 'Five4Free',
     location: 'USA',
@@ -91,43 +128,7 @@ const webProjects: Project[] = [
     image: '/carouselassets/djslide.png',
     href: '/work/nymph',
   },
-    {
-    id: 'five4free',
-    name: 'Five4Free',
-    location: 'USA',
-    services: 'Design & Development',
-    year: '2020',
-    image: '/carouselassets/hikerslide.png',
-    href: '/work/five4free',
-  },
   {
-    id: 'posidon',
-    name: 'Posidon',
-    location: 'USA',
-    services: 'Design & Development',
-    year: '2020',
-    image: '/carouselassets/djslide.png',
-    href: '/work/posidon',
-  },
-  {
-    id: 'wonderlust',
-    name: 'Wonderlust',
-    location: 'USA',
-    services: 'Design & Development',
-    year: '2020',
-    image: '/carouselassets/hikerslide.png',
-    href: '/work/wonderlust',
-  },
-  {
-    id: 'nymph',
-    name: 'Nymph',
-    location: 'USA',
-    services: 'Design & Development',
-    year: '2020',
-    image: '/carouselassets/djslide.png',
-    href: '/work/nymph',
-  },
-    {
     id: 'five4free',
     name: 'Five4Free',
     location: 'USA',
@@ -173,7 +174,7 @@ export default function Work() {
       className={styles['c-work']}
       animationRange='70% 100%'
       scaleFrom={10}
-      scaleTo={5}
+      scaleTo={2}
       background='var(--white)'
       curveBackground='var(--white)'>
       <section className={styles['c-work__header']}>
@@ -205,12 +206,7 @@ export default function Work() {
         </div>
       </section>
 
-      <ProjectGrid
-        headers={['Open-Source npm library', 'Subtitle', 'Link', 'Year']}
-        projects={npmProjects}
-        viewMode={viewMode}
-        gridLayout='banner'
-      />
+      <ProjectGrid headers={['Open-Source npm library', 'Subtitle', 'Link', 'Year']} projects={npmProjects} viewMode={viewMode} gridLayout='banner' />
 
       <ProjectGrid
         headers={['Web Project', 'Location', 'Services', 'Year']}

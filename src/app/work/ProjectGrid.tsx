@@ -1,7 +1,8 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './ProjectGrid.module.scss'
 import { Project } from './types'
+import { MagnetizeComponent } from '../components/utils/MagnetizeComponent'
 
 type ViewMode = 'list' | 'grid'
 type GridLayout = 'square' | 'banner'
@@ -21,20 +22,57 @@ export function ProjectGrid({
   gridLayout = 'square',
   enableHoverPreview,
 }: IProjectGridProps) {
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const contentRef = useRef<HTMLDivElement | null>(null)
+  const previewRef = useRef<HTMLDivElement | null>(null)
 
-  const handleMouseMove = (e: React.MouseEvent, projectId: string) => {
-    if (!enableHoverPreview) return
-    setMousePos({ x: e.clientX, y: e.clientY })
-    setHoveredProject(projectId)
+  const { handleMouseMove: magnetizeMouseMove, handleMouseLeave: magnetizeMouseLeave } = MagnetizeComponent({
+    areaRef: contentRef,
+    targets: [
+      {
+        selector: `.${styles['c-project-grid__preview']}`,
+        options: {
+          followLerpFactor: 0.08,
+          intensity: 1,
+          clampWithinArea: true,
+          maxTravelPercent: 1000,
+          cursorOffsetPercent: { x: 0, y: 25 },
+          returnSpring: { stiffness: 14, damping: 12, precision: 0.01 },
+        },
+      },
+    ],
+  })
+
+  const { handleMouseMove: magnetizeLabelMove, handleMouseLeave: magnetizeLabelLeave } = MagnetizeComponent({
+    areaRef: previewRef,
+    targets: [
+      {
+        selector: `.${styles['c-project-grid__preview-label']}`,
+        options: {
+          followLerpFactor: 0.08,
+          intensity: 1,
+          clampWithinArea: true,
+          maxTravelPercent: 300,
+          cursorOffsetPercent: { x: 0, y: 0 },
+          returnSpring: { stiffness: 14, damping: 12, precision: 0.01 },
+        },
+      },
+    ],
+  })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
+    setHoveredIndex(index)
+    if (enableHoverPreview) {
+      magnetizeMouseMove(e)
+      magnetizeLabelMove(e)
+    }
   }
 
   const handleMouseLeave = () => {
-    setHoveredProject(null)
+    setHoveredIndex(null)
+    magnetizeMouseLeave()
+    magnetizeLabelLeave()
   }
-
-  const hoveredImage = projects.find(p => p.id === hoveredProject)?.image
 
   return (
     <>
@@ -45,10 +83,10 @@ export function ProjectGrid({
           ))}
         </div>
 
-        <div className={styles['c-project-grid__content']}>
-          {projects.map(project => (
+        <div ref={contentRef} className={styles['c-project-grid__content']}>
+          {projects.map((project, index) => (
             <a
-              key={project.id}
+              key={index}
               href={project.href}
               target={project.isExternal ? '_blank' : undefined}
               rel={project.isExternal ? 'noopener noreferrer' : undefined}
@@ -56,8 +94,8 @@ export function ProjectGrid({
               style={{ '--project-image': `url(${project.image})` } as React.CSSProperties}
               data-view={viewMode}
               data-layout={gridLayout}
-              data-hovered={hoveredProject === project.id}
-              onMouseMove={e => handleMouseMove(e, project.id)}
+              data-hovered={hoveredIndex === index}
+              onMouseMove={e => handleMouseMove(e, index)}
               onMouseLeave={handleMouseLeave}>
               <span>{project.name}</span>
               <span>{project.location}</span>
@@ -65,21 +103,25 @@ export function ProjectGrid({
               <span>{project.year}</span>
             </a>
           ))}
+
+          {/* Hover preview - inside content for magnetize to work */}
+          {enableHoverPreview && viewMode === 'list' && (
+            <div
+              ref={previewRef}
+              className={styles['c-project-grid__preview']}
+              data-visible={hoveredIndex !== null}>
+              <div
+                className={styles['c-project-grid__preview-images']}
+                style={{ '--active-index': hoveredIndex ?? 0 } as React.CSSProperties}>
+                {projects.map((project, index) => (
+                  <img key={index} src={project.image} alt={project.name} />
+                ))}
+              </div>
+              <span className={styles['c-project-grid__preview-label']}>View</span>
+            </div>
+          )}
         </div>
       </section>
-
-      {/* Hover preview */}
-      {enableHoverPreview && viewMode === 'list' && hoveredProject && hoveredImage && (
-        <div
-          className={styles['c-project-grid__preview']}
-          style={{
-            left: mousePos.x,
-            top: mousePos.y,
-          }}>
-          <img src={hoveredImage} alt='Project preview' />
-          <span className={styles['c-project-grid__preview-label']}>View</span>
-        </div>
-      )}
     </>
   )
 }
