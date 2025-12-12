@@ -12,16 +12,16 @@ export interface menuItemsArrayPropsTypes {
 }
 
 const homeNavItems = [
-  { label: 'Work', link: '#c-work' },
-  { label: 'About', link: '#c-about' },
-  { label: 'Contact', link: '#c-contact' },
+  { label: 'Work', link: '/work' },
+  { label: 'About', link: '/about' },
+  { label: 'Contact', link: '/contact' },
 ]
 
 const otherNavItems = [
   { label: 'Home', link: '/' },
   { label: 'Work', link: '/work' },
-  { label: 'About', link: '/#c-about' },
-  { label: 'Contact', link: '/#c-contact' },
+  { label: 'About', link: '/about' },
+  { label: 'Contact', link: '/contact' },
 ]
 
 const linkFontSizes = {
