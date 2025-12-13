@@ -32,13 +32,36 @@
       color: var(--charcoal);
       gap: 1rem;
     }
+
+    &-github {
+      position: absolute;
+      z-index: 5;
+      transform: translate(170%, 150%);
+    }
+    &-demo {
+      position: absolute;
+      z-index: 5;
+      transform: translate(220%, 60%);
+    }
+    &-github,
+    &-demo {
+      animation: project-button-animation linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 20%;
+    }
   }
 
   &__content {
-    padding: 4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2.5rem;
+    animation: project-content-animation linear forwards;
+    animation-timeline: scroll(root block);
+    animation-range: 0% 20%;
 
     &-image {
-      width: 100%;
+      flex: 0 0 100%;
       aspect-ratio: 11/9;
       object-fit: cover;
       border-radius: 0.5rem;
@@ -73,30 +96,8 @@
             content: attr(data-header);
             display: block;
             font-size: 0.65rem;
-            color: var(--charcoal);
             font-weight: 500;
             margin-bottom: 0.35rem;
-          }
-
-          ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-            li {
-              font-size: 0.7rem;
-              color: var(--gray300);
-              padding: 0.25rem 0;
-              position: relative;
-              padding-left: 0.75rem;
-
-              &::before {
-                content: '•';
-                position: absolute;
-                left: 0;
-                color: var(--lightLavender);
-              }
-            }
           }
         }
       }
@@ -193,65 +194,106 @@
         grid-template-columns: 1.5fr 1fr 1fr;
         transition: opacity 0.3s ease, grid-template-columns 0.3s ease;
         font-size: 0.8rem;
-
-        &[data-hovered='true'] {
-          opacity: 0.5;
-        }
+        cursor: pointer;
 
         &:hover {
-          grid-template-columns: 1.5fr 0.5fr 1fr 1fr;
+          grid-template-columns: 1.6fr 1fr 1fr;
+          color: var(--gray300);
+          opacity: 0.5;
 
           span:nth-child(1) {
-            transform: translateX(-0.9rem);
+            transform: translateX(-0.2rem);
           }
         }
+      }
+
+      &-github {
+        transform: translate(450%, 40%);
+      }
+      &-demo {
+        transform: translate(460%, 10%);
       }
     }
 
     &__content {
-      padding: 0 10% 4rem;
+      flex-direction: row;
+      padding: 4rem 10%;
+      gap: 5%;
 
-      &-info-section p {
-        font-size: 0.9rem;
+      &-image {
+        flex: 0 0 50%;
+        aspect-ratio: 12/9;
       }
-    }
 
-    &__list li,
-    &__content-info-section-tech ul li {
-      font-size: 0.75rem;
+      &-info {
+        flex: 0 0 50%;
+        flex-wrap: wrap;
+        gap: 1rem 2rem;
+        padding-top: 1rem;
+        height: fit-content;
+
+        > *:first-child {
+          flex: 0 0 100%;
+          padding-bottom: 1rem;
+          border-bottom: 2px solid var(--gray300);
+        }
+
+        > *:nth-child(2) {
+          border-right: 2px solid var(--gray300);
+        }
+
+        &-section p {
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 }
 
-@media (min-width: 1600px) {
-  .c-project {
-    &__hero {
-      padding: 12rem 15% 4rem;
+// @media (min-width: 1600px) {
+//   .c-project {
+//     &__hero {
+//       padding: 12rem 15% 4rem;
 
-      &-title {
-        font-size: 5rem;
-      }
+//       &-title {
+//         font-size: 5rem;
+//       }
 
-      &-header {
-        font-size: 0.75rem;
-      }
+//       &-header {
+//         font-size: 0.75rem;
+//       }
 
-      &-info {
-        font-size: 1rem;
-      }
-    }
+//       &-info {
+//         font-size: 1rem;
+//       }
+//     }
 
-    &__content {
-      padding: 0 15% 4rem;
+//     &__content {
+//       padding: 4rem 15%;
 
-      &-info-section p {
-        font-size: 0.95rem;
-      }
-    }
+//       &-info-section p {
+//         font-size: 0.95rem;
+//       }
+//     }
+//   }
+// }
 
-    &__list li,
-    &__content-info-section-tech ul li {
-      font-size: 0.8rem;
-    }
+@keyframes project-button-animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes project-content-animation {
+  from {
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  to {
+    filter: blur(0px);
+    opacity: 1;
   }
 }

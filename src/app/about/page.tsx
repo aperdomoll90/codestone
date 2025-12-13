@@ -5,6 +5,7 @@ import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { FrenchBulldog } from '@/app/landingSections/contact/FrenchBulldog'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
 import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
+import Image from 'next/image'
 
 const educationData = [
   { title: 'Software Engineering Career Course', subtitle: 'Block Code 2023' },
@@ -33,49 +34,40 @@ const servicesData = [
 export default function About() {
   return (
     <div className={styles['c-about']}>
-      {/* Main content - white background */}
-      <div className={styles['c-about__main']}>
-        {/* Hero */}
-        <section className={styles['c-about__hero']}>
-          <div className={styles['c-about__hero-left']}>
-            <h1 className={styles['c-about__title']}>
-              Bridging code & creativity
-              <br />
-              together
-            </h1>
-            <span className={styles['c-about__arrow']}>↘</span>
-          </div>
-          <div className={styles['c-about__hero-right']}>
-            <FrenchBulldog />
-          </div>
+      <section className={styles['c-about__main']}>
+        <section className={styles['c-about__main-hero']}>
+          <h1>
+            Bridging code & creativity
+            <br />
+            together
+          </h1>
+          <span>↘</span>
+          <FrenchBulldog />
         </section>
 
-        {/* Bio section */}
-        <section className={styles['c-about__bio']}>
-          <div className={styles['c-about__bio-left']}>
-            <p className={styles['c-about__bio-text']}>
-              I'm Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it's pixel-perfect micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and inclusivity first.
+        <section className={styles['c-about__main-bio']}>
+          <div className={styles['c-about__main-bio-column']}>
+            <p className={styles['c-about__main-bio-text']}>
+              I'm Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it's pixel-perfect
+              micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and
+              inclusivity first.
             </p>
 
-            <div className={styles['c-about__education']}>
-              <h3 className={styles['c-about__section-title']}>Education & Certifications</h3>
-              <ul className={styles['c-about__education-list']}>
+            <ul data-header='Education & Certifications' className={styles['c-about__main-bio-education']}>
                 {educationData.map((item, index) => (
                   <li key={index}>
                     <strong>{item.title}</strong> – {item.subtitle}
                   </li>
                 ))}
-              </ul>
-            </div>
+            </ul>
 
-            <div className={styles['c-about__links']}>
+            <div className={styles['c-about__main-bio-links']}>
               <BubbleButton
                 label='LinkedIn ↗'
                 href='https://www.linkedin.com/in/adrian-perdomo-12997474/'
                 fontSize={{ default: '0.5rem', md: '0.6rem', lg: '0.7rem' }}
                 padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
                 magnetArea={{ default: '0', mdx: '2rem' }}
-                className={styles['c-about__link-btn']}
               />
               <BubbleButton
                 label='CodePen ↗'
@@ -83,7 +75,6 @@ export default function About() {
                 fontSize={{ default: '0.5rem', md: '0.6rem', lg: '0.7rem' }}
                 padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
                 magnetArea={{ default: '0', mdx: '2rem' }}
-                className={styles['c-about__link-btn']}
               />
               <BubbleButton
                 label='GitHub ↗'
@@ -91,65 +82,28 @@ export default function About() {
                 fontSize={{ default: '0.5rem', md: '0.6rem', lg: '0.7rem' }}
                 padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
                 magnetArea={{ default: '0', mdx: '2rem' }}
-                className={styles['c-about__link-btn']}
               />
             </div>
           </div>
 
-          <div className={styles['c-about__bio-right']}>
-            <div className={styles['c-about__placeholder']} />
-          </div>
+          <Image src='/me.png' alt='portrait image' width={400} height={250} className={styles['c-about__main-bio-image']} />
         </section>
+      </section>
 
-        {/* Services section */}
-        <section className={styles['c-about__services']}>
-          <h2 className={styles['c-about__services-title']}>
-            I can help you with ...
-          </h2>
+      <CurvedSection className={styles['c-about__services']}  scaleFrom={50} scaleTo={50}>
+        <h2 className={styles['c-about__services-title']}>I can help you with ...</h2>
 
-          <div className={styles['c-about__services-grid']}>
-            {servicesData.map((service, index) => (
-              <div key={index} className={styles['c-about__service']}>
-                <span className={styles['c-about__service-number']}>0{index + 1}</span>
-                <h3 className={styles['c-about__service-title']}>{service.title}</h3>
-                <p className={styles['c-about__service-desc']}>{service.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles['c-about__globe-container']}>
-            <RotatingGlobe className={styles['c-about__globe']} color='var(--charcoal)' />
-          </div>
-        </section>
-      </div>
-
-      {/* Footer - curved charcoal section */}
-      <CurvedSection
-        className={styles['c-about__footer']}
-        background='var(--charcoal)'
-        curveBackground='var(--charcoal)'
-        animationRange='90% 100%'
-        scaleFrom={30}
-        scaleTo={30}
-      >
-        <div className={styles['c-about__footer-content']}>
-          <div className={styles['c-about__footer-left']}>
-            <span className={styles['c-about__footer-label']}>Version</span>
-            <span className={styles['c-about__footer-value']}>2025 © Edition</span>
-          </div>
-          <div className={styles['c-about__footer-center']}>
-            <span className={styles['c-about__footer-label']}>Contact Details</span>
-            <span className={styles['c-about__footer-value']}>john@doe.com</span>
-            <span className={styles['c-about__footer-value']}>+1 305 202 0222</span>
-          </div>
-          <div className={styles['c-about__footer-right']}>
-            <span className={styles['c-about__footer-label']}>Social</span>
-            <div className={styles['c-about__footer-links']}>
-              <a href='https://codepen.io/fuzzy-wolfpup/collections/' target='_blank' rel='noopener noreferrer'>CodePen</a>
-              <a href='https://github.com/aperdomoll90' target='_blank' rel='noopener noreferrer'>Github</a>
-              <a href='https://www.linkedin.com/in/adrian-perdomo-12997474/' target='_blank' rel='noopener noreferrer'>LinkedIn</a>
+        <div className={styles['c-about__services-grid']}>
+          {servicesData.map((service, index) => (
+            <div data-index={`0${index + 1}`} key={index} className={styles['c-about__services-grid-item']}>
+              <h3 className={styles['c-about__services-grid-item-title']}>{service.title}</h3>
+              <p className={styles['c-about__services-grid-item-desc']}>{service.description}</p>
             </div>
-          </div>
+          ))}
+        </div>
+
+        <div className={styles['c-about__services-globe']}>
+          <RotatingGlobe color='var(--charcoal)' />
         </div>
       </CurvedSection>
     </div>

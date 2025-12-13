@@ -29,6 +29,28 @@ export default function ProjectPage() {
               <span>{project.location}</span>
               <span>{project.year}</span>
             </div>
+
+            <BubbleButton
+              label='GitHub ↗'
+              backgroundColor='--darkLavender'
+              backgroundHoverColor='--lightLavender'
+              href='https://github.com/aperdomoll90'
+              fontSize={{ default: '0.5rem', md: '1rem' }}
+              padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
+              magnetArea={{ default: '0', mdx: '2rem' }}
+              className={styles['c-project__hero-github']}
+            />
+
+            <BubbleButton
+              label='Live Site ↗'
+              backgroundColor='--darkLavender'
+              backgroundHoverColor='--lightLavender'
+              href='https://github.com/aperdomoll90'
+              fontSize={{ default: '0.8rem', md: '1.5rem' }}
+              padding={{ default: '0.8rem', md: '1rem' }}
+              magnetArea={{ default: '0', mdx: '2rem' }}
+              className={styles['c-project__hero-demo']}
+            />
           </>
         )}
       </CurvedSection>
@@ -36,14 +58,11 @@ export default function ProjectPage() {
         <section className={styles['c-project__content']}>
           <img src={project.image} alt={project.name} className={styles['c-project__content-image']} />
 
-          {/* Content Section */}
           <div className={styles['c-project__content-info']}>
-            {/* Overview */}
             <div data-title='Overview' className={styles['c-project__content-info-section']}>
               <p>{project.overview}</p>
             </div>
 
-            {/* Features & Tech Stack */}
             <div data-title='Key Features & Highlights' className={styles['c-project__content-info-section']}>
               <ul className={styles['c-project__list']}>
                 {project.features.map((feature, index) => (
@@ -55,7 +74,7 @@ export default function ProjectPage() {
             <div data-title='Tech Stack & Your Role' className={styles['c-project__content-info-section']}>
               {project.techStack.map((stack, index) => (
                 <div key={index} data-header={stack.category} className={styles['c-project__content-info-section-tech']}>
-                  <ul>
+                  <ul className={styles['c-project__list']}>
                     {stack.items.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}

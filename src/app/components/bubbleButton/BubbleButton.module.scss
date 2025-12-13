@@ -17,7 +17,7 @@
     aspect-ratio: 1;
     background-position: center bottom;
     overflow: hidden;
-    background: var(--charcoal);
+    background: var(--background-color);
     font-size: var(--fs-default);
     text-decoration: none;
     -webkit-text-decoration: none;
@@ -33,7 +33,7 @@
       width: 100%;
       height: 305%;
 
-      background: radial-gradient(circle, rgba(88, 86, 114, 1) 32%, transparent 0%);
+      background: radial-gradient(circle, var(--background-hover) 32%, transparent 0%);
 
       background-size: 100% 100%;
       background-position: center bottom;

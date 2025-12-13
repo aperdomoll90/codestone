@@ -64,7 +64,7 @@ export const projectsData: Record<string, ProjectDetail> = {
         items: ['Next.js', 'Node.js', 'PostgreSQL', 'Mapbox.js + API (Mapbox)', 'Resend.js + Landlord + DP (Hosting)'],
       },
       {
-        category: 'design+tools palette:',
+        category: 'Responsibilities:',
         items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
       },
     ],
@@ -85,6 +85,10 @@ export const projectsData: Record<string, ProjectDetail> = {
         category: 'Built with',
         items: ['React', 'Node.js', 'MongoDB', 'Web Audio API'],
       },
+      {
+        category: 'Responsibilities:',
+        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
+      },
     ],
   },
   five4free: {
@@ -101,6 +105,10 @@ export const projectsData: Record<string, ProjectDetail> = {
       {
         category: 'Built with',
         items: ['Next.js', 'Prisma', 'PostgreSQL'],
+      },
+      {
+        category: 'Responsibilities:',
+        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
       },
     ],
   },
@@ -119,6 +127,10 @@ export const projectsData: Record<string, ProjectDetail> = {
       {
         category: 'Built with',
         items: ['React Native', 'Node.js', 'MongoDB', 'MapBox'],
+      },
+      {
+        category: 'Responsibilities:',
+        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
       },
     ],
   },
