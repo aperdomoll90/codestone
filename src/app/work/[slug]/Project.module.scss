@@ -166,7 +166,7 @@
         &-section {
           flex: 1;
 
-          &:first-child {
+          &:nth-child(1) {
             flex: 1;
           }
 
@@ -232,7 +232,7 @@
         padding-top: 1rem;
         height: fit-content;
 
-        > *:first-child {
+        > *:nth-child(1) {
           flex: 0 0 100%;
           padding-bottom: 1rem;
           border-bottom: 2px solid var(--gray300);

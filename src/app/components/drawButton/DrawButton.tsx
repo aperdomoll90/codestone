@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './DrawButton.module.scss'
-import { Swoosh } from '../../../../public/swoosh'
+import { Swoosh, UnderSwoosh } from '../../../../public/swoosh'
 
 interface ValuePerBreakpoint {
   default?: string
@@ -19,43 +19,52 @@ interface CSSVarFontSizes extends React.CSSProperties {
   '--fs-lg'?: string
 }
 
+type DrawButtonVariant = 'circled' | 'underline'
+
 interface DrawButtonProps {
-  href: string
+  href?: string
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   children: React.ReactNode
   className?: string
   fontSize?: string | ValuePerBreakpoint
   target?: string
+  variant?: DrawButtonVariant
 }
 
-export const DrawButton: React.FC<DrawButtonProps> = ({
-  href,
-  children,
-  className = '',
-  fontSize = '1rem',
-  target,
-}) => {
-  const sizeVars: CSSVarFontSizes = typeof fontSize === 'string'
-    ? { '--fs-default': fontSize }
-    : {
-        '--fs-default': fontSize?.default,
-        '--fs-sm': fontSize?.sm,
-        '--fs-md': fontSize?.md,
-        '--fs-mdx': fontSize?.mdx,
-        '--fs-lg': fontSize?.lg,
-      }
+export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children, className = '', fontSize = '1rem', target, variant = 'circled' }) => {
+  const sizeVars: CSSVarFontSizes =
+    typeof fontSize === 'string'
+      ? { '--fs-default': fontSize }
+      : {
+          '--fs-default': fontSize?.default,
+          '--fs-sm': fontSize?.sm,
+          '--fs-md': fontSize?.md,
+          '--fs-mdx': fontSize?.mdx,
+          '--fs-lg': fontSize?.lg,
+        }
 
-  const isExternal = href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')
+  const isExternal = href?.startsWith('http') || href?.startsWith('mailto:') || href?.startsWith('tel:')
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) {
+      e.preventDefault()
+      onClick(e)
+    }
+  }
+
+  const SvgComponent = variant === 'underline' ? UnderSwoosh : Swoosh
 
   return (
     <Link
-      href={href}
+      href={href || '#'}
+      onClick={handleClick}
       className={`${styles['c-draw-button']} ${className}`}
       style={sizeVars}
+      data-variant={variant}
       target={target || (isExternal ? '_blank' : undefined)}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-    >
+      rel={isExternal ? 'noopener noreferrer' : undefined}>
       <span className={styles['c-draw-button__label']}>{children}</span>
-      <Swoosh className={styles['c-draw-button__svg']} />
+      <SvgComponent className={styles['c-draw-button__svg']} />
     </Link>
   )
 }

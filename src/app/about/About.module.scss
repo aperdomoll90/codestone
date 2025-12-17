@@ -4,96 +4,141 @@
   position: relative;
 
   &__main {
-    background: var(--gray100);
-    padding: 6rem 1.5rem 4rem;
+    height: 100dvh;
+    background: var(--gray100) url('/headshot.png') no-repeat center center;
+    background-size: cover;
+    padding: 6rem 2rem 3rem;
     position: relative;
-    z-index: 2;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &-hero {
       display: flex;
       flex-direction: column;
+      position: relative;
       gap: 2rem;
       margin-bottom: 4rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid var(--charcoal-transp);
+      border-bottom: 1px solid var(--gray100-transp);
 
       h1 {
         font-size: 1.8rem;
         font-weight: 400;
-        color: var(--charcoal);
+        color: var(--gray100);
         letter-spacing: -0.02em;
         line-height: 1.15;
       }
 
       > span {
-        display: block;
-        font-size: 1.5rem;
-        color: var(--charcoal);
-      }
-
-      svg {
         width: 6rem;
-        height: auto;
-        color: var(--charcoal);
+        height: 6rem;
+        position: absolute;
+        bottom: -30%;
+        right: 10%;
+        background: var(--darkLavender);
+        border-radius: 50%;
+        padding: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg path {
+          stroke-width: 3;
+        }
       }
     }
 
     &-bio {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-
-      &-column {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
+      gap: 1.5rem;
+      position: relative;
 
       &-text {
         font-size: 0.85rem;
         line-height: 1.7;
-        color: var(--gray400);
+        color: var(--gray200);
+      }
+    }
+
+    &-links {
+      padding: 1rem 1rem 3rem 2rem;
+      position: absolute;
+      left: 0;
+      bottom: 28%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 3rem;
+      border-left: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -2rem;
+        background: radial-gradient(ellipse at center, rgba(28, 29, 32, 0.5) 0%, rgba(28, 29, 32, 0) 70%);
+        backdrop-filter: blur(0);
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: -1;
+        pointer-events: none;
       }
 
-      &-education {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      &[data-open='true']::before {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+      }
 
-        &::before {
-          content: attr(data-header);
-          display: block;
-          font-size: 0.8rem;
-          font-weight: 600;
-          color: var(--charcoal);
-          margin-bottom: 0.75rem;
+      &-ribbon {
+        padding: 1rem 2rem 1rem 3rem;
+        border-radius: 0 50px 50px 0;
+        position: absolute;
+        left: 0;
+        bottom: -10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        background: rgba(28, 29, 32, 0.75);
+        backdrop-filter: blur(12px);
+      }
+
+      &-item {
+        text-transform: uppercase;
+        padding: 0.75rem 1.5rem;
+        background: rgba(28, 29, 32, 0.702) !important;
+        backdrop-filter: blur(12px);
+        border-radius: 50px;
+        opacity: 0;
+        transform: translateY(2rem);
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:nth-child(2) {
+          transition-delay: 0.05s;
         }
+        &:nth-child(3) {
+          transition-delay: 0.1s;
+        }
+        &:nth-child(4) {
+          transition-delay: 0.15s;
+        }
+        &:nth-child(5) {
+          transition-delay: 0.2s;
+        }
+      }
 
-        li {
-          font-size: 0.75rem;
-          color: var(--gray400);
-          padding: 0.3rem 0;
+      &[data-open='true'] {
+        .c-about__main-links-item {
+          opacity: 1;
+          transform: translateY(0);
 
-          strong {
-            color: var(--charcoal);
-            font-weight: 600;
+          &:hover {
+            transform: translateX(4px);
           }
         }
-      }
-
-      &-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-      }
-
-      &-image {
-        width: 100%;
-        max-width: 15rem;
-        height: auto;
-        object-fit: cover;
-        border-radius: 0.5rem;
-        align-self: center;
       }
     }
   }
@@ -101,18 +146,16 @@
   &__services {
     position: relative;
     z-index: 1;
-    padding: 4rem 1.5rem 6rem;
+    padding: 4rem 2rem 1rem;
     margin-bottom: 5rem;
-    overflow: clip;
-    z-index: 10;
 
-    --services-y-from: -30%;
+    --services-y-from: -15%;
     --services-y-to: 0%;
 
     transform: translateY(var(--services-y-from));
     animation: about-services-scroll linear forwards;
     animation-timeline: scroll(root block);
-    animation-range: 60% 100%;
+    animation-range: 0% 30%;
 
     &-title {
       font-size: 1.6rem;
@@ -133,11 +176,32 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        --item-x-from: -2rem;
+        --item-x-to: 0;
+        --item-y-from: 0;
+        --item-y-to: 0;
+        opacity: 0;
+        transform: translate(var(--item-x-from), var(--item-y-from));
+        animation: item-stagger linear forwards;
+        animation-timeline: scroll(root block);
+
+        &:nth-child(1) {
+          animation-range: 20% 35%;
+        }
+        &:nth-child(2) {
+          animation-range: 40% 65%;
+        }
+        &:nth-child(3) {
+          animation-range: 70% 85%;
+        }
 
         &::before {
           content: attr(data-index);
           font-size: 0.7rem;
           color: var(--gray300);
+          border-bottom: 1px solid var(--charcoal-transp);
+          padding-bottom: 0.5rem;
+          margin-bottom: 0.5rem;
         }
 
         &-title {
@@ -155,15 +219,22 @@
     }
 
     &-globe {
+      height: 5rem;
+      aspect-ratio: 1;
+      padding: 1rem;
+      border-radius: 50%;
+      background: var(--darkLavender);
       position: absolute;
-      bottom: 2rem;
+      z-index: 5;
+      bottom: 0;
       left: 50%;
-      transform: translateX(-50%);
-
-      svg {
-        width: 4rem;
-        height: 4rem;
-      }
+      --globe-y-from: 260%;
+      --globe-y-to: 100%;
+      transform: translate(-50%, var(--globe-y-from));
+      animation: globe-translate linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 90% 100%;
     }
   }
 }
@@ -175,14 +246,12 @@
       h1 {
         font-size: 2.2rem;
       }
-
-      svg {
-        width: 8rem;
-      }
     }
 
-    &__services-title {
-      font-size: 1.8rem;
+    &__services {
+      &-title {
+        font-size: 1.8rem;
+      }
     }
   }
 }
@@ -202,33 +271,21 @@
         h1 {
           font-size: 3rem;
         }
-
-        svg {
-          width: 10rem;
-        }
       }
 
       &-bio {
-        flex-direction: row;
-        gap: 4rem;
-
-        &-column {
-          flex: 1;
-        }
-
         &-text {
-          font-size: 0.9rem;
-        }
-
-        &-image {
-          max-width: 20rem;
-          align-self: flex-start;
+          width: 80%;
+          font-size: 1.2rem;
         }
       }
     }
 
     &__services {
       padding: 4rem 4rem 6rem;
+      --services-y-from: -22%;
+      --services-y-to: 0%;
+      animation-range: 15% 35%;
 
       &-title {
         font-size: 2.2rem;
@@ -240,12 +297,21 @@
 
         &-item {
           flex: 1;
-        }
-      }
+          --item-x-from: 0;
+          --item-x-to: 0;
+          --item-y-from: 2rem;
+          --item-y-to: 0;
 
-      &-globe svg {
-        width: 5rem;
-        height: 5rem;
+          &:nth-child(1) {
+            animation-range: 40% 55%;
+          }
+          &:nth-child(2) {
+            animation-range: 45% 60%;
+          }
+          &:nth-child(3) {
+            animation-range: 50% 65%;
+          }
+        }
       }
     }
   }
@@ -255,37 +321,62 @@
 @media (min-width: 900px) {
   .c-about {
     &__main {
-      padding: 10rem 10% 4rem;
+      height: 100dvh;
+      padding: 10rem 10% 10%;
 
       &-hero {
         h1 {
           font-size: 3.5rem;
+          flex: 0 1 40%;
         }
 
-        svg {
-          width: 12rem;
+        > span {
+          width: 10rem;
+          height: 10rem;
+          padding: 2rem;
+          bottom: -50%;
+
+          svg path {
+            stroke-width: 3;
+          }
         }
       }
 
       &-bio {
         &-text {
+          width: 35%;
           font-size: 0.95rem;
         }
+      }
 
-        &-education li {
-          font-size: 0.8rem;
+      &-links {
+        bottom: 10%;
+        &-ribbon {
+          padding: 1rem 2rem 1rem 9rem;
         }
       }
     }
 
     &__services {
       padding: 4rem 10% 6rem;
+      --services-y-from: -30%;
+      --services-y-to: 0%;
+      animation-range: 0% 30%;
 
       &-title {
         font-size: 2.5rem;
       }
 
       &-grid-item {
+        &:nth-child(1) {
+          animation-range: 30% 50%;
+        }
+        &:nth-child(2) {
+          animation-range: 40% 60%;
+        }
+        &:nth-child(3) {
+          animation-range: 50% 75%;
+        }
         &-title {
           font-size: 1rem;
         }
@@ -294,10 +385,9 @@
           font-size: 0.8rem;
         }
       }
-
-      &-globe svg {
-        width: 6rem;
-        height: 6rem;
+      &-globe {
+        --globe-y-from: 160%;
+        --globe-y-to: 90%;
       }
     }
   }
@@ -340,11 +430,6 @@
           font-size: 0.85rem;
         }
       }
-
-      &-globe svg {
-        width: 7rem;
-        height: 7rem;
-      }
     }
   }
 }
@@ -355,5 +440,25 @@
   }
   to {
     transform: translateY(var(--services-y-to));
+  }
+}
+
+@keyframes globe-translate {
+  from {
+    transform: translate(-50%, var(--globe-y-from));
+  }
+  to {
+    transform: translate(-50%, var(--globe-y-to));
+  }
+}
+
+@keyframes item-stagger {
+  from {
+    opacity: 0;
+    transform: translate(var(--item-x-from), var(--item-y-from));
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--item-x-to), var(--item-y-to));
   }
 }

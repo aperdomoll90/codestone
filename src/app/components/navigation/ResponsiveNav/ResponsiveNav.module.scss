@@ -1,59 +1,66 @@
 .c-navigation {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
   display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  align-items: flex-end;
   font-weight: 250;
   font-size: 0.8rem;
   letter-spacing: 0.9px;
   color: var(--white);
-  transition: backdrop-filter 1s ease;
-  pointer-events: none;  
+  pointer-events: none;
 
   &__logo {
     display: none;
+    pointer-events: auto;
+  }
+
+  &__drawer {
+    z-index: 1000;
   }
 
   &__menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    list-style: none;
-    width: 60vw;
-    height: 100dvh;
-    padding: min(30dvh, 30dvh) 2em;
-    background: hsla(0, 0%, 0%, 0.4);
-    backdrop-filter: blur(1rem);
-    transform: translateX(100%);
-    transition: transform 350ms ease-in;
-    pointer-events: auto; 
+    padding: min(30dvh, 30dvh) 2em !important;
 
     &-item {
       padding: 1rem;
       position: relative;
+      cursor: pointer;
 
       &-link {
         display: inline-block;
         will-change: transform;
         font-weight: 250;
+        cursor: pointer;
       }
     }
   }
 
   &[data-visible='true'] {
-    backdrop-filter: blur(1rem);
     .c-navigation__logo {
       filter: blur(1rem);
     }
-    .c-navigation__menu {
-      transform: translateX(0%);
+  }
+
+  &[data-route='about'] {
+    .c-navigation__logo {
+      display: block;
+      position: absolute;
+      top: 3rem;
+      left: 2rem;
+      color: var(--white);
+      transition: filter 1s ease;
+      opacity: 1;
+      animation: nav-hide linear;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 10%;
+      animation-fill-mode: both;
     }
   }
 
-  &[data-route='other'] {
+  &[data-route='work'],
+  &[data-route='project'] {
     font-weight: 500;
 
     .c-navigation__logo {
@@ -81,10 +88,6 @@
 
 @media (width >= 900px) {
   .c-navigation {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -94,6 +97,7 @@
     animation-timeline: scroll(root block);
     animation-range: 0% 10%;
     animation-fill-mode: both;
+    pointer-events: auto;
 
     &__logo {
       display: block;
@@ -101,23 +105,49 @@
       font-size: 1.2rem;
     }
 
+    &__drawer {
+      position: static;
+      inset: auto;
+      z-index: auto;
+      pointer-events: auto;
+      display: contents;
+    }
+
+    // Hide drawer overlay on desktop (sibling of menu due to display:contents)
+    :global(.c-drawer__overlay) {
+      display: none;
+    }
+
     &__menu {
-      position: relative;
-      width: auto;
-      height: auto;
-      flex-direction: row;
+      position: relative !important;
+      inset: auto !important;
+      width: auto !important;
+      height: auto !important;
+      flex-direction: row !important;
       align-items: center;
-      padding: 0rem;
-      background: transparent;
-      backdrop-filter: unset;
-      transform: unset;
+      padding: 0rem !important;
+      background: transparent !important;
+      backdrop-filter: unset !important;
+      transform: none !important;
       justify-content: space-between;
+      pointer-events: auto !important;
+      gap: 0;
 
       &-item-link {
         padding: 1rem;
       }
     }
-    &[data-route='other'] {
+
+    &[data-route='about'] {
+      & .c-navigation__logo {
+        position: relative;
+        top: auto;
+        left: auto;
+      }
+    }
+
+    &[data-route='work'],
+    &[data-route='project'] {
       color: var(--charcoal);
       font-weight: 400;
       & .c-navigation__logo {

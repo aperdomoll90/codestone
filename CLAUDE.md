@@ -5,7 +5,7 @@ Portfolio website for Adrian Perdomo built with Next.js, TypeScript, and SCSS.
 ## Tech Stack
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
-- **Styling**: SCSS Modules with BEM naming (`c-component__element--modifier`)
+- **Styling**: SCSS Modules with BEM naming (`c-component__block-element`)
 - **Font**: Albert Sans (Google Fonts)
 
 ## Project Structure
@@ -39,14 +39,16 @@ Props:
 - `scaleFrom` / `scaleTo` - Control curve animation scale (use same value to disable animation)
 
 ### BubbleButton
-Animated button with magnetic hover effect and bubble animation.
+Animated button with magnetic hover effect and bubble animation. Has `position: absolute` by default - pass className to override when needed.
 
 Props:
 - `label` - Button text
 - `href` - Link URL (optional)
 - `onClick` - Click handler (optional)
 - `target` - Link target (auto-detects external links)
-- `fontSize`, `padding`, `magnetArea` - Responsive sizing objects `{ default, md, lg }`
+- `fontSize`, `padding`, `magnetArea` - Responsive sizing objects `{ default, sm, md, mdx, lg }`
+- `className` - Pass to override default absolute positioning
+- `backgroundColor`, `backgroundHoverColor` - CSS variable names (e.g., '--darkLavender')
 
 ### LoadingScreen
 Full-screen loading overlay shown during route transitions. Uses RotatingGlobe animation.
@@ -58,6 +60,13 @@ Props:
 - `className` - Additional classes
 - `color` - Globe line color (CSS variable or value)
 
+### ResponsiveNav
+Route-aware navigation. Uses `data-route` attribute for route-specific styling.
+
+Route names: 'home', 'about', 'work', 'project'
+- home/about: White text/icons
+- work/project: Charcoal text/icons
+
 ## Routes
 
 | Route | Description |
@@ -65,7 +74,7 @@ Props:
 | `/` | Homepage with hero, work preview, about, contact sections |
 | `/work` | Work listing with list/grid view toggle |
 | `/work/[slug]` | Individual project detail page |
-| `/about` | About page with bio, education, services |
+| `/about` | About page with bio, services, full-bleed background image |
 
 ## CSS Variables (globals.scss)
 
@@ -77,8 +86,10 @@ Props:
 --charcoal: #1c1d20
 --charcoal-transp: #1c1d2050
 --charcoal-active: #1c1d20c5
+--gray100: (lightest)
+--gray100-transp: (with transparency)
+--gray200: (light gray)
 --gray300: #6F7074
---gray200: (lighter gray for placeholders)
 --gray400: (text gray)
 ```
 
@@ -91,16 +102,84 @@ Props:
 @media (min-width: 1600px)  // Large desktop
 ```
 
-## Navigation Behavior
+## SCSS Structure & Naming
 
-- Homepage: Shows Work, About, Contact (anchor links)
-- Other routes: Shows Home, Work, About, Contact (route links)
-- Current route is filtered from nav items
+### BEM with Hyphen Nesting
+Use hyphens for nested elements within a block:
+```scss
+.c-about {
+  &__main {           // c-about__main
+    &-hero {          // c-about__main-hero
+      &-title { }     // c-about__main-hero-title
+    }
+    &-bio {           // c-about__main-bio
+      &-text { }      // c-about__main-bio-text
+      &-links { }     // c-about__main-bio-links
+    }
+  }
+}
+```
+
+### Data Attributes for Dynamic Content
+Use `data-*` attributes with `content: attr()` instead of extra elements:
+```scss
+// Instead of: <span class="number">01</span>
+// Use: <div data-index="01">
+&::before {
+  content: attr(data-index);
+}
+
+// Instead of: <h3 class="title">Education</h3>
+// Use: <ul data-header="Education">
+&::before {
+  content: attr(data-header);
+}
+```
+
+### Direct Element Selectors
+Style child elements directly when they don't need classes:
+```scss
+&-hero {
+  h1 { }        // style h1 directly
+  > span { }    // style direct span children
+  svg { }       // style svg
+}
+```
+
+### Scroll-Driven Animations
+```scss
+// Roll-up/reveal effect
+--y-from: -30%;
+--y-to: 0%;
+transform: translateY(var(--y-from));
+animation: scroll-move linear forwards;
+animation-timeline: scroll(root block);
+animation-range: 60% 100%;
+
+// Staggered items with nth-child
+&:nth-child(1) { animation-range: 70% 85%; }
+&:nth-child(2) { animation-range: 75% 90%; }
+&:nth-child(3) { animation-range: 80% 95%; }
+
+// CSS variables for direction changes in breakpoints
+--item-x-from: 0;
+--item-y-from: 2rem;
+```
+
+### Background Images
+Use CSS background-image for full-bleed section backgrounds:
+```scss
+background: var(--gray100) url('/image.png') no-repeat center center;
+background-size: cover;
+```
 
 ## Conventions
 
-1. **BEM Naming**: All SCSS uses `.c-component__element--modifier` pattern
+1. **BEM Naming**: Use `c-component__block-element` with hyphens for nesting
 2. **SCSS Modules**: Each component has its own `.module.scss` file
 3. **Client Components**: Use `'use client'` directive for interactive components
-4. **Scroll Animations**: Use `animation-timeline: scroll(root block)` for scroll-driven animations
-5. **Data Attributes over Class Toggling**: Prefer `data-*` attributes for state (e.g., `data-active`, `data-hovered`) instead of toggling modifier classes. Style with `&[data-active='true']` in SCSS.
+4. **Data Attributes over Classes**: Prefer `data-*` for state and dynamic content
+5. **Direct Selectors**: Style `h1`, `p`, `svg`, `li` via parent when no class needed
+6. **CSS Variables**: Use for colors, animation values, responsive overrides
+7. **Scroll Animations**: Use `animation-timeline: scroll(root block)` with `animation-range`
+8. **Stable Keys**: Use unique identifiers (e.g., `item.link`) not array index for React keys

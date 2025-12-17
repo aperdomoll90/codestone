@@ -1,11 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './About.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
-import { FrenchBulldog } from '@/app/landingSections/contact/FrenchBulldog'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
-import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
-import Image from 'next/image'
+import { DrawButton } from '../components/drawButton/DrawButton'
+import { Drawer } from '../components/drawer/Drawer'
+
+const linksData = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
+  { label: 'GitHub', href: 'https://github.com/aperdomoll90' },
+  { label: 'CodePen', href: 'https://codepen.io/fuzzy-wolfpup/collections/' },
+  { label: 'Resume', href: '/resume.pdf' },
+]
 
 const educationData = [
   { title: 'Software Engineering Career Course', subtitle: 'Block Code 2023' },
@@ -32,65 +38,50 @@ const servicesData = [
 ]
 
 export default function About() {
+  const [linksOpen, setLinksOpen] = useState(false)
+
+  useEffect(() => {
+    console.log('linksOpen', linksOpen)
+  }, [linksOpen])
+  const linkFontSizes = {
+    default: '1rem',
+    mdx: '1rem',
+    lg: '1.125rem',
+  }
+  const itemFontSizes = {
+    default: '1rem',
+    md: '.8rem',
+  }
   return (
     <div className={styles['c-about']}>
       <section className={styles['c-about__main']}>
-        <section className={styles['c-about__main-hero']}>
-          <h1>
-            Bridging code & creativity
-            <br />
-            together
-          </h1>
-          <span>↘</span>
-          <FrenchBulldog />
-        </section>
+        <div className={styles['c-about__main-hero']}>
+          <h1>Bridging code & creativity together</h1>
+        </div>
 
-        <section className={styles['c-about__main-bio']}>
-          <div className={styles['c-about__main-bio-column']}>
-            <p className={styles['c-about__main-bio-text']}>
-              I'm Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it's pixel-perfect
-              micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and
-              inclusivity first.
-            </p>
-
-            <ul data-header='Education & Certifications' className={styles['c-about__main-bio-education']}>
-                {educationData.map((item, index) => (
-                  <li key={index}>
-                    <strong>{item.title}</strong> – {item.subtitle}
-                  </li>
-                ))}
-            </ul>
-
-            <div className={styles['c-about__main-bio-links']}>
-              <BubbleButton
-                label='LinkedIn ↗'
-                href='https://www.linkedin.com/in/adrian-perdomo-12997474/'
-                fontSize={{ default: '0.5rem', md: '0.6rem', lg: '0.7rem' }}
-                padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
-                magnetArea={{ default: '0', mdx: '2rem' }}
-              />
-              <BubbleButton
-                label='CodePen ↗'
-                href='https://codepen.io/fuzzy-wolfpup/collections/'
-                fontSize={{ default: '0.5rem', md: '0.6rem', lg: '0.7rem' }}
-                padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
-                magnetArea={{ default: '0', mdx: '2rem' }}
-              />
-              <BubbleButton
-                label='GitHub ↗'
-                href='https://github.com/aperdomoll90'
-                fontSize={{ default: '0.5rem', md: '0.6rem', lg: '0.7rem' }}
-                padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
-                magnetArea={{ default: '0', mdx: '2rem' }}
-              />
-            </div>
+        <div className={styles['c-about__main-bio']}>
+          <p className={styles['c-about__main-bio-text']}>
+            I'm Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it's pixel-perfect
+            micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and
+            inclusivity first.
+          </p>
+        </div>
+        <div className={styles['c-about__main-links']} data-open={linksOpen}>
+          <div className={styles['c-about__main-links-ribbon']}>
+            <DrawButton fontSize={linkFontSizes} onClick={() => setLinksOpen(prev => !prev)} className={styles['c-about__main-bio-links-trigger']}>
+              Get in touch <span>→</span>
+            </DrawButton>
           </div>
 
-          <Image src='/me.png' alt='portrait image' width={400} height={250} className={styles['c-about__main-bio-image']} />
-        </section>
+          {linksData.map(link => (
+            <DrawButton key={link.href} href={link.href} variant='underline' fontSize={itemFontSizes} className={styles['c-about__main-links-item']}>
+              {link.label}
+            </DrawButton>
+          ))}
+        </div>
       </section>
 
-      <CurvedSection className={styles['c-about__services']}  scaleFrom={50} scaleTo={50}>
+      <CurvedSection className={styles['c-about__services']} scaleFrom={30} scaleTo={10}>
         <h2 className={styles['c-about__services-title']}>I can help you with ...</h2>
 
         <div className={styles['c-about__services-grid']}>
@@ -103,7 +94,7 @@ export default function About() {
         </div>
 
         <div className={styles['c-about__services-globe']}>
-          <RotatingGlobe color='var(--charcoal)' />
+          <RotatingGlobe />
         </div>
       </CurvedSection>
     </div>

@@ -30,8 +30,8 @@ export default function RootLayout({
         <ResponsiveNav />
         <LoadingScreen />
         {children}
+        <Footer />
       </body>
-      <Footer />
     </html>
   )
 }
