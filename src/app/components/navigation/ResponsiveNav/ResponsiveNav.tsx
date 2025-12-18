@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState, useMemo, useEffect } from 'react'
 import styles from './ResponsiveNav.module.scss'
-import { ToggleButton } from '../ToggleButtonNew'
+import { ToggleButton } from '../toggleButtonNew'
 import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
 import { DrawButton } from '@/app/components/drawButton/DrawButton'
 import { usePathname } from 'next/navigation'

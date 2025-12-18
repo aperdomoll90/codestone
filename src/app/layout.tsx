@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.scss'
 import { Albert_Sans } from 'next/font/google'
 import { Footer } from './components/navigation/footer/Footer'
-import { ResponsiveNav } from './components/navigation/ResponsiveNav/ResponsiveNav'
+import { ResponsiveNav } from './components/navigation/responsiveNav/ResponsiveNav'
 import { LoadingScreen } from './components/loadingScreen/LoadingScreen'
 
 export const albertSans = Albert_Sans({

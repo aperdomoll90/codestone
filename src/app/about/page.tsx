@@ -1,10 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './About.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
 import { DrawButton } from '../components/drawButton/DrawButton'
-import { Drawer } from '../components/drawer/Drawer'
 
 const linksData = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
@@ -38,16 +37,6 @@ const servicesData = [
 ]
 
 export default function About() {
-  const [linksOpen, setLinksOpen] = useState(false)
-
-  useEffect(() => {
-    console.log('linksOpen', linksOpen)
-  }, [linksOpen])
-  const linkFontSizes = {
-    default: '1rem',
-    mdx: '1rem',
-    lg: '1.125rem',
-  }
   const itemFontSizes = {
     default: '1rem',
     md: '.8rem',
@@ -65,19 +54,17 @@ export default function About() {
             micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and
             inclusivity first.
           </p>
-        </div>
-        <div className={styles['c-about__main-links']} data-open={linksOpen}>
-          <div className={styles['c-about__main-links-ribbon']}>
-            <DrawButton fontSize={linkFontSizes} onClick={() => setLinksOpen(prev => !prev)} className={styles['c-about__main-bio-links-trigger']}>
-              Get in touch <span>→</span>
-            </DrawButton>
+          <div className={styles['c-about__main-bio-links']}>
+            {linksData.map((link) => (
+              <DrawButton
+                key={link.href}
+                href={link.href}
+                variant='underline'
+                fontSize={itemFontSizes}>
+                {link.label}
+              </DrawButton>
+            ))}
           </div>
-
-          {linksData.map(link => (
-            <DrawButton key={link.href} href={link.href} variant='underline' fontSize={itemFontSizes} className={styles['c-about__main-links-item']}>
-              {link.label}
-            </DrawButton>
-          ))}
         </div>
       </section>
 

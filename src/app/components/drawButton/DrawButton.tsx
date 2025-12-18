@@ -29,9 +29,10 @@ interface DrawButtonProps {
   fontSize?: string | ValuePerBreakpoint
   target?: string
   variant?: DrawButtonVariant
+  style?: React.CSSProperties
 }
 
-export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children, className = '', fontSize = '1rem', target, variant = 'circled' }) => {
+export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children, className = '', fontSize = '1rem', target, variant = 'circled', style }) => {
   const sizeVars: CSSVarFontSizes =
     typeof fontSize === 'string'
       ? { '--fs-default': fontSize }
@@ -42,6 +43,8 @@ export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children,
           '--fs-mdx': fontSize?.mdx,
           '--fs-lg': fontSize?.lg,
         }
+
+  const combinedStyles = { ...sizeVars, ...style }
 
   const isExternal = href?.startsWith('http') || href?.startsWith('mailto:') || href?.startsWith('tel:')
 
@@ -59,7 +62,7 @@ export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children,
       href={href || '#'}
       onClick={handleClick}
       className={`${styles['c-draw-button']} ${className}`}
-      style={sizeVars}
+      style={combinedStyles}
       data-variant={variant}
       target={target || (isExternal ? '_blank' : undefined)}
       rel={isExternal ? 'noopener noreferrer' : undefined}>
