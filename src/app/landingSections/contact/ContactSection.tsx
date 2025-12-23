@@ -8,7 +8,7 @@ export const ContactSection = () => {
     <section id='c-contact' className={styles['c-contact-section']}>
       <div className={styles['c-contact-section__header']}>
         <h2 className={styles['c-contact-section__header--title']}>
-          Let's start a<br />
+          Let&apos;s start a<br />
           project together
         </h2>
         <FrenchBulldog />

@@ -1,0 +1,77 @@
+[debug] [2025-12-23T16:33:34.339Z] ----------------------------------------------------------------------
+[debug] [2025-12-23T16:33:34.340Z] Command:       /Users/homefolder/.nvm/versions/node/v23.9.0/bin/node /opt/homebrew/bin/firebase deploy
+[debug] [2025-12-23T16:33:34.341Z] CLI Version:   13.8.0
+[debug] [2025-12-23T16:33:34.341Z] Platform:      darwin
+[debug] [2025-12-23T16:33:34.341Z] Node Version:  v23.9.0
+[debug] [2025-12-23T16:33:34.341Z] Time:          Tue Dec 23 2025 10:33:34 GMT-0600 (Central Standard Time)
+[debug] [2025-12-23T16:33:34.341Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-12-23T16:33:34.373Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T16:33:34.373Z] > authorizing via signed-in user (aperdomoll90@gmail.com)
+[debug] [2025-12-23T16:33:34.373Z] [iam] checking project perdomo-studio for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-12-23T16:33:34.374Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/perdomo-studio:testIamPermissions [none]
+[debug] [2025-12-23T16:33:34.374Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/perdomo-studio:testIamPermissions x-goog-quota-user=projects/perdomo-studio
+[debug] [2025-12-23T16:33:34.374Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/perdomo-studio:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-12-23T16:33:34.806Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/perdomo-studio:testIamPermissions 200
+[debug] [2025-12-23T16:33:34.807Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/perdomo-studio:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-12-23T16:33:34.808Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/perdomo-studio [none]
+[debug] [2025-12-23T16:33:35.214Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/perdomo-studio 200
+[debug] [2025-12-23T16:33:35.214Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/perdomo-studio {"projectId":"perdomo-studio","projectNumber":"19127658564","displayName":"perdomo-studio","name":"projects/perdomo-studio","resources":{"hostingSite":"perdomo-studio"},"state":"ACTIVE","etag":"1_43557a2c-8165-4ee4-b636-845d91253cc8"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-12-23T16:33:37.196Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/perdomo-studio/sites/perdomo-studio [none]
+[debug] [2025-12-23T16:33:37.662Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/perdomo-studio/sites/perdomo-studio 200
+[debug] [2025-12-23T16:33:37.662Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/perdomo-studio/sites/perdomo-studio {"name":"projects/perdomo-studio/sites/perdomo-studio","defaultUrl":"https://perdomo-studio.web.app","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.5
+
+[info] 
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./src/app/about/page.tsx
+53:14  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+53:120  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/app/components/carrousel/SvgCarrousel.tsx
+219:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/components/utils/useIntersectionObserver.tsx
+18:32  Warning: The ref value 'ref.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'ref.current' to a variable inside the effect, and use that variable in the cleanup function.  react-hooks/exhaustive-deps
+
+./src/app/components/wordscrambler/page.tsx
+5:9  Warning: The 'words' array makes the dependencies of useCallback Hook (at line 47) change on every render. To fix this, wrap the initialization of 'words' in its own useMemo() Hook.  react-hooks/exhaustive-deps
+
+./src/app/landingSections/contact/ContactSection.tsx
+11:14  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/app/landingSections/hero/Hero.tsx
+27:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/work/ProjectGrid.tsx
+117:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/work/[slug]/page.tsx
+59:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-12-23T16:33:41.752Z] Error: ENOENT: no such file or directory, open '/Users/homefolder/code/perdomo-studio/.next/export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -50,7 +50,7 @@ export default function About() {
 
         <div className={styles['c-about__main-bio']}>
           <p className={styles['c-about__main-bio-text']}>
-            I'm Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it's pixel-perfect
+            I&apos;m Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it&apos;s pixel-perfect
             micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and
             inclusivity first.
           </p>
