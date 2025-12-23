@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 
-import { MagnetizeComponent } from '@/app/utils/MagnetizeComponent'
+import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
 import styles from './BubbleButton.module.scss'
 
 interface ValuePerBreakpoint {
@@ -12,9 +12,7 @@ interface ValuePerBreakpoint {
   lg?: string
 }
 
-
-
-interface CSSVarFontSizes extends React.CSSProperties {
+interface CSSVarStyles extends React.CSSProperties {
   '--fs-default'?: string
   '--fs-sm'?: string
   '--fs-md'?: string
@@ -32,8 +30,10 @@ interface CSSVarFontSizes extends React.CSSProperties {
   '--pad-md'?: string
   '--pad-mdx'?: string
   '--pad-lg'?: string
-}
 
+  '--background-color'?: string
+  '--background-hover'?: string
+}
 
 interface BubbleButtonProps {
   label: string
@@ -43,9 +43,24 @@ interface BubbleButtonProps {
   className?: string
   onClick?: () => void
   href?: string
+  target?: string
+  backgroundColor?: string
+  backgroundHoverColor?: string
 }
 
-const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem', className = '', onClick, href, magnetArea = '4rem' , padding = "1rem"}) => {
+const BubbleButton: React.FC<BubbleButtonProps> = ({
+  label,
+  fontSize = '1.5rem',
+  className = '',
+  onClick,
+  href,
+  magnetArea = '4rem',
+  padding = '1rem',
+  target,
+  backgroundColor = '--charcoal',
+  backgroundHoverColor = '--darkLavender',
+}) => {
+  const isExternal = href?.startsWith('http') || href?.startsWith('mailto:') || href?.startsWith('tel:')
   const areaRef = useRef<HTMLDivElement | null>(null)
 
   const { handleMouseMove, handleMouseLeave } = MagnetizeComponent({
@@ -72,7 +87,12 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
     ],
   })
 
-  const sizeVars: CSSVarFontSizes = {
+  const sizeVars: CSSVarStyles = {
+    ...{
+      '--background-color': `var(${backgroundColor})`,
+      '--background-hover': `var(${backgroundHoverColor})`,
+    },
+
     ...(typeof fontSize === 'string'
       ? { '--fs-default': fontSize }
       : {
@@ -91,9 +111,9 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
           '--area-md': magnetArea?.md,
           '--area-mdx': magnetArea?.mdx,
           '--area-lg': magnetArea?.lg,
-      }),
-    
-        ...(typeof padding === 'string'
+        }),
+
+    ...(typeof padding === 'string'
       ? { '--pad-default': padding }
       : {
           '--pad-default': padding?.default,
@@ -112,7 +132,12 @@ const BubbleButton: React.FC<BubbleButtonProps> = ({ label, fontSize = '1.5rem',
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}>
       {href ? (
-        <Link href={href} target='_blank' rel='noopener noreferrer' className={styles['c-bubble-button']} onClick={onClick}>
+        <Link
+          href={href}
+          target={target || (isExternal ? '_blank' : undefined)}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
+          className={styles['c-bubble-button']}
+          onClick={onClick}>
           <span className={styles['c-bubble-button__label']}>{label}</span>
         </Link>
       ) : (

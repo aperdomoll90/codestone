@@ -1,0 +1,178 @@
+.c-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  font-weight: 250;
+  font-size: 0.8rem;
+  letter-spacing: 0.9px;
+  color: var(--white);
+  pointer-events: none;
+
+  &__logo {
+    display: none;
+    pointer-events: auto;
+  }
+
+  &__drawer {
+    z-index: 1000;
+  }
+
+  &__menu {
+    padding: min(30dvh, 30dvh) 2em !important;
+
+    &-item {
+      padding: 1rem;
+      position: relative;
+      cursor: pointer;
+
+      &-link {
+        display: inline-block;
+        will-change: transform;
+        font-weight: 250;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &[data-visible='true'] {
+    .c-navigation__logo {
+      filter: blur(1rem);
+    }
+  }
+
+  &[data-route='about'] {
+    .c-navigation__logo {
+      display: block;
+      position: absolute;
+      top: 3rem;
+      left: 2rem;
+      color: var(--white);
+      transition: filter 1s ease;
+      opacity: 1;
+      animation: nav-hide linear;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 10%;
+      animation-fill-mode: both;
+    }
+  }
+
+  &[data-route='work'],
+  &[data-route='project'] {
+    font-weight: 500;
+
+    .c-navigation__logo {
+      display: block;
+      position: absolute;
+      top: 3rem;
+      left: 2rem;
+      color: var(--charcoal);
+      transition: filter 1s ease;
+      opacity: 1;
+      animation: nav-hide linear;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 10%;
+      animation-fill-mode: both;
+    }
+    .c-navigation__menu-item-link {
+      font-weight: 500;
+
+      svg path {
+        stroke: var(--charcoal);
+      }
+    }
+  }
+}
+
+@media (width >= 900px) {
+  .c-navigation {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem clamp(2rem, 1vw, 10rem);
+    opacity: 1;
+    animation: nav-hide linear;
+    animation-timeline: scroll(root block);
+    animation-range: 0% 10%;
+    animation-fill-mode: both;
+    pointer-events: auto;
+
+    &__logo {
+      display: block;
+      position: relative;
+      font-size: 1.2rem;
+    }
+
+    &__drawer {
+      position: static;
+      inset: auto;
+      z-index: auto;
+      pointer-events: auto;
+      display: contents;
+    }
+
+    // Hide drawer overlay on desktop (sibling of menu due to display:contents)
+    :global(.c-drawer__overlay) {
+      display: none;
+    }
+
+    &__menu {
+      position: relative !important;
+      inset: auto !important;
+      width: auto !important;
+      height: auto !important;
+      flex-direction: row !important;
+      align-items: center;
+      padding: 0rem !important;
+      background: transparent !important;
+      backdrop-filter: unset !important;
+      transform: none !important;
+      justify-content: space-between;
+      pointer-events: auto !important;
+      gap: 0;
+
+      &-item-link {
+        padding: 1rem;
+      }
+    }
+
+    &[data-route='about'] {
+      & .c-navigation__logo {
+        position: relative;
+        top: auto;
+        left: auto;
+      }
+    }
+
+    &[data-route='work'],
+    &[data-route='project'] {
+      color: var(--charcoal);
+      font-weight: 400;
+      & .c-navigation__logo {
+        position: relative;
+        top: auto;
+        left: auto;
+      }
+      & .c-navigation__menu-item-link {
+        color: var(--charcoal);
+        font-weight: 400;
+        svg path {
+          stroke: var(--charcoal);
+        }
+      }
+    }
+  }
+}
+
+@keyframes nav-hide {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-15%);
+  }
+}

@@ -5,12 +5,15 @@
   text-decoration: none;
   color: var(--white);
   cursor: pointer;
+  background: transparent;
+  border: none;
 
   &__label {
     position: relative;
     z-index: 2;
     transition: opacity 0.2s ease;
     white-space: nowrap;
+    cursor: pointer;
   }
 
   &:hover &__label {
@@ -31,6 +34,25 @@
       stroke-dasharray: 400;
       stroke-dashoffset: 400;
       transition: stroke-dashoffset 0.7s ease;
+    }
+  }
+
+  &[data-variant='underline'] {
+    .c-draw-button__svg {
+      width: 100%;
+      top: auto;
+      bottom: -0.8em;
+      left: 0;
+      transform: none;
+
+      :global(.swoosh-path) {
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+      }
+    }
+
+    &:hover .c-draw-button__svg :global(.swoosh-path) {
+      stroke-dashoffset: 0;
     }
   }
 }

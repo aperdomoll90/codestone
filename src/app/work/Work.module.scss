@@ -1,0 +1,105 @@
+.c-work {
+  padding: 0 2rem;
+  padding-top: 6rem;
+  margin-bottom: 3rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+
+    &--title {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    &-toggler {
+      display: flex;
+      gap: 0.5rem;
+      align-self: flex-end;
+
+      &-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        border: 1px solid var(--gray200);
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--charcoal);
+        transition: background 0.2s ease, color 0.2s ease;
+
+        &[data-active='true'] {
+          background: var(--charcoal);
+          border: none;
+          color: var(--white);
+        }
+
+        &:hover:not([data-active='true']) {
+          background: var(--charcoal-transp);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .c-work {
+    margin-bottom: 4rem;
+    &__header--title {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .c-work {
+    padding: 8rem 4rem 0;
+
+    &__header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      &--title {
+        font-size: 2.5rem;
+      }
+
+      &-toggler-btn {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .c-work {
+    padding: 10% 10% 5%;
+
+    &__header {
+      margin-bottom: 4rem;
+
+      &--title {
+        font-size: 3rem;
+        flex: 0 0 75%;
+        max-width: 75%;
+        line-height: 4.5rem;
+      }
+      &-toggler {
+        flex: 0 0 25%;
+        justify-content: center;
+        gap: 2rem;
+
+        &-btn {
+          width: 4rem;
+          height: 4rem;
+        }
+      }
+    }
+  }
+}
