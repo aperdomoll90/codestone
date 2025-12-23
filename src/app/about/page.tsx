@@ -9,7 +9,7 @@ const linksData = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
   { label: 'GitHub', href: 'https://github.com/aperdomoll90' },
   { label: 'CodePen', href: 'https://codepen.io/fuzzy-wolfpup/collections/' },
-  { label: 'Resume', href: '/resume.pdf' },
+  { label: 'Resume', href: '/resume' },
 ]
 
 const educationData = [

@@ -16,6 +16,7 @@ const navItems = [
   { label: 'Home', link: '/' },
   { label: 'Work', link: '/work' },
   { label: 'About', link: '/about' },
+  { label: 'Resume', link: '/resume' },
   { label: 'Contact', link: '/contact' },
 ]
 
@@ -59,6 +60,7 @@ export const ResponsiveNav = () => {
     if (pathname === '/') return 'home'
     if (pathname === '/about') return 'about'
     if (pathname === '/work') return 'work'
+    if (pathname === '/resume') return 'resume'
     if (pathname.startsWith('/work/')) return 'project'
     return 'other'
   }, [pathname])

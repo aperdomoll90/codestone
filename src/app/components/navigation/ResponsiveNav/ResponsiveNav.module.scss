@@ -43,7 +43,8 @@
     }
   }
 
-  &[data-route='about'] {
+  &[data-route='about'],
+  &[data-route='resume'] {
     .c-navigation__logo {
       display: block;
       position: absolute;
@@ -138,7 +139,8 @@
       }
     }
 
-    &[data-route='about'] {
+    &[data-route='about'],
+    &[data-route='resume'] {
       & .c-navigation__logo {
         position: relative;
         top: auto;
