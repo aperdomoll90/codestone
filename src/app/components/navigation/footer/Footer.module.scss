@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   gap: 3rem 0.05rem;
   padding: 1rem 1.5rem 3rem;
+  z-index: 0;
 
   &__group {
     display: flex;
