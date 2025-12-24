@@ -30,9 +30,10 @@ interface DrawButtonProps {
   target?: string
   variant?: DrawButtonVariant
   style?: React.CSSProperties
+  download?: boolean | string
 }
 
-export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children, className = '', fontSize = '1rem', target, variant = 'circled', style }) => {
+export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children, className = '', fontSize = '1rem', target, variant = 'circled', style, download }) => {
   const sizeVars: CSSVarFontSizes =
     typeof fontSize === 'string'
       ? { '--fs-default': fontSize }
@@ -56,6 +57,22 @@ export const DrawButton: React.FC<DrawButtonProps> = ({ href, onClick, children,
   }
 
   const SvgComponent = variant === 'underline' ? UnderSwoosh : Swoosh
+
+  // Use regular <a> tag for downloads, Link for navigation
+  if (download) {
+    return (
+      <a
+        href={href || '#'}
+        onClick={handleClick}
+        className={`${styles['c-draw-button']} ${className}`}
+        style={combinedStyles}
+        data-variant={variant}
+        download={typeof download === 'string' ? download : true}>
+        <span className={styles['c-draw-button__label']}>{children}</span>
+        <SvgComponent className={styles['c-draw-button__svg']} />
+      </a>
+    )
+  }
 
   return (
     <Link

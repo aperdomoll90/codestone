@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef, useState } from 'react'
+import Image from 'next/image'
 import styles from './ProjectGrid.module.scss'
 import { Project } from './types'
 import { MagnetizeComponent } from '../components/utils/MagnetizeComponent'
@@ -114,7 +115,7 @@ export function ProjectGrid({
                 className={styles['c-project-grid__preview-images']}
                 style={{ '--active-index': hoveredIndex ?? 0 } as React.CSSProperties}>
                 {projects.map((project, index) => (
-                  <img key={index} src={project.image} alt={project.name} />
+                  <Image key={index} src={project.image} alt={project.name} width={300} height={200} />
                 ))}
               </div>
               <span className={styles['c-project-grid__preview-label']}>View</span>

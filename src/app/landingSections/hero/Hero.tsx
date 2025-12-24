@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Image from 'next/image'
 import styles from './Hero.module.scss'
 import Ribbon from '@/app/components/ribbon/Ribbon'
 import { Marquee } from '@/app/components/marquee/Marquee'
@@ -24,7 +25,7 @@ export const Hero = () => {
       <div className={`${styles['c-hero__banner']}`}>
         <Marquee />
       </div>
-      <img className={`${styles['c-hero__portrait']}`} src='/me.png' alt='me' />
+      <Image className={`${styles['c-hero__portrait']}`} src='/me.png' alt='me' width={400} height={500} />
     </section>
   )
 }

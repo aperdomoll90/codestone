@@ -101,6 +101,17 @@
           color: var(--gray400);
         }
       }
+
+      &-spacer {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--gray100-transp);
+
+        > span {
+          font-size: 0.75rem;
+          font-style: italic;
+          color: var(--gray300);
+        }
+      }
     }
 
     &-education {

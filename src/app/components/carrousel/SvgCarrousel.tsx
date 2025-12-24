@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import './styles.css'
 import { slideData } from './carrouseldata'
 import useIntersectionObserver from '../utils/useIntersectionObserver'
@@ -216,7 +217,7 @@ export const Carousel: React.FC<CarouselProps> = ({ slides, size = 70 }) => {
             </button>
           </div>
         </div>
-        <img className='carrousel-mascot' src={mascotUrl} alt='caricature of a french bulldog' />
+        <Image className='carrousel-mascot' src={mascotUrl} alt='caricature of a french bulldog' width={150} height={150} />
       </div>
     </div>
   )

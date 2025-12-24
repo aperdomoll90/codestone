@@ -4,6 +4,7 @@ export interface Experience {
   location: string
   period: string
   description: string
+  isSpacer?: boolean
 }
 
 export interface Education {
@@ -23,62 +24,45 @@ export interface ResumeData {
 export const resumeData: ResumeData = {
   headline: 'Full Stack Software Developer',
   about:
-    'Certified EMT, fluent in English and Spanish, has worked in medical data and medical finance as well as IT at a medical school. I love art, cooking, baking, medical applications of technology, nanotechnology, automation, AI, and I hope to improve lives through my work.',
+    'Certified EMT, fluent in English and Spanish, has worked in medical data and medical finance as well as IT at a medical school. I love art, cooking, baking, medical applications of technology, automation, AI, and I hope to improve lives through my work.',
   experience: [
     {
       title: 'Software Engineer',
+      company: 'CITY Furniture',
+      location: 'Florida, USA',
+      period: '01/2022 – Present',
+      description: 'Developed and maintained e-commerce platform features using Next.js and Node.js microservices architecture. Deployed services on AWS infrastructure. Wrote unit and integration tests with Jest. Monitored application performance and troubleshot issues using New Relic.',
+    },
+    {
+      title: 'Software Engineer',
       company: 'Rockval, Inc',
-      location: 'West Palm Beach',
+      location: 'Florida, USA',
       period: '07/2021 – 09/2021',
-      description: 'Mobile Application Development, Front-end Development, Design, UX/UI.',
+      description: 'Single-handedly developed cross-platform mobile app using React Native and Expo. Integrated Google Maps API with property pinning functionality. Implemented Redux for state management and styled-components for UI.',
     },
     {
-      title: 'Baker',
-      company: "Scramble Jake's",
-      location: 'Knoxville TN',
-      period: '08/2020 – 02/2021',
-      description:
-        'Assist the Executive Pastry Chef in the daily activities of the kitchen, including, inventory, purchasing of supplies, and cost control.',
-    },
-    {
-      title: 'Home Health Intake Coordinator',
-      company: 'First Choice Home Health and Hospice',
-      location: 'Harrisonburg VA',
-      period: '03/2020 – 07/2020',
-      description:
-        'Insurance and medical data collection management for Home Care, Home Health and Hospice department. Maintain accuracy of records of physicians, family/friends, and facilities.',
-    },
-    {
-      title: 'Pastry Chef Assistant',
-      company: 'Wild Thyme at the Atlantic Hotel',
-      location: 'Fort Lauderdale FL',
-      period: '10/2019 – 02/2020',
-      description:
-        'Assist the Executive Pastry Chef in the daily activities of the kitchen, including menu development, inventory, purchasing of supplies, and cost control.',
-    },
-    {
-      title: 'Medicaid Financial Analyst',
-      company: 'Change Healthcare',
-      location: 'Boca Raton FL',
-      period: '10/2016 – 10/2019',
-      description:
-        'Collection, maintenance and verification of insurance and medical data to ensure fulfillment of Medicaid and Medicare programs assistance for eligible patients. Experience with medical insurance verification systems, Cerner Powerchart EMR, PHI, PII, and HIPAA.',
+      title: 'Non-relevant roles',
+      company: '',
+      location: '',
+      period: '01/2017 – 06/2021',
+      description: '',
+      isSpacer: true,
     },
     {
       title: 'Red Zone Specialist',
       company: 'Apple',
-      location: 'Boca Raton',
+      location: 'Boca Raton FL',
       period: '07/2015 – 12/2016',
       description:
         "Provided support, training and troubleshooting for customers' existing products and applications, as well as recommending new products that fit their technical requirements.",
     },
     {
-      title: 'Administrative Assistant',
-      company: 'Ameriprise Financial',
-      location: 'Boca Raton',
-      period: '07/2014 – 10/2016',
-      description:
-        'Managed workflow by assigning tasks to other administrative employees, ensuring that deadlines were met and expectations were exceeded. Assumed responsibility for maintenance of office equipment.',
+      title: 'Non-relevant roles',
+      company: '',
+      location: '',
+      period: '11/2013 – 06/2015',
+      description: '',
+      isSpacer: true,
     },
     {
       title: 'Computer User Support Specialist',

@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-resume-pdf.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "jspdf": "^3.0.4",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
