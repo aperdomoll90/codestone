@@ -56,8 +56,6 @@ export const AboutSection = () => {
         />
 
         <div className={`${styles['c-about-section_container-featured']}`}>
-          <p>point-focus</p>
-
           <BubbleButton
             label='GitHub'
             href='https://github.com/aperdomoll90'

@@ -92,15 +92,6 @@
       animation-duration: 5s;
       animation-range: 0% 30%;
 
-      &::before {
-        content: 'Featured Open-Source';
-        font-size: 0.7rem;
-        position: absolute;
-        transform: translate(-40%, -300%);
-        color: var(--gray300);
-        width: 70%;
-      }
-
       &-github {
         transform: translate(95%, -5%);
       }
@@ -179,10 +170,6 @@
         --featured-y-from: -180%;
         --featured-y-to: -180%;
 
-        &::before {
-          transform: translate(-50%, -900%);
-        }
-
         &-github {
           transform: translate(120%, -50%);
         }
@@ -240,12 +227,6 @@
         height: 45%;
         animation-range: 0% 35%;
 
-        &::before {
-          font-size: 1rem;
-          transform: translate(-50%, -600%);
-          width: auto;
-        }
-
         &-github {
           transform: translate(45%, -10%);
         }
@@ -286,10 +267,6 @@
 
         animation-range: 0% 45%;
         height: 30%;
-
-        &::before {
-          transform: translate(-100%, -800%);
-        }
 
         &-github {
           transform: translate(60%, -10%);

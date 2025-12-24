@@ -16,7 +16,7 @@ const navItems = [
   { label: 'Home', link: '/' },
   { label: 'Work', link: '/work' },
   { label: 'About', link: '/about' },
-  { label: 'Contact', link: '/contact' },
+  { label: 'Contact', link: '/#c-contact' },
 ]
 
 const linkFontSizes = {
