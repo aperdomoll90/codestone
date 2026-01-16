@@ -7,25 +7,21 @@ import { useRouter } from 'next/navigation'
 import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 const projectsRow1: ProjectItem[] = [
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
+  { id: 'css-forge-1', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
+  { id: 'csv-conductor-1', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-1', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'css-forge-2', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
+  { id: 'csv-conductor-2', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-2', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
 ]
 
 const projectsRow2: ProjectItem[] = [
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
+  { id: 'csv-conductor-3', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-3', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'css-forge-3', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
+  { id: 'csv-conductor-4', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-4', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'css-forge-4', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
 ]
 
 export const WorkSection = () => {

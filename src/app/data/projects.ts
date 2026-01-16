@@ -28,6 +28,26 @@ export interface NpmProject {
 
 export const npmProjects: NpmProject[] = [
   {
+    id: 'css-forge',
+    name: 'css-forge',
+    location: 'npm',
+    services: 'React Component Library',
+    href: 'https://www.npmjs.com/package/css-forge',
+    year: '2024',
+    image: '/cssforge.png',
+    isExternal: true,
+  },
+  {
+    id: 'csv-conductor',
+    name: 'csv-conductor',
+    location: 'npm',
+    services: 'CSV Parser & Generator',
+    href: 'https://www.npmjs.com/package/csv-conductor',
+    year: '2024',
+    image: '/csvconductor.png',
+    isExternal: true,
+  },
+  {
     id: 'point-focus',
     name: 'point-focus',
     location: 'npm',
@@ -41,12 +61,12 @@ export const npmProjects: NpmProject[] = [
 
 export const projectsData: Record<string, ProjectDetail> = {
   wonderlust: {
-    id: 'wonderlust',
-    name: 'Wonderlust',
+    id: 'cssforge',
+    name: 'cssForge',
     services: 'Design & Development',
     location: 'USA',
     year: '2020',
-    image: '/carouselassets/hikerslide.png',
+    image: '/cssforge.png',
     liveUrl: '#',
     githubUrl: '#',
     overview:
