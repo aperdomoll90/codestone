@@ -3,8 +3,9 @@ import { useRef, useState, useMemo, useEffect } from 'react'
 import styles from './ResponsiveNav.module.scss'
 import { ToggleButton } from '../toggleButtonNew'
 import { DrawButton, useMagnetize } from 'css-forge'
-import { usePathname } from 'next/navigation'
-import { Drawer } from '@/app/components/drawer/Drawer' 
+import { usePathname, useRouter } from 'next/navigation'
+import { Drawer } from '@/app/components/drawer/Drawer'
+import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -23,7 +24,7 @@ const linkFontSizes = {
   mdx: '1.2rem',
 }
 
-const NavItemComponent = ({ item }: { item: menuItemsArrayPropsTypes }) => {
+const NavItemComponent = ({ item, onNavigate }: { item: menuItemsArrayPropsTypes; onNavigate: (href: string, e: React.MouseEvent) => void }) => {
   const areaRef = useRef<HTMLDivElement | null>(null)
 
   const { handleMouseMove, handleMouseLeave } = useMagnetize({
@@ -41,9 +42,13 @@ const NavItemComponent = ({ item }: { item: menuItemsArrayPropsTypes }) => {
     ],
   })
 
+  const handleClick = (e: React.MouseEvent) => {
+    onNavigate(item.link, e)
+  }
+
   return (
     <span ref={areaRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={styles['c-navigation__menu-item']}>
-      <DrawButton fontSize={linkFontSizes} href={item.link} className={styles['c-navigation__menu-item-link']}>
+      <DrawButton fontSize={linkFontSizes} href={item.link} onClick={handleClick} className={styles['c-navigation__menu-item-link']}>
         {item.label}
       </DrawButton>
     </span>
@@ -53,6 +58,8 @@ const NavItemComponent = ({ item }: { item: menuItemsArrayPropsTypes }) => {
 export const ResponsiveNav = () => {
   const [visible, setVisible] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
+  const { startLoading } = useLoading()
 
   const routeName = useMemo(() => {
     if (pathname === '/') return 'home'
@@ -71,13 +78,25 @@ export const ResponsiveNav = () => {
     setVisible(false)
   }, [pathname])
 
+  const handleNavigate = (href: string, e: React.MouseEvent) => {
+    // Skip loading for hash links on the same page
+    if (href.startsWith('/#') || href.startsWith('http') || href.startsWith('mailto:')) {
+      return
+    }
+    e.preventDefault()
+    startLoading()
+    setTimeout(() => {
+      router.push(href)
+    }, 50)
+  }
+
   return (
     <section className={`${styles['c-navigation']}`} data-visible={visible} data-route={routeName}>
       <ToggleButton yPosition={routeName === 'home' ? '4rem' : '2rem'} active={visible} setActive={setVisible} />
       <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
       <Drawer open={visible} onClose={() => setVisible(false)} anchor="right" hideCloseButton wrapperClassName={styles['c-navigation__drawer']} className={styles['c-navigation__menu']}>
         {filteredNavItems.map((item) => (
-          <NavItemComponent item={item} key={item.link} />
+          <NavItemComponent item={item} key={item.link} onNavigate={handleNavigate} />
         ))}
       </Drawer>
     </section>

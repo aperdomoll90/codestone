@@ -4,6 +4,8 @@ import Image from 'next/image'
 import styles from './ProjectGrid.module.scss'
 import { Project } from './types'
 import { useMagnetize } from 'css-forge'
+import { useRouter } from 'next/navigation'
+import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 type ViewMode = 'list' | 'grid'
 type GridLayout = 'square' | 'banner'
@@ -23,6 +25,8 @@ export function ProjectGrid({
   gridLayout = 'square',
   enableHoverPreview,
 }: IProjectGridProps) {
+  const router = useRouter()
+  const { startLoading } = useLoading()
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const previewRef = useRef<HTMLDivElement | null>(null)
@@ -75,6 +79,15 @@ export function ProjectGrid({
     magnetizeLabelLeave()
   }
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, project: Project) => {
+    if (project.isExternal) return
+    e.preventDefault()
+    startLoading()
+    setTimeout(() => {
+      router.push(project.href)
+    }, 50)
+  }
+
   return (
     <>
       <section className={styles['c-project-grid']} data-view={viewMode}>
@@ -97,7 +110,8 @@ export function ProjectGrid({
               data-layout={gridLayout}
               data-hovered={hoveredIndex === index}
               onMouseMove={e => handleMouseMove(e, index)}
-              onMouseLeave={handleMouseLeave}>
+              onMouseLeave={handleMouseLeave}
+              onClick={e => handleClick(e, project)}>
               <span>{project.name}</span>
               <span>{project.location}</span>
               <span>{project.services}</span>

@@ -259,33 +259,34 @@
   }
 }
 
-// @media (min-width: 1600px) {
-//   .c-project {
-//     &__hero {
-//       padding: 12rem 15% 4rem;
+@media (min-width: 1600px) {
+  .c-project {
+    &__hero {
+      padding: 12rem 15% 4rem;
 
-//       &-title {
-//         font-size: 5rem;
-//       }
+      &-title {
+        font-size: 5rem;
+      }
 
-//       &-header {
-//         font-size: 0.75rem;
-//       }
+      &-header {
+        font-size: 0.75rem;
+      }
 
-//       &-info {
-//         font-size: 1rem;
-//       }
-//     }
+      &-info {
+        font-size: 1rem;
+      }
+    }
 
-//     &__content {
-//       padding: 4rem 15%;
+    &__content {
+      padding: 4rem 15%;
+      padding-top: 8rem;
 
-//       &-info-section p {
-//         font-size: 0.95rem;
-//       }
-//     }
-//   }
-// }
+      &-info-section p {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
 
 @keyframes project-button-animation {
   from {

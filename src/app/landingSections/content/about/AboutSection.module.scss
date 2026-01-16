@@ -44,8 +44,8 @@
     &-aboutme {
       --aboutme-x: 60%;
       --aboutme-x-to: 60%;
-      --aboutme-y-from: -300%;
-      --aboutme-y-to: -360%;
+      --aboutme-y-from: -400%;
+      --aboutme-y-to: -400%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -56,10 +56,10 @@
     }
 
     &-codepen {
-      --aboutme-x: 45%;
-      --aboutme-x-to: 25%;
-      --aboutme-y-from: -300%;
-      --aboutme-y-to: -350%;
+      --aboutme-x: -55%;
+      --aboutme-x-to: -75%;
+      --aboutme-y-from: -480%;
+      --aboutme-y-to: -420%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -69,36 +69,46 @@
       animation-range: 0% 30%;
     }
 
-    &-featured {
-      height: 55%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      position: absolute;
-      border: 1px solid #d9d9d9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
+    &-resume {
+      --aboutme-x: 60%;
+      --aboutme-x-to: 60%;
+      --aboutme-y-from: -400%;
+      --aboutme-y-to: -360%;
 
-      --featured-x-from: -70%;
-      --featured-x-to: -70%;
-      --featured-y-from: -180%;
-      --featured-y-to: -180%;
+      transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
-      transform: translate(var(--featured-x-from), var(--featured-y-from));
-
-      animation: featured-scroll-move linear forwards;
+      animation: aboutme-scroll-move linear forwards;
       animation-timeline: scroll(root block);
       animation-duration: 5s;
       animation-range: 0% 30%;
+    }
 
-      &-github {
-        transform: translate(95%, -5%);
-      }
+    &-github {
+      --aboutme-x: -20%;
+      --aboutme-x-to: -20%;
+      --aboutme-y-from: -340%;
+      --aboutme-y-to: -340%;
 
-      &-npm {
-        transform: translate(5%, 100%);
-      }
+      transform: translate(var(--aboutme-x), var(--aboutme-y-from));
+
+      animation: aboutme-scroll-move linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 30%;
+    }
+
+    &-npm {
+      --aboutme-x: -90%;
+      --aboutme-x-to: -160%;
+      --aboutme-y-from: -200%;
+      --aboutme-y-to: -320%;
+
+      transform: translate(var(--aboutme-x), var(--aboutme-y-from));
+
+      animation: aboutme-scroll-move linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 30%;
     }
   }
 }
@@ -107,30 +117,30 @@
   .c-about-section {
     &_container {
       &-aboutme {
-        --aboutme-x: 85%;
-        --aboutme-x-to: 85%;
-        --aboutme-y-from: -450%;
-        --aboutme-y-to: -500%;
-      }
-
-      &-codepen {
+        --aboutme-x: 65%;
+        --aboutme-x-to: 65%;
         --aboutme-y-from: -400%;
         --aboutme-y-to: -450%;
       }
 
-      &-featured {
-        --featured-x-from: -60%;
-        --featured-x-to: -60%;
-        --featured-y-from: -200%;
-        --featured-y-to: -200%;
+      &-codepen {
+        --aboutme-y-from: -400%;
+        --aboutme-y-to: -470%;
+      }
 
-        &-github {
-          transform: translate(80%, -50%);
-        }
+      &-resume {
+        --aboutme-y-from: -380%;
+        --aboutme-y-to: -420%;
+      }
 
-        &-npm {
-          transform: translate(0%, 120%);
-        }
+      &-github {
+        --aboutme-y-from: -350%;
+        --aboutme-y-to: -390%;
+      }
+
+      &-npm {
+        --aboutme-y-from: -280%;
+        --aboutme-y-to: -320%;
       }
     }
   }
@@ -152,31 +162,37 @@
     &_container {
       &-aboutme {
         --aboutme-x: 140%;
-        --aboutme-x-to: 140%;
+        --aboutme-x-to: 100%;
         --aboutme-y-from: -380%;
-        --aboutme-y-to: -420%;
+        --aboutme-y-to: -360%;
       }
 
       &-codepen {
         --aboutme-x: 170%;
-        --aboutme-x-to: 100%;
+        --aboutme-x-to: -90%;
         --aboutme-y-from: -420%;
-        --aboutme-y-to: -420%;
+        --aboutme-y-to: -400%;
       }
 
-      &-featured {
-        --featured-x-from: -60%;
-        --featured-x-to: -60%;
-        --featured-y-from: -180%;
-        --featured-y-to: -180%;
+      &-resume {
+        --aboutme-x: -10%;
+        --aboutme-x-to: 60%;
+        --aboutme-y-from: -400%;
+        --aboutme-y-to: -360%;
+      }
 
-        &-github {
-          transform: translate(120%, -50%);
-        }
+      &-github {
+        --aboutme-x: -120%;
+        --aboutme-x-to: -40%;
+        --aboutme-y-from: -320%;
+        --aboutme-y-to: -300%;
+      }
 
-        &-npm {
-          transform: translate(50%, 160%);
-        }
+      &-npm {
+        --aboutme-x: -140%;
+        --aboutme-x-to: -160%;
+        --aboutme-y-from: -250%;
+        --aboutme-y-to: -280%;
       }
     }
   }
@@ -213,27 +229,32 @@
         --aboutme-x: -140%;
         --aboutme-x-to: -160%;
         --aboutme-y-from: 10%;
-        --aboutme-y-to: 0%;
+        --aboutme-y-to: -20%;
         animation-range: 0% 35%;
       }
 
-      &-featured {
-        --featured-x-from: 220%;
-        --featured-x-to: 220%;
-        --featured-y-from: 70%;
-        --featured-y-to: 70%;
-
-        font-size: 1rem;
-        height: 45%;
+      &-resume {
+        --aboutme-x: -160%;
+        --aboutme-x-to: -140%;
+        --aboutme-y-from: 60%;
+        --aboutme-y-to: 50%;
         animation-range: 0% 35%;
+      }
 
-        &-github {
-          transform: translate(45%, -10%);
-        }
+      &-github {
+        --aboutme-x: 160%;
+        --aboutme-x-to: 180%;
+        --aboutme-y-from: 50%;
+        --aboutme-y-to: 15%;
+        animation-range: 0% 35%;
+      }
 
-        &-npm {
-          transform: translate(20%, 40%);
-        }
+      &-npm {
+        --aboutme-x: 180%;
+        --aboutme-x-to: 180%;
+        --aboutme-y-from: 90%;
+        --aboutme-y-to: 80%;
+        animation-range: 0% 35%;
       }
     }
   }
@@ -244,11 +265,20 @@
     &_container {
       &-codepen {
         --aboutme-x: -220%;
-        --aboutme-x-to: -250%;
+        --aboutme-x-to: -260%;
         --aboutme-y-from: 10%;
-        --aboutme-y-to: 0%;
+        --aboutme-y-to: -50%;
 
         transform: translate(-250%, 0%);
+      }
+
+      &-resume {
+        --aboutme-x: -240%;
+        --aboutme-x-to: -260%;
+        --aboutme-y-from: 60%;
+        --aboutme-y-to: 50%;
+
+        transform: translate(-260%, 50%);
       }
 
       &-aboutme {
@@ -259,23 +289,20 @@
         animation-range: 0% 30%;
       }
 
-      &-featured {
-        --featured-x-from: 300%;
-        --featured-x-to: 300%;
-        --featured-y-from: 100%;
-        --featured-y-to: 100%;
+      &-github {
+        --aboutme-x: 200%;
+        --aboutme-x-to: 260%;
+        --aboutme-y-from: 50%;
+        --aboutme-y-to: 0%;
+        animation-range: 0% 35%;
+      }
 
-        animation-range: 0% 45%;
-        height: 30%;
-
-        &-github {
-          transform: translate(60%, -10%);
-        }
-
-        &-npm {
-          right: 20%;
-          bottom: -10%;
-        }
+      &-npm {
+        --aboutme-x: 220%;
+        --aboutme-x-to: 280%;
+        --aboutme-y-from: 90%;
+        --aboutme-y-to: 100%;
+        animation-range: 0% 35%;
       }
     }
   }
@@ -290,11 +317,3 @@
   }
 }
 
-@keyframes featured-scroll-move {
-  from {
-    transform: translate(var(--featured-x-from), var(--featured-y-from)) scale(0.6);
-  }
-  to {
-    transform: translate(var(--featured-x-to), var(--featured-y-to)) scale(1);
-  }
-}

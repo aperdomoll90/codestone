@@ -4,6 +4,8 @@ import styles from './About.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
 import { DrawButton } from 'css-forge'
+import { useRouter } from 'next/navigation'
+import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 const linksData = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
@@ -31,6 +33,20 @@ const servicesData = [
 ]
 
 export default function About() {
+  const router = useRouter()
+  const { startLoading } = useLoading()
+
+  const handleNavigate = (href: string, e: React.MouseEvent) => {
+    if (href.startsWith('http') || href.startsWith('mailto:')) {
+      return
+    }
+    e.preventDefault()
+    startLoading()
+    setTimeout(() => {
+      router.push(href)
+    }, 50)
+  }
+
   const itemFontSizes = {
     default: '1rem',
     md: '.8rem',
@@ -54,7 +70,8 @@ export default function About() {
                 key={link.href}
                 href={link.href}
                 variant='underline'
-                fontSize={itemFontSizes}>
+                fontSize={itemFontSizes}
+                onClick={(e) => handleNavigate(link.href, e)}>
                 {link.label}
               </DrawButton>
             ))}
