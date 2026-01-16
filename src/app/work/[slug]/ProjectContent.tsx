@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import styles from './Project.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
-import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
+import { BubbleButton } from 'css-forge'
 import { ProjectDetail } from '../../data/projects'
 
 export default function ProjectContent({ project }: { project: ProjectDetail | undefined }) {

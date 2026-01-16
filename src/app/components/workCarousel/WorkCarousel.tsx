@@ -2,7 +2,8 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
 import styles from './WorkCarousel.module.scss'
-import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
+import { useMagnetize } from 'css-forge'
+
 
 export interface ProjectItem {
   id: string
@@ -19,7 +20,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, ariaHidden = false }) => {
   const cardRef = useRef<HTMLDivElement | null>(null)
 
-  const { handleMouseMove, handleMouseLeave } = MagnetizeComponent({
+  const { handleMouseMove, handleMouseLeave } = useMagnetize({
     areaRef: cardRef,
     targets: [
       {

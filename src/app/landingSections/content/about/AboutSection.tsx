@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
 import styles from './AboutSection.module.scss'
-import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
+import { BubbleButton } from 'css-forge'
+
 
 export const AboutSection = () => {
   return (

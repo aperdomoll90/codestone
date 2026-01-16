@@ -1,5 +1,7 @@
 .c-ribbon {
   width: 45dvw;
+  height: auto;
+  aspect-ratio: 263 / 104;
   position: relative;
   display: flex;
   align-items: center;
@@ -7,8 +9,8 @@
   pointer-events: none;
 
   svg {
-    height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -85,13 +87,13 @@
     transform: rotateY(360deg);
   }
 }
-@media (width >= 800px) {
+@media (min-width: 800px) {
   .c-ribbon {
     width: 35dvw;
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .c-ribbon {
     width: 15dvw;
   }

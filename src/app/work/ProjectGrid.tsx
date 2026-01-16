@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import styles from './ProjectGrid.module.scss'
 import { Project } from './types'
-import { MagnetizeComponent } from '../components/utils/MagnetizeComponent'
+import { useMagnetize } from 'css-forge'
 
 type ViewMode = 'list' | 'grid'
 type GridLayout = 'square' | 'banner'
@@ -27,7 +27,7 @@ export function ProjectGrid({
   const contentRef = useRef<HTMLDivElement | null>(null)
   const previewRef = useRef<HTMLDivElement | null>(null)
 
-  const { handleMouseMove: magnetizeMouseMove, handleMouseLeave: magnetizeMouseLeave } = MagnetizeComponent({
+  const { handleMouseMove: magnetizeMouseMove, handleMouseLeave: magnetizeMouseLeave } = useMagnetize({
     areaRef: contentRef,
     targets: [
       {
@@ -44,7 +44,7 @@ export function ProjectGrid({
     ],
   })
 
-  const { handleMouseMove: magnetizeLabelMove, handleMouseLeave: magnetizeLabelLeave } = MagnetizeComponent({
+  const { handleMouseMove: magnetizeLabelMove, handleMouseLeave: magnetizeLabelLeave } = useMagnetize({
     areaRef: previewRef,
     targets: [
       {

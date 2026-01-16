@@ -2,7 +2,7 @@
 import React from 'react'
 import styles from './WorkSection.module.scss'
 import { WorkCarousel, ProjectItem } from '@/app/components/workCarousel/WorkCarousel'
-import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
+import { BubbleButton } from 'css-forge'
 
 const projectsRow1: ProjectItem[] = [
   { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },

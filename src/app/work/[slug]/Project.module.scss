@@ -45,10 +45,14 @@
     }
     &-github,
     &-demo {
-      animation: project-button-animation linear forwards;
-      animation-timeline: scroll(root block);
-      animation-duration: 5s;
-      animation-range: 0% 20%;
+      opacity: 1;
+
+      @supports (animation-timeline: scroll()) {
+        animation: project-button-animation linear forwards;
+        animation-timeline: scroll(root block);
+        animation-duration: 5s;
+        animation-range: 0% 20%;
+      }
     }
   }
 
@@ -56,9 +60,14 @@
     display: flex;
     flex-direction: column;
     padding: 4rem 2.5rem;
-    animation: project-content-animation linear forwards;
-    animation-timeline: scroll(root block);
-    animation-range: 0% 20%;
+    filter: blur(0px);
+    opacity: 1;
+
+    @supports (animation-timeline: scroll()) {
+      animation: project-content-animation linear forwards;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 20%;
+    }
 
     &-image {
       flex: 0 0 100%;

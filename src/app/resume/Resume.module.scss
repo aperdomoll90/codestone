@@ -44,9 +44,13 @@
       left: 50%;
       transform: translateX(-50%);
       color: var(--gray300);
-      animation: scroll-indicator-fade linear forwards, scroll-indicator-bounce 1.5s ease-in-out infinite;
-      animation-timeline: scroll(root block), auto;
-      animation-range: 0% 15%, normal;
+      animation: scroll-indicator-bounce 1.5s ease-in-out infinite;
+
+      @supports (animation-timeline: scroll()) {
+        animation: scroll-indicator-fade linear forwards, scroll-indicator-bounce 1.5s ease-in-out infinite;
+        animation-timeline: scroll(root block), auto;
+        animation-range: 0% 15%, normal;
+      }
 
       svg {
         width: 1.5rem;
@@ -63,10 +67,16 @@
     --content-y-from: -10%;
     --content-y-to: 0%;
 
-    transform: translateY(var(--content-y-from));
-    animation: resume-content-scroll linear forwards;
-    animation-timeline: scroll(root block);
-    animation-range: 0% 35%;
+    transform: translateY(var(--content-y-to));
+    filter: blur(0px);
+    opacity: 1;
+
+    @supports (animation-timeline: scroll()) {
+      transform: translateY(var(--content-y-from));
+      animation: resume-content-scroll linear forwards;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 35%;
+    }
 
     &-experience,
     &-education,
@@ -96,11 +106,16 @@
         border-bottom: 1px solid var(--gray100-transp);
         --item-y-from: 1rem;
         --item-y-to: 0;
-        opacity: 0;
-        transform: translateY(var(--item-y-from));
-        animation: item-fade-in linear forwards;
-        animation-timeline: view();
-        animation-range: entry 10% entry 60%;
+        opacity: 1;
+        transform: translateY(var(--item-y-to));
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(var(--item-y-from));
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 60%;
+        }
 
         &::before {
           content: attr(data-index);
@@ -147,11 +162,16 @@
         gap: 0.25rem;
         padding: 1rem 0;
         border-bottom: 1px solid var(--gray100-transp);
-        opacity: 0;
-        transform: translateY(1rem);
-        animation: item-fade-in linear forwards;
-        animation-timeline: view();
-        animation-range: entry 10% entry 70%;
+        opacity: 1;
+        transform: translateY(0);
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(1rem);
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 70%;
+        }
 
         h3 {
           font-size: 0.9rem;
@@ -171,11 +191,16 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
-        opacity: 0;
-        transform: translateY(1rem);
-        animation: item-fade-in linear forwards;
-        animation-timeline: view();
-        animation-range: entry 10% entry 70%;
+        opacity: 1;
+        transform: translateY(0);
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(1rem);
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 70%;
+        }
 
         > span {
           font-size: 0.8rem;

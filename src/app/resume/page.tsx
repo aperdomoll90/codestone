@@ -2,7 +2,7 @@
 import styles from './Resume.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { resumeData } from '@/app/data/resume'
-import { DrawButton } from '../components/drawButton/DrawButton'
+import { DrawButton } from 'css-forge'
 
 const Logo = () => (
   <svg className={styles['c-resume__hero-logo']} viewBox="0 0 435 436" fill="none" xmlns="http://www.w3.org/2000/svg">

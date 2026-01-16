@@ -2,10 +2,9 @@
 import { useRef, useState, useMemo, useEffect } from 'react'
 import styles from './ResponsiveNav.module.scss'
 import { ToggleButton } from '../toggleButtonNew'
-import { MagnetizeComponent } from '@/app/components/utils/MagnetizeComponent'
-import { DrawButton } from '@/app/components/drawButton/DrawButton'
+import { DrawButton, useMagnetize } from 'css-forge'
 import { usePathname } from 'next/navigation'
-import { Drawer } from '@/app/components/drawer/Drawer'
+import { Drawer } from '@/app/components/drawer/Drawer' 
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -27,7 +26,7 @@ const linkFontSizes = {
 const NavItemComponent = ({ item }: { item: menuItemsArrayPropsTypes }) => {
   const areaRef = useRef<HTMLDivElement | null>(null)
 
-  const { handleMouseMove, handleMouseLeave } = MagnetizeComponent({
+  const { handleMouseMove, handleMouseLeave } = useMagnetize({
     areaRef,
     targets: [
       {

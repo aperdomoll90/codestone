@@ -3,19 +3,13 @@ import React from 'react'
 import styles from './About.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
-import { DrawButton } from '../components/drawButton/DrawButton'
+import { DrawButton } from 'css-forge'
 
 const linksData = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
   { label: 'GitHub', href: 'https://github.com/aperdomoll90' },
   { label: 'CodePen', href: 'https://codepen.io/fuzzy-wolfpup/collections/' },
   { label: 'Resume', href: '/resume' },
-]
-
-const educationData = [
-  { title: 'Software Engineering Career Course', subtitle: 'Block Code 2023' },
-  { title: 'EMT, Certification', subtitle: 'Palm Beach State College 2018' },
-  { title: 'Bachelor of Science, Information Technology', subtitle: 'FP Paul Cesare Bonilla, Cuba 2008' },
 ]
 
 const servicesData = [

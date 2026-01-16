@@ -14,12 +14,15 @@
     z-index: 1;
     clip-path: url(#content-curve);
     transform-origin: top center;
-    transform: scaleY(var(--curve-scale-from));
+    transform: scaleY(var(--curve-scale-to));
 
-    animation: curve-scroll-scale linear forwards;
-    animation-timeline: scroll(root block);
-    animation-duration: 5s;
-    animation-range: var(--animation-range);
+    @supports (animation-timeline: scroll()) {
+      transform: scaleY(var(--curve-scale-from));
+      animation: curve-scroll-scale linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: var(--animation-range);
+    }
   }
 }
 
