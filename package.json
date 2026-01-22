@@ -7,7 +7,8 @@
     "prebuild": "node scripts/generate-resume-pdf.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
     "css-forge": "^0.1.35",

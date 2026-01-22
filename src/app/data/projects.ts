@@ -60,17 +60,17 @@ export const npmProjects: NpmProject[] = [
 ]
 
 export const projectsData: Record<string, ProjectDetail> = {
-  wonderlust: {
+  cssforge: {
     id: 'cssforge',
     name: 'cssForge',
     services: 'Design & Development',
     location: 'USA',
     year: '2020',
     image: '/cssforge.png',
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://aperdomoll90.github.io/css-forge',
+    githubUrl: 'https://github.com/aperdomoll90',
     overview:
-      'Wonderlust helps outdoor enthusiasts discover, plan and share all types of hiking routes. By combining user-generated content with real-time weather data, it ensures every adventure is tailored to planning. Made for both seasoned explorers and beginners into independent hikes in beautiful surroundings.',
+      'cssforge helps outdoor enthusiasts discover, plan and share all types of hiking routes. By combining user-generated content with real-time weather data, it ensures every adventure is tailored to planning. Made for both seasoned explorers and beginners into independent hikes in beautiful surroundings.',
     features: [
       'Live Weather Data To Users (MQTT)',
       'AI to Interact and learn to fit individual Profiles',

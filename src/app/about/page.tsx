@@ -50,6 +50,7 @@ export default function About() {
   const itemFontSizes = {
     default: '1rem',
     md: '.8rem',
+    lg: '1rem',
   }
   return (
     <div className={styles['c-about']}>
