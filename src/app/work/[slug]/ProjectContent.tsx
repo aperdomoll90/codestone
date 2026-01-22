@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import styles from './Project.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
-import { BubbleButton } from 'css-forge'
+import { DrawButton } from 'css-forge'
 import { ProjectDetail } from '../../data/projects'
 
 export default function ProjectContent({ project }: { project: ProjectDetail | undefined }) {
@@ -24,34 +24,39 @@ export default function ProjectContent({ project }: { project: ProjectDetail | u
               <span>{project.location}</span>
               <span>{project.year}</span>
             </div>
-
-            <BubbleButton
-              label='GitHub ↗'
-              backgroundColor='--darkLavender'
-              backgroundHoverColor='--lightLavender'
-              href='https://github.com/aperdomoll90'
-              fontSize={{ default: '0.5rem', md: '1rem' }}
-              padding={{ default: '0.8rem', md: '1rem', lg: '1.2rem' }}
-              magnetArea={{ default: '0', mdx: '2rem' }}
-              className={styles['c-project__hero-github']}
-            />
-
-            <BubbleButton
-              label='Live Site ↗'
-              backgroundColor='--darkLavender'
-              backgroundHoverColor='--lightLavender'
-              href='https://github.com/aperdomoll90'
-              fontSize={{ default: '0.8rem', md: '1.5rem' }}
-              padding={{ default: '0.8rem', md: '1rem' }}
-              magnetArea={{ default: '0', mdx: '2rem' }}
-              className={styles['c-project__hero-demo']}
-            />
           </>
         )}
       </CurvedSection>
       {project && (
         <section className={styles['c-project__content']}>
-          <Image src={project.image} alt={project.name} width={800} height={500} className={styles['c-project__content-image']} />
+          <div className={styles['c-project__content-media-wrapper']}>
+            {project.video ? (
+              <video
+                src={project.video}
+                className={styles['c-project__content-video']}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <>
+                <Image src={project.image} alt={project.name} width={800} height={500} className={styles['c-project__content-image']} />
+                <div className={styles['c-project__content-image-buttons']}>
+                  {project.githubUrl && (
+                    <DrawButton variant='underline' href={project.githubUrl} target='_blank'>
+                      GitHub
+                    </DrawButton>
+                  )}
+                  {project.npmUrl && (
+                    <DrawButton variant='underline' href={project.npmUrl} target='_blank'>
+                      NPM
+                    </DrawButton>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
 
           <div className={styles['c-project__content-info']}>
             <div data-title='Overview' className={styles['c-project__content-info-section']}>

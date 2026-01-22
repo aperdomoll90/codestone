@@ -4,7 +4,6 @@ import styles from './WorkSection.module.scss'
 import { WorkCarousel, ProjectItem } from '@/app/components/workCarousel/WorkCarousel'
 import { BubbleButton } from 'css-forge'
 import { useRouter } from 'next/navigation'
-import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 const projectsRow1: ProjectItem[] = [
   { id: 'css-forge-1', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
@@ -26,13 +25,9 @@ const projectsRow2: ProjectItem[] = [
 
 export const WorkSection = () => {
   const router = useRouter()
-  const { startLoading } = useLoading()
 
   const handleNavigate = () => {
-    startLoading()
-    setTimeout(() => {
-      router.push('/work')
-    }, 50)
+    router.push('/work')
   }
 
   return (

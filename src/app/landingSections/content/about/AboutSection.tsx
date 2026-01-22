@@ -3,17 +3,11 @@ import React from 'react'
 import styles from './AboutSection.module.scss'
 import { BubbleButton } from 'css-forge'
 import { useRouter } from 'next/navigation'
-import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
-
 export const AboutSection = () => {
   const router = useRouter()
-  const { startLoading } = useLoading()
 
   const handleNavigateAbout = () => {
-    startLoading()
-    setTimeout(() => {
-      router.push('/about')
-    }, 50)
+    router.push('/about')
   }
 
   return (
@@ -71,12 +65,7 @@ export const AboutSection = () => {
         <BubbleButton
           label='Resume'
           href='/resume'
-          onClick={() => {
-            startLoading()
-            setTimeout(() => {
-              router.push('/resume')
-            }, 50)
-          }}
+          onClick={() => router.push('/resume')}
           fontSize={{
             default: '1.2rem',
             md: '1.5rem',

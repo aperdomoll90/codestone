@@ -5,7 +5,6 @@ import { ToggleButton } from '../toggleButtonNew'
 import { DrawButton, useMagnetize } from 'css-forge'
 import { usePathname, useRouter } from 'next/navigation'
 import { Drawer } from '@/app/components/drawer/Drawer'
-import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -59,7 +58,6 @@ export const ResponsiveNav = () => {
   const [visible, setVisible] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
-  const { startLoading } = useLoading()
 
   const routeName = useMemo(() => {
     if (pathname === '/') return 'home'
@@ -84,10 +82,7 @@ export const ResponsiveNav = () => {
       return
     }
     e.preventDefault()
-    startLoading()
-    setTimeout(() => {
-      router.push(href)
-    }, 50)
+    router.push(href)
   }
 
   return (

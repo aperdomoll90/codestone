@@ -5,7 +5,6 @@ import styles from './ProjectGrid.module.scss'
 import { Project } from './types'
 import { useMagnetize } from 'css-forge'
 import { useRouter } from 'next/navigation'
-import { useLoading } from '@/app/components/loadingScreen/LoadingContext'
 
 type ViewMode = 'list' | 'grid'
 type GridLayout = 'square' | 'banner'
@@ -26,7 +25,6 @@ export function ProjectGrid({
   enableHoverPreview,
 }: IProjectGridProps) {
   const router = useRouter()
-  const { startLoading } = useLoading()
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const previewRef = useRef<HTMLDivElement | null>(null)
@@ -82,10 +80,7 @@ export function ProjectGrid({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, project: Project) => {
     if (project.isExternal) return
     e.preventDefault()
-    startLoading()
-    setTimeout(() => {
-      router.push(project.href)
-    }, 50)
+    router.push(project.href)
   }
 
   return (

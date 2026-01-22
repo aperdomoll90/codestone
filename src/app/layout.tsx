@@ -31,7 +31,7 @@ export default function RootLayout({
         <LoadingProvider>
           <ResponsiveNav />
           <LoadingScreen />
-          {children}
+          <main>{children}</main>
           <Footer />
         </LoadingProvider>
       </body>

@@ -2,8 +2,6 @@
 import React from 'react'
 import Link, { LinkProps } from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
-import { useLoading } from './LoadingContext'
-
 interface TransitionLinkProps extends LinkProps {
   children: React.ReactNode
   className?: string
@@ -12,7 +10,6 @@ interface TransitionLinkProps extends LinkProps {
 export const TransitionLink: React.FC<TransitionLinkProps> = ({ href, children, className, ...props }) => {
   const router = useRouter()
   const pathname = usePathname()
-  const { startLoading } = useLoading()
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const targetPath = typeof href === 'string' ? href : href.pathname
@@ -23,12 +20,7 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({ href, children, 
     }
 
     e.preventDefault()
-    startLoading()
-
-    // Small delay to let loading screen render before navigation
-    setTimeout(() => {
-      router.push(typeof href === 'string' ? href : href.pathname || '/')
-    }, 50)
+    router.push(typeof href === 'string' ? href : href.pathname || '/')
   }
 
   return (

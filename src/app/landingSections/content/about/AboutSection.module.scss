@@ -44,8 +44,8 @@
     &-aboutme {
       --aboutme-x: 60%;
       --aboutme-x-to: 60%;
-      --aboutme-y-from: -400%;
-      --aboutme-y-to: -400%;
+      --aboutme-y-from: -300%;
+      --aboutme-y-to: -300%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -57,9 +57,9 @@
 
     &-codepen {
       --aboutme-x: -55%;
-      --aboutme-x-to: -75%;
-      --aboutme-y-from: -480%;
-      --aboutme-y-to: -420%;
+      --aboutme-x-to: -55%;
+      --aboutme-y-from: -380%;
+      --aboutme-y-to: -280%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -72,8 +72,8 @@
     &-resume {
       --aboutme-x: 60%;
       --aboutme-x-to: 60%;
-      --aboutme-y-from: -400%;
-      --aboutme-y-to: -360%;
+      --aboutme-y-from: -260%;
+      --aboutme-y-to: -240%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -86,8 +86,8 @@
     &-github {
       --aboutme-x: -20%;
       --aboutme-x-to: -20%;
-      --aboutme-y-from: -340%;
-      --aboutme-y-to: -340%;
+      --aboutme-y-from: -220%;
+      --aboutme-y-to: -220%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -100,8 +100,8 @@
     &-npm {
       --aboutme-x: -90%;
       --aboutme-x-to: -160%;
-      --aboutme-y-from: -200%;
-      --aboutme-y-to: -320%;
+      --aboutme-y-from: -120%;
+      --aboutme-y-to: -180%;
 
       transform: translate(var(--aboutme-x), var(--aboutme-y-from));
 
@@ -119,28 +119,28 @@
       &-aboutme {
         --aboutme-x: 65%;
         --aboutme-x-to: 65%;
-        --aboutme-y-from: -400%;
-        --aboutme-y-to: -450%;
+        --aboutme-y-from: -360%;
+        --aboutme-y-to: -400%;
       }
 
       &-codepen {
         --aboutme-y-from: -400%;
-        --aboutme-y-to: -470%;
-      }
-
-      &-resume {
-        --aboutme-y-from: -380%;
         --aboutme-y-to: -420%;
       }
 
+      &-resume {
+        --aboutme-y-from: -300%;
+        --aboutme-y-to: -320%;
+      }
+
       &-github {
-        --aboutme-y-from: -350%;
-        --aboutme-y-to: -390%;
+        --aboutme-y-from: -260%;
+        --aboutme-y-to: -280%;
       }
 
       &-npm {
-        --aboutme-y-from: -280%;
-        --aboutme-y-to: -320%;
+        --aboutme-y-from: -180%;
+        --aboutme-y-to: -270%;
       }
     }
   }

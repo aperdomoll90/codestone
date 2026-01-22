@@ -5,8 +5,10 @@ export interface ProjectDetail {
   services: string
   year: string
   image: string
+  video?: string
   liveUrl?: string
   githubUrl?: string
+  npmUrl?: string
   overview: string
   features: string[]
   techStack: {
@@ -15,7 +17,7 @@ export interface ProjectDetail {
   }[]
 }
 
-export interface NpmProject {
+export interface Project {
   id: string
   name: string
   location: string
@@ -23,151 +25,176 @@ export interface NpmProject {
   year: string
   image: string
   href: string
-  isExternal: true
+  isExternal?: boolean
 }
 
-export const npmProjects: NpmProject[] = [
+// Full project details for detail pages
+export const projectsData: Record<string, ProjectDetail> = {
+  'css-forge': {
+    id: 'css-forge',
+    name: 'css-forge',
+    location: 'npm',
+    services: 'React Component Library',
+    year: '2024',
+    image: '/cssforge.png',
+    liveUrl: 'https://aperdomoll90.github.io/css-forge',
+    githubUrl: 'https://github.com/aperdomoll90/css-forge',
+    npmUrl: 'https://www.npmjs.com/package/css-forge',
+    overview:
+      'A lightweight, customizable React component library focused on animations, magnetic effects, and interactive UI elements. Built with TypeScript and designed for modern web applications with zero dependencies on external CSS frameworks.',
+    features: [
+      'BubbleButton - Animated button with magnetic hover effects and bubble animations',
+      'DrawButton - Text links with animated underline/circle SVG effects',
+      'Magnetize Hook - Add magnetic cursor-following effects to any element',
+      'Responsive sizing props with breakpoint support',
+      'CSS variable theming for easy customization',
+      'Tree-shakeable exports for optimal bundle size',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['React', 'TypeScript', 'CSS Modules', 'Rollup'],
+      },
+      {
+        category: 'Features',
+        items: ['Zero external dependencies', 'SSR compatible', 'Fully typed', 'Storybook documentation'],
+      },
+    ],
+  },
+  'csv-conductor': {
+    id: 'csv-conductor',
+    name: 'csv-conductor',
+    location: 'npm',
+    services: 'CSV Parser & Generator',
+    year: '2024',
+    image: '/csvconductor.png',
+    githubUrl: 'https://github.com/aperdomoll90/csv-conductor',
+    npmUrl: 'https://www.npmjs.com/package/csv-conductor',
+    overview:
+      'A robust TypeScript library for parsing and generating CSV files with support for complex data transformations, custom delimiters, and streaming for large datasets. Designed for both Node.js and browser environments.',
+    features: [
+      'Parse CSV strings or files into JavaScript objects',
+      'Generate CSV from arrays or object collections',
+      'Custom delimiter and quote character support',
+      'Header row detection and mapping',
+      'Streaming API for large file processing',
+      'TypeScript generics for type-safe parsing',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['TypeScript', 'Node.js Streams', 'Vitest'],
+      },
+      {
+        category: 'Features',
+        items: ['Browser & Node.js support', 'Zero dependencies', 'RFC 4180 compliant', 'Memory efficient streaming'],
+      },
+    ],
+  },
+  'point-focus': {
+    id: 'point-focus',
+    name: 'point-focus',
+    location: 'npm',
+    services: 'Image Zoom & Focus React Component',
+    year: '2020',
+    image: '/ant.png',
+    githubUrl: 'https://github.com/aperdomoll90/point-focus',
+    npmUrl: 'https://www.npmjs.com/package/point-focus',
+    overview:
+      'A React component for creating interactive image zoom and focus effects. Perfect for product galleries, portfolio showcases, and any application requiring detailed image inspection with smooth pan and zoom interactions.',
+    features: [
+      'Smooth zoom on hover or click',
+      'Pan to follow cursor movement',
+      'Customizable zoom levels and transition speeds',
+      'Touch support for mobile devices',
+      'Lightweight with no external dependencies',
+      'Accessible keyboard navigation',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['React', 'JavaScript', 'CSS Transforms'],
+      },
+      {
+        category: 'Features',
+        items: ['Touch & mouse support', 'Responsive design', 'Customizable styling', 'SSR compatible'],
+      },
+    ],
+  },
+  rockval: {
+    id: 'rockval',
+    name: 'RockVal',
+    location: 'React Native',
+    services: 'Real Estate Investment App',
+    year: '2021',
+    image: '/rockvalassets/rockvalbanner.png',
+    video: '/rockvalassets/RockvalAppVideo.mov',
+    overview:
+      'A comprehensive React Native mobile application for real estate investors to analyze properties, calculate proformas, and manage their investment portfolio. Features include property search, financial analysis tools, contact management, and map-based property visualization.',
+    features: [
+      'Property search and analysis with financial calculations',
+      'Proforma generation for investment projections',
+      'Interactive maps for property visualization',
+      'Contact management for deals and investors',
+      'Push notifications for market updates',
+      'Secure authentication with Auth0',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['React Native', 'TypeScript', 'React Navigation', 'Styled Components'],
+      },
+      {
+        category: 'Backend & Services',
+        items: ['Auth0', 'React Native Maps', 'Async Storage', 'Axios'],
+      },
+    ],
+  },
+}
+
+// npm libraries for the work grid
+export const npmProjects: Project[] = [
   {
     id: 'css-forge',
     name: 'css-forge',
     location: 'npm',
     services: 'React Component Library',
-    href: 'https://www.npmjs.com/package/css-forge',
+    href: '/work/css-forge',
     year: '2024',
     image: '/cssforge.png',
-    isExternal: true,
   },
   {
     id: 'csv-conductor',
     name: 'csv-conductor',
     location: 'npm',
     services: 'CSV Parser & Generator',
-    href: 'https://www.npmjs.com/package/csv-conductor',
+    href: '/work/csv-conductor',
     year: '2024',
     image: '/csvconductor.png',
-    isExternal: true,
   },
   {
     id: 'point-focus',
     name: 'point-focus',
     location: 'npm',
     services: 'Image Zoom & Focus React Component',
-    href: 'https://www.npmjs.com/package/point-focus',
+    href: '/work/point-focus',
     year: '2020',
-    image: '/pointFocus.png',
-    isExternal: true,
+    image: '/ant.png',
   },
 ]
 
-export const projectsData: Record<string, ProjectDetail> = {
-  cssforge: {
-    id: 'cssforge',
-    name: 'cssForge',
-    services: 'Design & Development',
-    location: 'USA',
-    year: '2020',
-    image: '/cssforge.png',
-    liveUrl: 'https://aperdomoll90.github.io/css-forge',
-    githubUrl: 'https://github.com/aperdomoll90',
-    overview:
-      'cssforge helps outdoor enthusiasts discover, plan and share all types of hiking routes. By combining user-generated content with real-time weather data, it ensures every adventure is tailored to planning. Made for both seasoned explorers and beginners into independent hikes in beautiful surroundings.',
-    features: [
-      'Live Weather Data To Users (MQTT)',
-      'AI to Interact and learn to fit individual Profiles',
-      'Catalog View Products For the Marketplace',
-      'Seasonal (CRON/JOBS) challenges',
-      'Data Share & Accessible To Explorers/Users',
-    ],
-    techStack: [
-      {
-        category: 'Built with',
-        items: ['Next.js', 'Node.js', 'PostgreSQL', 'Mapbox.js + API (Mapbox)', 'Resend.js + Landlord + DP (Hosting)'],
-      },
-      {
-        category: 'Responsibilities:',
-        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
-      },
-    ],
+// Mobile projects for the work grid
+export const mobileProjects: Project[] = [
+  {
+    id: 'rockval',
+    name: 'RockVal',
+    location: 'React Native',
+    services: 'Real Estate Investment App',
+    href: '/work/rockval',
+    year: '2021',
+    image: '/rockvalassets/rockvalbanner.png',
   },
-  nymph: {
-    id: 'nymph',
-    name: 'Nymph',
-    services: 'Design & Development',
-    location: 'USA',
-    year: '2020',
-    image: '/carouselassets/djslide.png',
-    liveUrl: '#',
-    githubUrl: '#',
-    overview: 'A creative music platform for DJs and producers to showcase their work and connect with fans.',
-    features: ['Real-time audio streaming', 'Artist collaboration tools', 'Event scheduling', 'Fan engagement features'],
-    techStack: [
-      {
-        category: 'Built with',
-        items: ['React', 'Node.js', 'MongoDB', 'Web Audio API'],
-      },
-      {
-        category: 'Responsibilities:',
-        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
-      },
-    ],
-  },
-  five4free: {
-    id: 'five4free',
-    name: 'Five4Free',
-    services: 'Design & Development',
-    location: 'USA',
-    year: '2020',
-    image: '/carouselassets/hikerslide.png',
-    liveUrl: '#',
-    overview: 'A platform connecting volunteers with local community service opportunities.',
-    features: ['Volunteer matching', 'Event management', 'Impact tracking', 'Community forums'],
-    techStack: [
-      {
-        category: 'Built with',
-        items: ['Next.js', 'Prisma', 'PostgreSQL'],
-      },
-      {
-        category: 'Responsibilities:',
-        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
-      },
-    ],
-  },
-  posidon: {
-    id: 'posidon',
-    name: 'Posidon',
-    services: 'Design & Development',
-    location: 'USA',
-    year: '2020',
-    image: '/carouselassets/djslide.png',
-    liveUrl: '#',
-    githubUrl: '#',
-    overview: 'An ocean conservation app that tracks marine wildlife and pollution levels.',
-    features: ['Wildlife tracking', 'Pollution monitoring', 'Data visualization', 'Alert system'],
-    techStack: [
-      {
-        category: 'Built with',
-        items: ['React Native', 'Node.js', 'MongoDB', 'MapBox'],
-      },
-      {
-        category: 'Responsibilities:',
-        items: ['Figma/Adobe palette, CLI, qlip', 'design+tool, ms (audible, hello)', 'design+tool3 (pngs)'],
-      },
-    ],
-  },
-}
-
-// Get all web projects for the work route grid
-export function getWebProjects() {
-  return Object.values(projectsData).map(project => ({
-    id: project.id,
-    name: project.name,
-    location: project.location,
-    services: project.services,
-    year: project.year,
-    image: project.image,
-    href: `/work/${project.id}`,
-  }))
-}
+]
 
 // Get a single project by slug for the detail page
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
