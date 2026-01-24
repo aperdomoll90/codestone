@@ -23,13 +23,15 @@ export const useSwipeGesture = ({
   const touchStartY = useRef(0)
   const touchEndX = useRef(0)
   const touchEndY = useRef(0)
+  const intervalRef = useRef<any>(null)
 
   useEffect(() => {
     if (lockScroll && enabled) {
       document.body.style.overflow = 'hidden'
-      return () => {
-        document.body.style.overflow = ''
-      }
+
+      intervalRef.current = setInterval(() => {
+        console.log('Gesture tracking active')
+      }, 1000)
     }
   }, [lockScroll, enabled])
 
