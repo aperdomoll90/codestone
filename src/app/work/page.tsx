@@ -3,9 +3,7 @@ import React, { useState } from 'react'
 import styles from './Work.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { ProjectGrid } from './ProjectGrid'
-import { npmProjects, getWebProjects } from '../data/projects'
-
-const webProjects = getWebProjects()
+import { npmProjects, mobileProjects } from '../data/projects'
 
 export default function Work() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list')
@@ -46,16 +44,16 @@ export default function Work() {
           </button>
         </div>
       </section>
-
-      <ProjectGrid headers={['Open-Source npm library', 'Subtitle', 'Link', 'Year']} projects={npmProjects} viewMode={viewMode} gridLayout='banner' />
+      <ProjectGrid headers={['Mobile Project', 'Platform', 'Description', 'Year']} projects={mobileProjects} viewMode={viewMode} gridLayout='banner' />
 
       <ProjectGrid
-        headers={['Web Project', 'Location', 'Services', 'Year']}
-        projects={webProjects}
+        headers={['Open-Source npm Library', 'Platform', 'Description', 'Year']}
+        projects={npmProjects}
         viewMode={viewMode}
         gridLayout='square'
         enableHoverPreview
       />
+
     </CurvedSection>
   )
 }

@@ -4,6 +4,7 @@ import { Albert_Sans } from 'next/font/google'
 import { Footer } from './components/navigation/footer/Footer'
 import { ResponsiveNav } from './components/navigation/responsiveNav/ResponsiveNav'
 import { LoadingScreen } from './components/loadingScreen/LoadingScreen'
+import { LoadingProvider } from './components/loadingScreen/LoadingContext'
 
 export const albertSans = Albert_Sans({
   subsets: ['latin'],
@@ -14,9 +15,9 @@ export const albertSans = Albert_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'CodeStone',
+  title: 'Perdomo Studio',
   description:
-    'CodeStone: Showcasing the innovative web solutions and full stack expertise of Adrian Perdomo. Explore a curated collection of projects demonstrating proficiency in both front-end and back-end development, from responsive designs to robust server-side applications.',
+    'Perdomo Studio: Showcasing the innovative web solutions and full stack expertise of Adrian Perdomo. Explore a curated collection of projects demonstrating proficiency in both front-end and back-end development, from responsive designs to robust server-side applications.',
 }
 
 export default function RootLayout({
@@ -27,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang='en' className={albertSans.className}>
       <body>
-        <ResponsiveNav />
-        <LoadingScreen />
-        {children}
-        <Footer />
+        <LoadingProvider>
+          <ResponsiveNav />
+          <LoadingScreen />
+          <main>{children}</main>
+          <Footer />
+        </LoadingProvider>
       </body>
     </html>
   )

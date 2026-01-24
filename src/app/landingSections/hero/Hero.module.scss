@@ -28,12 +28,14 @@
     --portrait-y-from: 40%;
     --portrait-y-to: 60%;
 
-    transform: translate(var(--featured-x-from), var(--featured-y-from), scaleX(-1));
+    transform: translate(var(--portrait-x-from), var(--portrait-y-from)) scaleX(-1);
 
-    animation: portrait-scale linear forwards;
-    animation-timeline: scroll(root block);
-    animation-duration: 5s;
-    animation-range: 0% 25%;
+    @supports (animation-timeline: scroll()) {
+      animation: portrait-scale linear forwards;
+      animation-timeline: scroll(root block);
+      animation-duration: 5s;
+      animation-range: 0% 25%;
+    }
   }
 
   &__occupation {
@@ -57,10 +59,12 @@
 
       transform: translate(var(--item-x-from), var(--item-y-from));
 
-      animation: scroll-move linear forwards;
-      animation-timeline: scroll(root block);
-      animation-duration: 5s;
-      animation-range: 0% 20%;
+      @supports (animation-timeline: scroll()) {
+        animation: scroll-move linear forwards;
+        animation-timeline: scroll(root block);
+        animation-duration: 5s;
+        animation-range: 0% 20%;
+      }
     }
 
     h4 {
@@ -72,10 +76,12 @@
 
       transform: translate(var(--item-x-from), var(--item-y-from));
 
-      animation: scroll-move linear forwards;
-      animation-timeline: scroll(root block);
-      animation-duration: 5s;
-      animation-range: 0% 20%;
+      @supports (animation-timeline: scroll()) {
+        animation: scroll-move linear forwards;
+        animation-timeline: scroll(root block);
+        animation-duration: 5s;
+        animation-range: 0% 20%;
+      }
     }
   }
 
@@ -103,7 +109,7 @@
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .c-hero {
     align-items: center;
 

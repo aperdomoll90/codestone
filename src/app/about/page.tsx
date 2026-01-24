@@ -3,19 +3,14 @@ import React from 'react'
 import styles from './About.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
-import { DrawButton } from '../components/drawButton/DrawButton'
+import { DrawButton } from 'css-forge'
+import { useRouter } from 'next/navigation'
 
 const linksData = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
   { label: 'GitHub', href: 'https://github.com/aperdomoll90' },
   { label: 'CodePen', href: 'https://codepen.io/fuzzy-wolfpup/collections/' },
-  { label: 'Resume', href: '/resume.pdf' },
-]
-
-const educationData = [
-  { title: 'Software Engineering Career Course', subtitle: 'Block Code 2023' },
-  { title: 'EMT, Certification', subtitle: 'Palm Beach State College 2018' },
-  { title: 'Bachelor of Science, Information Technology', subtitle: 'FP Paul Cesare Bonilla, Cuba 2008' },
+  { label: 'Resume', href: '/resume' },
 ]
 
 const servicesData = [
@@ -37,9 +32,20 @@ const servicesData = [
 ]
 
 export default function About() {
+  const router = useRouter()
+
+  const handleNavigate = (href: string, e: React.MouseEvent) => {
+    if (href.startsWith('http') || href.startsWith('mailto:')) {
+      return
+    }
+    e.preventDefault()
+    router.push(href)
+  }
+
   const itemFontSizes = {
     default: '1rem',
     md: '.8rem',
+    lg: '1rem',
   }
   return (
     <div className={styles['c-about']}>
@@ -50,7 +56,7 @@ export default function About() {
 
         <div className={styles['c-about__main-bio']}>
           <p className={styles['c-about__main-bio-text']}>
-            I'm Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it's pixel-perfect
+            I&apos;m Adrian, a full-stack engineer with a passion for animations, accessibility, and performance. Whether it&apos;s pixel-perfect
             micro-interactions or serverless APIs, I partner with clients to push every project to new frontiers always putting quality and
             inclusivity first.
           </p>
@@ -60,7 +66,8 @@ export default function About() {
                 key={link.href}
                 href={link.href}
                 variant='underline'
-                fontSize={itemFontSizes}>
+                fontSize={itemFontSizes}
+                onClick={(e) => handleNavigate(link.href, e)}>
                 {link.label}
               </DrawButton>
             ))}

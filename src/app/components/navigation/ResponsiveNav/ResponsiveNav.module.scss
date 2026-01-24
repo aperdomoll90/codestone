@@ -43,7 +43,8 @@
     }
   }
 
-  &[data-route='about'] {
+  &[data-route='about'],
+  &[data-route='resume'] {
     .c-navigation__logo {
       display: block;
       position: absolute;
@@ -52,10 +53,13 @@
       color: var(--white);
       transition: filter 1s ease;
       opacity: 1;
-      animation: nav-hide linear;
-      animation-timeline: scroll(root block);
-      animation-range: 0% 10%;
-      animation-fill-mode: both;
+
+      @supports (animation-timeline: scroll()) {
+        animation: nav-hide linear;
+        animation-timeline: scroll(root block);
+        animation-range: 0% 10%;
+        animation-fill-mode: both;
+      }
     }
   }
 
@@ -71,10 +75,13 @@
       color: var(--charcoal);
       transition: filter 1s ease;
       opacity: 1;
-      animation: nav-hide linear;
-      animation-timeline: scroll(root block);
-      animation-range: 0% 10%;
-      animation-fill-mode: both;
+
+      @supports (animation-timeline: scroll()) {
+        animation: nav-hide linear;
+        animation-timeline: scroll(root block);
+        animation-range: 0% 10%;
+        animation-fill-mode: both;
+      }
     }
     .c-navigation__menu-item-link {
       font-weight: 500;
@@ -86,18 +93,21 @@
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .c-navigation {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0rem clamp(2rem, 1vw, 10rem);
     opacity: 1;
-    animation: nav-hide linear;
-    animation-timeline: scroll(root block);
-    animation-range: 0% 10%;
-    animation-fill-mode: both;
     pointer-events: auto;
+
+    @supports (animation-timeline: scroll()) {
+      animation: nav-hide linear;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 10%;
+      animation-fill-mode: both;
+    }
 
     &__logo {
       display: block;
@@ -138,7 +148,8 @@
       }
     }
 
-    &[data-route='about'] {
+    &[data-route='about'],
+    &[data-route='resume'] {
       & .c-navigation__logo {
         position: relative;
         top: auto;

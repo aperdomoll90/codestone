@@ -1,4 +1,4 @@
-# CodeStone - Project Context
+# Perdomo Studio - Project Context
 
 Portfolio website for Adrian Perdomo built with Next.js, TypeScript, and SCSS.
 

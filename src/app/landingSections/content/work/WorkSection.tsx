@@ -2,31 +2,34 @@
 import React from 'react'
 import styles from './WorkSection.module.scss'
 import { WorkCarousel, ProjectItem } from '@/app/components/workCarousel/WorkCarousel'
-import BubbleButton from '@/app/components/bubbleButton/BubbleButton'
+import { BubbleButton } from 'css-forge'
+import { useRouter } from 'next/navigation'
 
 const projectsRow1: ProjectItem[] = [
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
+  { id: 'css-forge-1', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
+  { id: 'csv-conductor-1', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-1', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'css-forge-2', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
+  { id: 'csv-conductor-2', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-2', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
 ]
 
 const projectsRow2: ProjectItem[] = [
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
-  { id: 'hiker', title: 'Hiker', image: '/carouselassets/hikerslide.png', href: '#' },
-  { id: 'dj', title: 'DJ', image: '/carouselassets/djslide.png', href: '#' },
+  { id: 'csv-conductor-3', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-3', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'css-forge-3', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
+  { id: 'csv-conductor-4', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
+  { id: 'point-focus-4', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'css-forge-4', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
 ]
 
 export const WorkSection = () => {
+  const router = useRouter()
+
+  const handleNavigate = () => {
+    router.push('/work')
+  }
+
   return (
     <section id="c-work" className={styles['c-work-section']}>
       <div className={styles['c-work-section__carousels']}>
@@ -37,6 +40,7 @@ export const WorkSection = () => {
         <BubbleButton
           label='More Work'
           href='/work'
+          onClick={handleNavigate}
           className={styles['c-work-section__button']}
           fontSize={{ default: '0.7rem', md: '1rem', mdx: '1.1rem', lg: '1.3rem' }}
           padding={{ default: '1rem', md: '2rem', mdx: '2.5rem' }}

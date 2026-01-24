@@ -2,7 +2,7 @@
 
 import React from 'react'
 import styles from './Footer.module.scss'
-import { DrawButton } from '@/app/components/drawButton/DrawButton'
+import { DrawButton } from 'css-forge'
 
 interface FontSizes {
   default?: string

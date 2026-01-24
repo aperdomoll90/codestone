@@ -1,0 +1,455 @@
+.c-resume {
+  width: 100%;
+  min-height: 100dvh;
+  position: relative;
+
+  &__hero {
+    background: var(--charcoal);
+    padding: 8rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 5;
+
+    &-logo {
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-40%);
+      width: auto;
+      height: 40dvh;
+      color: var(--gray300);
+      opacity: 0.3;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--gray200);
+      max-width: 40rem;
+    }
+
+    &-scroll {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gray300);
+      animation: scroll-indicator-bounce 1.5s ease-in-out infinite;
+
+      @supports (animation-timeline: scroll()) {
+        animation: scroll-indicator-fade linear forwards, scroll-indicator-bounce 1.5s ease-in-out infinite;
+        animation-timeline: scroll(root block), auto;
+        animation-range: 0% 15%, normal;
+      }
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 2rem 6rem;
+
+    --content-y-from: -25%;
+    --content-y-to: 0%;
+    --content-blur-from: 5px;
+
+    transform: translateY(var(--content-y-to));
+    filter: blur(0px);
+    opacity: 1;
+
+    @supports (animation-timeline: scroll()) {
+      transform: translateY(var(--content-y-from));
+      animation: resume-content-scroll linear forwards;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 20%;
+    }
+
+    &-experience,
+    &-education,
+    &-skills {
+      margin-bottom: 3rem;
+      padding-top: 1rem;
+
+      &::before {
+        content: attr(data-header);
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--charcoal);
+        letter-spacing: -0.02em;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--charcoal-transp);
+      }
+    }
+
+    &-experience {
+      &-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--gray100-transp);
+        --item-y-from: 1rem;
+        --item-y-to: 0;
+        opacity: 1;
+        transform: translateY(var(--item-y-to));
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(var(--item-y-from));
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 60%;
+        }
+
+        &::before {
+          content: attr(data-index);
+          font-size: 0.65rem;
+          color: var(--gray300);
+          margin-bottom: 0.5rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--charcoal);
+        }
+
+        > span {
+          font-size: 0.75rem;
+          color: var(--gray300);
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 0.8rem;
+          line-height: 1.6;
+          color: var(--gray400);
+        }
+      }
+
+      &-spacer {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--gray100-transp);
+        opacity: 1;
+        transform: translateY(0);
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(1rem);
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 60%;
+        }
+
+        > span {
+          font-size: 0.75rem;
+          font-style: italic;
+          color: var(--gray300);
+        }
+      }
+    }
+
+    &-education {
+      &-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--gray100-transp);
+        opacity: 1;
+        transform: translateY(0);
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(1rem);
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 70%;
+        }
+
+        h3 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: var(--charcoal);
+        }
+
+        > span {
+          font-size: 0.75rem;
+          color: var(--gray300);
+        }
+      }
+    }
+
+    &-skills {
+      &-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        opacity: 1;
+        transform: translateY(0);
+
+        @supports (animation-timeline: view()) {
+          opacity: 0;
+          transform: translateY(1rem);
+          animation: item-fade-in linear forwards;
+          animation-timeline: view();
+          animation-range: entry 10% entry 70%;
+        }
+
+        > span {
+          font-size: 0.8rem;
+          color: var(--charcoal);
+          background: var(--gray100);
+          padding: 0.5rem 1rem;
+          border-radius: 2rem;
+        }
+      }
+    }
+  }
+}
+
+// Small mobile
+@media (min-width: 400px) {
+  .c-resume {
+    &__hero {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__content {
+      &-experience,
+      &-education,
+      &-skills {
+        &::before {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+// Tablet
+@media (min-width: 800px) {
+  .c-resume {
+    &__hero {
+      padding: 10rem 4rem 5rem;
+      gap: 2rem;
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1rem;
+        max-width: 50%;
+      }
+    }
+
+    &__content {
+      padding: 4rem 4rem 6rem;
+      --content-y-from: -20%;
+      --content-blur-from: 10px;
+      animation-range: 0% 30%;
+
+      &-experience,
+      &-education,
+      &-skills {
+        &::before {
+          font-size: 1.8rem;
+        }
+      }
+
+      &-experience-item {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.5rem 1rem;
+
+        &::before {
+          width: 100%;
+        }
+
+        h3 {
+          font-size: 1.1rem;
+        }
+
+        > span {
+          margin-bottom: 0;
+        }
+
+        p {
+          width: 100%;
+        }
+      }
+
+      &-education-item {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 1rem;
+
+        h3 {
+          font-size: 1rem;
+        }
+      }
+
+      &-skills-grid > span {
+        font-size: 0.85rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+  }
+}
+
+// Desktop
+@media (min-width: 900px) {
+  .c-resume {
+    &__hero {
+      padding: 12rem 10% 6rem;
+
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        max-width: 40%;
+      }
+    }
+
+    &__content {
+      padding: 4rem 10% 6rem;
+      --content-y-from: -25%;
+      --content-blur-from: 10px;
+      animation-range: 0% 35%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+
+      &-experience {
+        grid-column: 1;
+        grid-row: 1 / 3;
+      }
+
+      &-education {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      &-skills {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      &-experience,
+      &-education,
+      &-skills {
+        &::before {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+// Large desktop
+@media (min-width: 1600px) {
+  .c-resume {
+    &__hero {
+      padding: 14rem 15% 7rem;
+
+      h1 {
+        font-size: 4.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__content {
+      padding: 4rem 15% 6rem;
+
+      &-experience,
+      &-education,
+      &-skills {
+        &::before {
+          font-size: 2.2rem;
+        }
+      }
+
+      &-experience-item {
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes resume-content-scroll {
+  from {
+    transform: translateY(var(--content-y-from));
+    filter: blur(var(--content-blur-from, 5px));
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(var(--content-y-to));
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes item-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--item-y-from, 1rem));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(var(--item-y-to, 0));
+  }
+}
+
+@keyframes scroll-indicator-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-indicator-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(0.5rem);
+  }
+}

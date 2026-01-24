@@ -1,10 +1,2 @@
-export interface Project {
-  id: string
-  name: string
-  location: string
-  services: string
-  year: string
-  image: string
-  href: string
-  isExternal?: boolean
-}
+// Re-export Project type from projects.ts for consistency
+export type { Project } from '../data/projects'

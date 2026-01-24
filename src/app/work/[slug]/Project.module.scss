@@ -33,39 +33,53 @@
       gap: 1rem;
     }
 
-    &-github {
-      position: absolute;
-      z-index: 5;
-      transform: translate(170%, 150%);
-    }
-    &-demo {
-      position: absolute;
-      z-index: 5;
-      transform: translate(220%, 60%);
-    }
-    &-github,
-    &-demo {
-      animation: project-button-animation linear forwards;
-      animation-timeline: scroll(root block);
-      animation-duration: 5s;
-      animation-range: 0% 20%;
-    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     padding: 4rem 2.5rem;
-    animation: project-content-animation linear forwards;
-    animation-timeline: scroll(root block);
-    animation-range: 0% 20%;
+    filter: blur(0px);
+    opacity: 1;
+
+    @supports (animation-timeline: scroll()) {
+      animation: project-content-animation linear forwards;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 20%;
+    }
+
+    &-media-wrapper {
+      position: relative;
+      flex: 0 0 100%;
+      margin-bottom: 2.5rem;
+    }
 
     &-image {
-      flex: 0 0 100%;
+      width: 100%;
       aspect-ratio: 11/9;
       object-fit: cover;
       border-radius: 0.5rem;
-      margin-bottom: 2.5rem;
+    }
+
+    &-video {
+      width: 100%;
+      aspect-ratio: 11/9;
+      object-fit: contain;
+      border-radius: 0.5rem;
+    }
+
+    &-image-buttons {
+      position: absolute;
+      padding: 0.75rem 1.25rem 1.2rem 1.7rem;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      gap: 1.5rem;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top-right-radius: 0.5rem;
     }
 
     &-info {
@@ -207,12 +221,6 @@
         }
       }
 
-      &-github {
-        transform: translate(450%, 40%);
-      }
-      &-demo {
-        transform: translate(460%, 10%);
-      }
     }
 
     &__content {
@@ -220,8 +228,12 @@
       padding: 4rem 10%;
       gap: 5%;
 
-      &-image {
+      &-media-wrapper {
         flex: 0 0 50%;
+      }
+
+      &-image,
+      &-video {
         aspect-ratio: 12/9;
       }
 
@@ -250,40 +262,32 @@
   }
 }
 
-// @media (min-width: 1600px) {
-//   .c-project {
-//     &__hero {
-//       padding: 12rem 15% 4rem;
+@media (min-width: 1600px) {
+  .c-project {
+    &__hero {
+      padding: 12rem 15% 4rem;
 
-//       &-title {
-//         font-size: 5rem;
-//       }
+      &-title {
+        font-size: 5rem;
+      }
 
-//       &-header {
-//         font-size: 0.75rem;
-//       }
+      &-header {
+        font-size: 0.75rem;
+      }
 
-//       &-info {
-//         font-size: 1rem;
-//       }
-//     }
+      &-info {
+        font-size: 1rem;
+      }
+    }
 
-//     &__content {
-//       padding: 4rem 15%;
+    &__content {
+      padding: 4rem 15%;
+      padding-top: 8rem;
 
-//       &-info-section p {
-//         font-size: 0.95rem;
-//       }
-//     }
-//   }
-// }
-
-@keyframes project-button-animation {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
+      &-info-section p {
+        font-size: 0.95rem;
+      }
+    }
   }
 }
 
