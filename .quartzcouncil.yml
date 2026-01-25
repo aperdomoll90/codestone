@@ -4,7 +4,8 @@
 version: 1
 
 limits:
-  max_comments: 5
+  # max_comments: 0 means no limit (report all violations)
+  max_comments: 0
   default_severity: warning
 
 rules:
