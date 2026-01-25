@@ -1,0 +1,61 @@
+// =============================================================================
+// TEST SCSS FOR CHALCEDONY AGENT
+// This file contains INTENTIONAL violations of repo conventions.
+// =============================================================================
+
+// VIOLATION 1: Class name without BEM prefix (should be .c-test-chalcedony)
+.testContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: var(--background);
+
+  // VIOLATION 2: Nested selector without & ampersand
+  // Should be: &__heading or &-heading
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  // VIOLATION 3: More nesting without &
+  .btn {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}
+
+// VIOLATION 4: State class instead of using data-* selector
+// Should be: [data-open="true"] or &[data-open="true"]
+.isOpen {
+  background: var(--accent);
+}
+
+.isClosed {
+  background: var(--muted);
+}
+
+// VIOLATION 5: Class name doesn't follow BEM element pattern
+.content {
+  padding: 1rem;
+
+  // VIOLATION 6: State class for active instead of data-active selector
+  &.active {
+    border: 2px solid var(--accent);
+  }
+}
+
+// CORRECT PATTERN (for comparison)
+.c-test-chalcedony {
+  &__footer {
+    margin-top: 1rem;
+    padding: 0.5rem;
+
+    &[data-visible="true"] {
+      display: block;
+    }
+
+    &[data-visible="false"] {
+      display: none;
+    }
+  }
+}
