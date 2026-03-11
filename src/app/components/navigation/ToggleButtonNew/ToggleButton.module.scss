@@ -66,7 +66,7 @@
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .c-toggle-button {
     display: none;
   }

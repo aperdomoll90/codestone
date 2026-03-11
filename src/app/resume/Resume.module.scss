@@ -5,7 +5,7 @@
 
   &__hero {
     background: var(--charcoal);
-    padding: 8rem 2rem 4rem;
+    padding: 8rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -14,11 +14,11 @@
 
     &-logo {
       position: absolute;
-      right: 10%;
+      right: 0%;
       top: 50%;
-      transform: translateY(-40%);
+      transform: translateY(-45%);
       width: auto;
-      height: 40dvh;
+      height: 80%;
       color: var(--gray300);
       opacity: 0.3;
     }
@@ -47,9 +47,13 @@
       animation: scroll-indicator-bounce 1.5s ease-in-out infinite;
 
       @supports (animation-timeline: scroll()) {
-        animation: scroll-indicator-fade linear forwards, scroll-indicator-bounce 1.5s ease-in-out infinite;
+        animation:
+          scroll-indicator-fade linear forwards,
+          scroll-indicator-bounce 1.5s ease-in-out infinite;
         animation-timeline: scroll(root block), auto;
-        animation-range: 0% 15%, normal;
+        animation-range:
+          0% 15%,
+          normal;
       }
 
       svg {
@@ -254,8 +258,12 @@
 @media (min-width: 800px) {
   .c-resume {
     &__hero {
-      padding: 10rem 4rem 5rem;
+      padding: 10rem 4rem 7rem;
       gap: 2rem;
+
+      &-logo {
+        right: 5%;
+      }
 
       h1 {
         font-size: 3rem;
@@ -377,7 +385,11 @@
 @media (min-width: 1600px) {
   .c-resume {
     &__hero {
-      padding: 14rem 15% 7rem;
+      padding: 12% 15%;
+
+      &-logo {
+        height: 70%;
+      }
 
       h1 {
         font-size: 4.5rem;
@@ -446,7 +458,8 @@
 }
 
 @keyframes scroll-indicator-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
   50% {

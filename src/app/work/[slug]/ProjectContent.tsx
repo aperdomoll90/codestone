@@ -15,8 +15,8 @@ export default function ProjectContent({ project }: { project: ProjectDetail | u
           <>
             <h1 className={styles['c-project__hero-title']}>{project.name}</h1>
             <div className={styles['c-project__hero-header']}>
-              {['Role/Service', 'Location', 'Year'].map((header, index) => (
-                <span key={index}>{header}</span>
+              {['Role/Service', 'Location', 'Year'].map((header) => (
+                <span key={header}>{header}</span>
               ))}
             </div>
             <div className={styles['c-project__hero-info']}>
@@ -65,18 +65,18 @@ export default function ProjectContent({ project }: { project: ProjectDetail | u
 
             <div data-title='Key Features & Highlights' className={styles['c-project__content-info-section']}>
               <ul className={styles['c-project__list']}>
-                {project.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
+                {project.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
                 ))}
               </ul>
             </div>
 
             <div data-title='Tech Stack & Your Role' className={styles['c-project__content-info-section']}>
-              {project.techStack.map((stack, index) => (
-                <div key={index} data-header={stack.category} className={styles['c-project__content-info-section-tech']}>
+              {project.techStack.map((stack) => (
+                <div key={stack.category} data-header={stack.category} className={styles['c-project__content-info-section-tech']}>
                   <ul className={styles['c-project__list']}>
-                    {stack.items.map((item, i) => (
-                      <li key={i}>{item}</li>
+                    {stack.items.map((item) => (
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </div>

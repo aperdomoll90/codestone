@@ -15,15 +15,15 @@ src/app/
 ├── components/           # Reusable components
 │   ├── bubbleButton/     # Animated button with magnetic hover effect
 │   ├── curvedSection/    # Reusable section wrapper with curved bottom
-│   ├── loadingScreen/    # Route transition loading overlay
-│   ├── magnetize/        # Magnetic cursor effect wrapper
+│   ├── drawer/           # Side drawer component
+│   ├── marquee/          # Scrolling marquee component
 │   ├── navigation/       # ResponsiveNav, Footer
 │   └── rotatingGlobe/    # Animated CSS globe (used in loading, footer, about)
 ├── landingSections/      # Homepage sections (hero, content, contact, ribbon)
 ├── work/                 # /work route - project listing
 │   └── [slug]/           # /work/[slug] - individual project pages
 ├── about/                # /about route - about page
-├── layout.tsx            # Root layout with nav, footer, loading screen
+├── layout.tsx            # Root layout with ViewTransitions, nav, footer
 └── page.tsx              # Homepage
 ```
 
@@ -50,11 +50,11 @@ Props:
 - `className` - Pass to override default absolute positioning
 - `backgroundColor`, `backgroundHoverColor` - CSS variable names (e.g., '--darkLavender')
 
-### LoadingScreen
-Full-screen loading overlay shown during route transitions. Uses RotatingGlobe animation.
+### Page Transitions
+Route transitions use `next-view-transitions` with CSS-driven animations (no JS DOM manipulation). `ViewTransitions` wraps `<html>` in layout.tsx. All navigation uses `useTransitionRouter()` from `next-view-transitions` instead of `useRouter()` from `next/navigation`. CSS keyframes in `globals.scss` handle `::view-transition-old(root)` and `::view-transition-new(root)`.
 
 ### RotatingGlobe
-Pure CSS animated globe with rotating longitude/latitude lines.
+Pure CSS animated globe with rotating longitude/latitude lines. Used in footer and about page.
 
 Props:
 - `className` - Additional classes

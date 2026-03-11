@@ -114,7 +114,7 @@
       top: 0;
       right: 0;
       bottom: 0;
-      width: 60vw;
+      width: 60dvw;
       padding: 4rem 2rem 2rem;
       transform: translateX(100%);
     }
@@ -126,7 +126,7 @@
       top: 0;
       left: 0;
       bottom: 0;
-      width: 60vw;
+      width: 60dvw;
       padding: 4rem 2rem 2rem;
       transform: translateX(-100%);
     }
@@ -164,7 +164,7 @@
     &[data-anchor='right'],
     &[data-anchor='left'] {
       .c-drawer__content {
-        width: 40vw;
+        width: 40dvw;
         max-width: 500px;
       }
     }

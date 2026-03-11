@@ -2,12 +2,16 @@
 import React from 'react'
 import styles from './AboutSection.module.scss'
 import { BubbleButton } from 'css-forge'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 export const AboutSection = () => {
-  const router = useRouter()
+  const router = useTransitionRouter()
 
   const handleNavigateAbout = () => {
     router.push('/about')
+  }
+
+  const handleNavigateResume = () => {
+    router.push('/resume')
   }
 
   return (
@@ -24,7 +28,6 @@ export const AboutSection = () => {
       <div className={`${styles['c-about-section_container']}`}>
         <BubbleButton
           label='About Me'
-          href='/about'
           onClick={handleNavigateAbout}
           fontSize={{
             default: '1.2rem',
@@ -64,8 +67,7 @@ export const AboutSection = () => {
         />
         <BubbleButton
           label='Resume'
-          href='/resume'
-          onClick={() => router.push('/resume')}
+          onClick={handleNavigateResume}
           fontSize={{
             default: '1.2rem',
             md: '1.5rem',

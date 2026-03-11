@@ -47,6 +47,7 @@ export const Drawer: React.FC<DrawerProps> = ({
       <div className={`${styles['c-drawer__content']} ${className}`} {...touchHandlers}>
         {!hideCloseButton && (
           <button
+            type="button"
             className={styles['c-drawer__close']}
             onClick={onClose}
             aria-label="Close drawer"

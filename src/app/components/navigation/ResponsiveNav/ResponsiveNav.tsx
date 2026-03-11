@@ -1,10 +1,12 @@
 'use client'
 import { useRef, useState, useMemo, useEffect } from 'react'
 import styles from './ResponsiveNav.module.scss'
-import { ToggleButton } from '../toggleButtonNew'
+import { ToggleButton } from '../ToggleButtonNew'
 import { DrawButton, useMagnetize } from 'css-forge'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { Drawer } from '@/app/components/drawer/Drawer'
+import { PerdomoLogoIcon } from '@/app/constants/icons'
 
 export interface menuItemsArrayPropsTypes {
   label?: string
@@ -57,7 +59,7 @@ const NavItemComponent = ({ item, onNavigate }: { item: menuItemsArrayPropsTypes
 export const ResponsiveNav = () => {
   const [visible, setVisible] = useState(false)
   const pathname = usePathname()
-  const router = useRouter()
+  const router = useTransitionRouter()
 
   const routeName = useMemo(() => {
     if (pathname === '/') return 'home'
@@ -88,7 +90,7 @@ export const ResponsiveNav = () => {
   return (
     <section className={`${styles['c-navigation']}`} data-visible={visible} data-route={routeName}>
       <ToggleButton yPosition={routeName === 'home' ? '4rem' : '2rem'} active={visible} setActive={setVisible} />
-      <p className={`${styles['c-navigation__logo']}`}>© Code by Adrian</p>
+      <p className={`${styles['c-navigation__logo']}`}><PerdomoLogoIcon /> Code by Adrian</p>
       <Drawer open={visible} onClose={() => setVisible(false)} anchor="right" hideCloseButton wrapperClassName={styles['c-navigation__drawer']} className={styles['c-navigation__menu']}>
         {filteredNavItems.map((item) => (
           <NavItemComponent item={item} key={item.link} onNavigate={handleNavigate} />

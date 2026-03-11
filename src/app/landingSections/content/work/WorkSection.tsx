@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './WorkSection.module.scss'
 import { WorkCarousel, ProjectItem } from '@/app/components/workCarousel/WorkCarousel'
 import { BubbleButton } from 'css-forge'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 
 const projectsRow1: ProjectItem[] = [
   { id: 'css-forge-1', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
@@ -24,7 +24,7 @@ const projectsRow2: ProjectItem[] = [
 ]
 
 export const WorkSection = () => {
-  const router = useRouter()
+  const router = useTransitionRouter()
 
   const handleNavigate = () => {
     router.push('/work')
@@ -39,7 +39,6 @@ export const WorkSection = () => {
 
         <BubbleButton
           label='More Work'
-          href='/work'
           onClick={handleNavigate}
           className={styles['c-work-section__button']}
           fontSize={{ default: '0.7rem', md: '1rem', mdx: '1.1rem', lg: '1.3rem' }}
