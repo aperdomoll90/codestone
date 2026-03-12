@@ -29,12 +29,12 @@ const Ribbon: React.FC<RibbonProps> = ({ className }) => {
           fill='#1C1D20'
         />
         <text x={XPosition} y='35' fill='white' fontSize='16' fontFamily='Albert Sans, sans-serif' fontWeight='200'>
-          Located
+          Shipping
           <tspan x={XPosition} dy='20'>
-            in
+            Global
           </tspan>
           <tspan x={XPosition} dy='20'>
-            Florida, USA
+            Solutions
           </tspan>
         </text>
       </svg>
