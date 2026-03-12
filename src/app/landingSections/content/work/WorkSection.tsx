@@ -6,9 +6,11 @@ import { BubbleButton } from 'css-forge'
 import { useTransitionRouter } from 'next-view-transitions'
 
 const projectsRow1: ProjectItem[] = [
+  { id: 'stop-1', title: 'STOP', image: '/stop.png', href: '/work/stop' },
   { id: 'css-forge-1', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
   { id: 'csv-conductor-1', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
   { id: 'point-focus-1', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'stop-2', title: 'STOP', image: '/stop.png', href: '/work/stop' },
   { id: 'css-forge-2', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
   { id: 'csv-conductor-2', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
   { id: 'point-focus-2', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
@@ -17,9 +19,11 @@ const projectsRow1: ProjectItem[] = [
 const projectsRow2: ProjectItem[] = [
   { id: 'csv-conductor-3', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
   { id: 'point-focus-3', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'stop-3', title: 'STOP', image: '/stop.png', href: '/work/stop' },
   { id: 'css-forge-3', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
   { id: 'csv-conductor-4', title: 'csv-conductor', image: '/csvconductor.png', href: 'https://www.npmjs.com/package/csv-conductor' },
   { id: 'point-focus-4', title: 'point-focus', image: '/ant.png', href: 'https://www.npmjs.com/package/point-focus' },
+  { id: 'stop-4', title: 'STOP', image: '/stop.png', href: '/work/stop' },
   { id: 'css-forge-4', title: 'css-forge', image: '/cssforge.png', href: 'https://www.npmjs.com/package/css-forge' },
 ]
 

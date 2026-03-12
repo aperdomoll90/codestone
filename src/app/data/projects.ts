@@ -121,6 +121,92 @@ export const projectsData: Record<string, ProjectDetail> = {
       },
     ],
   },
+  stop: {
+    id: 'stop',
+    name: 'Sea Turtle Oversight Protection',
+    location: 'Fort Lauderdale, FL',
+    services: 'Design & Development',
+    year: '2024',
+    image: '/stop.png',
+    liveUrl: 'https://sea-turtle-op-7f429.web.app/',
+    overview:
+      'Designed and developed the web platform for Sea Turtle Oversight Protection (STOP), a non-profit conservation organization in Broward County, Florida dedicated to rescuing disoriented sea turtle hatchlings. The platform serves as the digital face of the organization, featuring a 3D interactive sea turtle model, educational resources about coastal lighting impacts on marine life, and integrated donation and volunteer recruitment flows.',
+    features: [
+      '3D interactive sea turtle model rendered in the browser',
+      'Educational content on coastal lighting and hatchling disorientation',
+      'Volunteer recruitment and membership registration flows',
+      'Donation integration via Square payment links',
+      'Name-a-hatchling program with e-commerce through Square',
+      'Guided eco-tour booking system (Turtle Treks)',
+      'Responsive dark-themed design reflecting the nighttime conservation work',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['Next.js', 'TypeScript', 'Three.js', 'SCSS Modules'],
+      },
+      {
+        category: 'Infrastructure',
+        items: ['Firebase Hosting', 'Square API', 'Responsive Design'],
+      },
+    ],
+  },
+  'starbrite-rebate': {
+    id: 'starbrite-rebate',
+    name: 'StarPriority',
+    location: 'Fort Lauderdale, FL',
+    services: 'Full-Stack Development',
+    year: '2023',
+    image: '/starbrite-rebate.png',
+    overview:
+      'Built a full-stack rebate submission platform for Star brite, enabling customers to submit product rebates with file uploads, reCAPTCHA verification, and automated email confirmations. Includes a secure admin portal for reviewing submissions, managing rebate status, and exporting data to CSV for reporting.',
+    features: [
+      'Customer rebate submission flow with multi-step form',
+      'Image and file upload with AWS S3 storage',
+      'reCAPTCHA integration for spam prevention',
+      'Automated email confirmations to customers',
+      'Admin portal for reviewing and managing submissions',
+      'CSV export for data reporting and analysis',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['Next.js', 'TypeScript', 'Node.js', 'SCSS Modules'],
+      },
+      {
+        category: 'Infrastructure',
+        items: ['AWS S3', 'AWS SES', 'reCAPTCHA', 'PostgreSQL'],
+      },
+    ],
+  },
+  'starbrite-locator': {
+    id: 'starbrite-locator',
+    name: 'StarLocator',
+    location: 'Fort Lauderdale, FL',
+    services: 'Full-Stack Development',
+    year: '2023',
+    image: '/starbrite-locator.png',
+    overview:
+      'Developed a product-based store locator for the Star brite Shopify ecosystem, allowing customers to find nearby retailers carrying specific products. Store data is uploaded via CSV into a database, and results are displayed on an interactive map. Built as a standalone React application embedded into the Shopify storefront.',
+    features: [
+      'Location-based search with configurable radius',
+      'Product-specific store filtering',
+      'Interactive map with store pins and details',
+      'CSV-based store data import and management',
+      'Embedded into Shopify storefront seamlessly',
+      'Responsive design for mobile and desktop',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['React', 'TypeScript', 'Google Maps API', 'SCSS Modules'],
+      },
+      {
+        category: 'Infrastructure',
+        items: ['Shopify Integration', 'PostgreSQL', 'Node.js API', 'CSV Import Pipeline'],
+      },
+    ],
+  },
   rockval: {
     id: 'rockval',
     name: 'RockVal',
@@ -180,6 +266,37 @@ export const npmProjects: Project[] = [
     href: '/work/point-focus',
     year: '2020',
     image: '/ant.png',
+  },
+]
+
+// Web projects for the work grid
+export const webProjects: Project[] = [
+  {
+    id: 'stop',
+    name: 'Sea Turtle Oversight Protection',
+    location: 'Fort Lauderdale, FL',
+    services: 'Design & Development',
+    href: '/work/stop',
+    year: '2024',
+    image: '/stop.png',
+  },
+  {
+    id: 'starbrite-rebate',
+    name: 'StarPriority',
+    location: 'Fort Lauderdale, FL',
+    services: 'Full-Stack Development',
+    href: '/work/starbrite-rebate',
+    year: '2023',
+    image: '/starbrite-rebate.png',
+  },
+  {
+    id: 'starbrite-locator',
+    name: 'StarLocator',
+    location: 'Fort Lauderdale, FL',
+    services: 'Full-Stack Development',
+    href: '/work/starbrite-locator',
+    year: '2023',
+    image: '/starbrite-locator.png',
   },
 ]
 

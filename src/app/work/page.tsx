@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styles from './Work.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { ProjectGrid } from './ProjectGrid'
-import { npmProjects, mobileProjects } from '../data/projects'
+import { npmProjects, mobileProjects, webProjects } from '../data/projects'
 import { ListViewIcon, GridViewIcon } from '@/app/constants/icons'
 
 export default function Work() {
@@ -38,6 +38,8 @@ export default function Work() {
           </button>
         </div>
       </section>
+      <ProjectGrid headers={['Web Project', 'Location', 'Services', 'Year']} projects={webProjects} viewMode={viewMode} gridLayout='banner' />
+
       <ProjectGrid headers={['Mobile Project', 'Platform', 'Description', 'Year']} projects={mobileProjects} viewMode={viewMode} gridLayout='banner' />
 
       <ProjectGrid
