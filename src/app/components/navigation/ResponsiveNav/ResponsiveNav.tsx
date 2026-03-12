@@ -79,11 +79,11 @@ export const ResponsiveNav = () => {
   }, [pathname])
 
   const handleNavigate = (href: string, e: React.MouseEvent) => {
-    // Skip loading for hash links on the same page
     if (href.startsWith('/#') || href.startsWith('http') || href.startsWith('mailto:')) {
       return
     }
     e.preventDefault()
+    setVisible(false)
     router.push(href)
   }
 

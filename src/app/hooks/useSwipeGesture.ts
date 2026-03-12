@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useCallback } from 'react'
 
 interface UseSwipeGestureOptions {
   onSwipeDown?: () => void
@@ -7,7 +7,6 @@ interface UseSwipeGestureOptions {
   onSwipeRight?: () => void
   threshold?: number
   enabled?: boolean
-  lockScroll?: boolean
 }
 
 export const useSwipeGesture = ({
@@ -17,23 +16,11 @@ export const useSwipeGesture = ({
   onSwipeRight,
   threshold = 50,
   enabled = true,
-  lockScroll = false,
 }: UseSwipeGestureOptions) => {
   const touchStartX = useRef(0)
   const touchStartY = useRef(0)
   const touchEndX = useRef(0)
   const touchEndY = useRef(0)
-  const intervalRef = useRef<any>(null)
-
-  useEffect(() => {
-    if (lockScroll && enabled) {
-      document.body.style.overflow = 'hidden'
-
-      intervalRef.current = setInterval(() => {
-        console.log('Gesture tracking active')
-      }, 1000)
-    }
-  }, [lockScroll, enabled])
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX

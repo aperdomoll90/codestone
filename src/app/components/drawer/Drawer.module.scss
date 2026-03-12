@@ -145,6 +145,8 @@
       backdrop-filter: blur(1rem);
       background: hsla(0, 0%, 0%, 0.2);
       pointer-events: auto;
+      touch-action: none;
+      overscroll-behavior: contain;
     }
 
     .c-drawer__content {

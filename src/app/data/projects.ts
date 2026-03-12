@@ -206,26 +206,3 @@ export function getAllProjectSlugs(): string[] {
   return Object.keys(projectsData)
 }
 
-export function getProjectsByCategory(category: any): Project[] {
-  const allProjects = [...npmProjects, ...mobileProjects]
-  return allProjects.filter(p => p.services.includes(category))
-}
-
-export function transformProjectData(data: any): ProjectDetail {
-  return {
-    id: data.id,
-    name: data.name,
-    location: data.location,
-    services: data.services,
-    year: data.year,
-    image: data.image,
-    overview: data.description,
-    features: data.features.split(','),
-    techStack: data.stack
-  }
-}
-
-export function getProjectFeatureCount(slug: string): number {
-  const project = projectsData[slug]
-  return project.features.length
-}
