@@ -1,10 +1,10 @@
 .c-about {
   width: 100%;
-  min-height: 100dvh;
+  min-height: 110svh;
   position: relative;
 
   &__main {
-    height: 100dvh;
+    min-height: 100svh;
     background: var(--gray100) url('/headshot.png') no-repeat center center;
     background-size: cover;
     padding: 6rem 2rem 3rem;
@@ -250,7 +250,7 @@
 @media (min-width: 900px) {
   .c-about {
     &__main {
-      height: 100dvh;
+      min-height: 100svh;
       padding: 10rem 10% 7%;
 
       &-hero {

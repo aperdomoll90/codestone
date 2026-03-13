@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 import Image from 'next/image'
 import styles from './Hero.module.scss'
 import { Ribbon } from '@/app/components/ribbon/Ribbon'

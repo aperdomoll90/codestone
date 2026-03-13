@@ -1,0 +1,408 @@
+// ──────────────────────────────────────────────
+// Bento grid layout
+//
+// Desktop (14 cols × 8 rows):
+//   "a a a a b b b b c c c f f f"
+//   "a a a a b b b b c c c f f f"
+//   "a a a a e e e e c c c f f f"
+//   "a a a a e e e e i i i i i i"
+//   "d d h h e e e e i i i i i i"
+//   "d d h h e e e e k k k k k k"
+//   "l l j j j j j j k k k k k k"
+//   "l l j j j j j j k k k k k k"
+//
+// Mobile (4 cols × 18 rows):
+//   "a a a a"  1       "j j j j"  13
+//   "a a a a"  2       "h h k k"  14
+//   "a a a a"  3       "h h k k"  15
+//   "b b c c"  4       "l l k k"  16
+//   "b b c c"  5       "l l g g"  17
+//   "d d c c"  6       "l l g g"  18
+//   "d d f f"  7
+//   "i i i i"  8
+//   "e e e e"  9
+//   "e e e e"  10
+//   "e e e e"  11
+//   "e e e e"  12
+// ──────────────────────────────────────────────
+
+.c-bento-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(18, 6rem);
+  gap: 0.75rem;
+  padding: 0 1rem;
+
+  &__card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    text-decoration: none;
+
+    img,
+    video {
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+
+      &[data-playback='hover'] {
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    &:hover video[data-playback='hover'] {
+      opacity: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 60%);
+      transition: background 0.4s ease;
+      z-index: 1;
+    }
+
+    &:hover {
+      img,
+      video {
+        transform: scale(1.04);
+      }
+
+      &::after {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 70%);
+      }
+
+      .c-bento-grid__button {
+        opacity: 1;
+      }
+    }
+
+    // Mobile grid areas — full variant (4 cols × 18 rows)
+    &:nth-child(1) {
+      grid-area: 1 / 1 / 4 / 5;
+    } // a — STOP (4×3)
+    &:nth-child(2) {
+      grid-area: 4 / 1 / 6 / 3;
+    } // b — css-forge (2×2)
+    &:nth-child(3) {
+      grid-area: 4 / 3 / 7 / 5;
+    } // c — csv-conductor (2×3)
+    &:nth-child(4) {
+      grid-area: 6 / 1 / 8 / 3;
+    } // d — StarLocator (2×2)
+    &:nth-child(5) {
+      grid-area: 9 / 1 / 13 / 5;
+    } // e — StarPriority (4×4)
+    &:nth-child(6) {
+      grid-area: 7 / 3 / 8 / 5;
+    } // f — RockVal (2×1)
+    &:nth-child(7) {
+      grid-area: 14 / 1 / 16 / 3;
+    } // h — css-forge repeat (2×2)
+    &:nth-child(8) {
+      grid-area: 8 / 1 / 9 / 5;
+    } // i — point-focus (4×1)
+    &:nth-child(9) {
+      grid-area: 13 / 1 / 14 / 5;
+    } // j — RockVal repeat (4×1)
+    &:nth-child(10) {
+      grid-area: 14 / 3 / 17 / 5;
+    } // k — point-focus repeat (2×3)
+    &:nth-child(11) {
+      grid-area: 16 / 1 / 19 / 3;
+    } // l — StarLocator repeat (2×3)
+    &:nth-child(12) {
+      grid-area: 17 / 3 / 19 / 5;
+    } // g — STOP repeat (2×2, mobile only)
+  }
+
+  // ── Compact variant (homepage, 4 cols × 13 rows) ──
+  &[data-variant='compact'] {
+    grid-template-rows: repeat(13, 6rem);
+
+    .c-bento-grid__card {
+      &:nth-child(5) {
+        grid-area: 10 / 1 / 14 / 5;
+      }
+      &:nth-child(7) {
+        grid-area: 8 / 1 / 10 / 3;
+      }
+      &:nth-child(8) {
+        grid-area: 8 / 3 / 10 / 5;
+      }
+    }
+  }
+
+  &__info {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+
+    &-role {
+      font-size: 0.55rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    &-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    &-desc {
+      font-size: 0.6rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.3;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    aspect-ratio: 1;
+    background: var(--charcoal);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 50%;
+    text-decoration: none;
+    opacity: 0;
+    overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      scale 0.2s ease-in-out;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 305%;
+      background: radial-gradient(circle, var(--darkLavender) 32%, transparent 0%);
+      background-size: 100% 100%;
+      background-position: center bottom;
+      z-index: -1;
+      transform: translateY(0);
+      transition: transform 0.4s ease;
+    }
+
+    &:hover::before {
+      transform: translateY(-34%);
+    }
+  }
+}
+
+// ── Small mobile ──
+@media (min-width: 400px) {
+  .c-bento-grid {
+    gap: 0.85rem;
+    grid-template-rows: repeat(18, 7rem);
+    padding: 0 1.25rem;
+
+    &__info-title {
+      font-size: 1.25rem;
+    }
+
+    &__info-role {
+      font-size: 0.6rem;
+    }
+
+    &__info-desc {
+      font-size: 0.65rem;
+    }
+
+    &[data-variant='compact'] {
+      grid-template-rows: repeat(13, 7rem);
+    }
+  }
+}
+
+// ── Tablet — switch to full 14-col bento ──
+@media (min-width: 800px) {
+  .c-bento-grid {
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(8, 6rem);
+    gap: 0.75rem;
+    padding: 0 2rem;
+
+    &__card {
+      video[data-playback='hover'] {
+        opacity: 0;
+      }
+
+      // a — STOP (4col × 4row)
+      &:nth-child(1) {
+        grid-area: 1 / 1 / 5 / 5;
+      }
+      // b — csv-conductor (4col × 2row)
+      &:nth-child(2) {
+        grid-area: 1 / 5 / 3 / 9;
+      }
+      // c — css-forge (3col × 3row)
+      &:nth-child(3) {
+        grid-area: 1 / 9 / 4 / 12;
+      }
+      // d — StarLocator (2col × 2row)
+      &:nth-child(4) {
+        grid-area: 5 / 1 / 7 / 3;
+      }
+      // e — StarPriority (4col × 4row)
+      &:nth-child(5) {
+        grid-area: 3 / 5 / 7 / 9;
+      }
+      // f — RockVal (3col × 3row)
+      &:nth-child(6) {
+        grid-area: 1 / 12 / 4 / 15;
+      }
+      // h — css-forge repeat (2col × 2row)
+      &:nth-child(7) {
+        grid-area: 5 / 3 / 7 / 5;
+      }
+      // i — point-focus (6col × 2row)
+      &:nth-child(8) {
+        grid-area: 4 / 9 / 6 / 15;
+      }
+      // j — RockVal repeat (6col × 2row)
+      &:nth-child(9) {
+        grid-area: 7 / 3 / 9 / 9;
+      }
+      // k — point-focus repeat (6col × 3row)
+      &:nth-child(10) {
+        grid-area: 6 / 9 / 9 / 15;
+      }
+      // l — StarLocator repeat (2col × 2row)
+      &:nth-child(11) {
+        grid-area: 7 / 1 / 9 / 3;
+      }
+      // g — STOP repeat (hidden on desktop)
+      &:nth-child(12) {
+        display: none;
+      }
+    }
+
+    &__info {
+      bottom: 1rem;
+      left: 1rem;
+    }
+
+    &__info-title {
+      font-size: 1.25rem;
+    }
+
+    &[data-variant='compact'] {
+      grid-template-rows: repeat(6, 6rem);
+
+      .c-bento-grid__card {
+        &:nth-child(3) {
+          grid-area: 1 / 9 / 5 / 12;
+        }
+        &:nth-child(5) {
+          grid-area: 3 / 5 / 7 / 9;
+        }
+        &:nth-child(6) {
+          grid-area: 1 / 12 / 5 / 15;
+        }
+        &:nth-child(7) {
+          grid-area: 5 / 3 / 7 / 5;
+        }
+        &:nth-child(8) {
+          grid-area: 5 / 9 / 7 / 15;
+        }
+      }
+    }
+  }
+}
+
+// ── Desktop ──
+@media (min-width: 900px) {
+  .c-bento-grid {
+    grid-template-rows: repeat(8, 7rem);
+    gap: 1rem;
+    padding: 0 3rem;
+
+    &__card {
+      border-radius: 1rem;
+    }
+
+    &__info-title {
+      font-size: 1.5rem;
+    }
+
+    &__info-role {
+      font-size: 0.65rem;
+    }
+
+    &__info-desc {
+      font-size: 0.7rem;
+    }
+
+    &__button {
+      padding: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    &[data-variant='compact'] {
+      grid-template-rows: repeat(6, 7rem);
+    }
+  }
+}
+
+// ── Large desktop ──
+@media (min-width: 1600px) {
+  .c-bento-grid {
+    grid-template-rows: repeat(8, 8rem);
+    gap: 1.25rem;
+    padding: 0 4rem;
+
+    &__info {
+      bottom: 1.25rem;
+      left: 1.25rem;
+    }
+
+    &__info-title {
+      font-size: 1.75rem;
+    }
+
+    &__info-desc {
+      font-size: 0.75rem;
+    }
+
+    &__button {
+      padding: 1.75rem;
+      font-size: 0.9rem;
+    }
+
+    &[data-variant='compact'] {
+      grid-template-rows: repeat(6, 8rem);
+    }
+  }
+}

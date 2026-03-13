@@ -3,6 +3,10 @@
   padding-top: 6rem;
   margin-bottom: 3rem;
 
+  &__bento {
+    padding: 2rem 0 !important;
+  }
+
   &__header {
     display: flex;
     flex-direction: column;

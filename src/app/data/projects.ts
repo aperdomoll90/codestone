@@ -67,7 +67,7 @@ export const projectsData: Record<string, ProjectDetail> = {
     location: 'npm',
     services: 'CSV Parser & Generator',
     year: '2024',
-    image: '/csvconductor.png',
+    image: '/csvConductorStatic.png',
     githubUrl: 'https://github.com/aperdomoll90/csv-conductor',
     npmUrl: 'https://www.npmjs.com/package/csv-conductor',
     overview:
@@ -157,7 +157,7 @@ export const projectsData: Record<string, ProjectDetail> = {
     location: 'Fort Lauderdale, FL',
     services: 'Full-Stack Development',
     year: '2023',
-    image: '/starbrite-rebate.png',
+    image: '/staticRebate.png',
     overview:
       'Built a full-stack rebate submission platform for Star brite, enabling customers to submit product rebates with file uploads, reCAPTCHA verification, and automated email confirmations. Includes a secure admin portal for reviewing submissions, managing rebate status, and exporting data to CSV for reporting.',
     features: [
@@ -185,7 +185,7 @@ export const projectsData: Record<string, ProjectDetail> = {
     location: 'Fort Lauderdale, FL',
     services: 'Full-Stack Development',
     year: '2023',
-    image: '/starbrite-locator.png',
+    image: '/starLocator.png',
     overview:
       'Developed a product-based store locator for the Star brite Shopify ecosystem, allowing customers to find nearby retailers carrying specific products. Store data is uploaded via CSV into a database, and results are displayed on an interactive map. Built as a standalone React application embedded into the Shopify storefront.',
     features: [
@@ -204,6 +204,38 @@ export const projectsData: Record<string, ProjectDetail> = {
       {
         category: 'Infrastructure',
         items: ['Shopify Integration', 'PostgreSQL', 'Node.js API', 'CSV Import Pipeline'],
+      },
+    ],
+  },
+  'quartz-council': {
+    id: 'quartz-council',
+    name: 'QuartzCouncil',
+    location: 'GitHub App',
+    services: 'AI Code Review Agent',
+    year: '2025',
+    image: '/quartzStatic.png',
+    video: '/quartsCouncilVideo.mp4',
+    githubUrl: 'https://github.com/aperdomoll90/quartz-council',
+    overview:
+      'An opt-in, on-demand AI pull request reviewer triggered by /quartz review commands on GitHub PRs. Uses a multi-agent "review council" architecture where specialized reviewer agents analyze code in parallel, then a moderator deduplicates and publishes high-signal inline comments and a summary. Deployed on AWS Lambda with SQS for async processing and DynamoDB for idempotency.',
+    features: [
+      'Multi-agent review council with specialized reviewers running in parallel',
+      'Amethyst agent for TypeScript type safety (unsafe casts, missing null guards, any misuse)',
+      'Citrine agent for React/Next.js performance and architecture patterns',
+      'Chalcedony agent for repo-specific conventions via .quartzcouncil.yml config',
+      'Quartz moderator for deduplication, comment limiting, and summary generation',
+      'Inline comments snapped to valid diff lines with severity levels',
+      'Quality controls: hedging filter, false positive detection, Jaccard deduplication',
+      'Rate limiting, idempotency checking, and token usage tracking with cost estimation',
+    ],
+    techStack: [
+      {
+        category: 'Built with',
+        items: ['Python', 'FastAPI', 'LangChain', 'OpenAI SDK', 'Pydantic'],
+      },
+      {
+        category: 'Infrastructure',
+        items: ['AWS Lambda', 'AWS SQS', 'AWS DynamoDB', 'AWS API Gateway', 'AWS SAM'],
       },
     ],
   },
@@ -256,7 +288,7 @@ export const npmProjects: Project[] = [
     services: 'CSV Parser & Generator',
     href: '/work/csv-conductor',
     year: '2024',
-    image: '/csvconductor.png',
+    image: '/csvConductorStatic.png',
   },
   {
     id: 'point-focus',
@@ -287,7 +319,7 @@ export const webProjects: Project[] = [
     services: 'Full-Stack Development',
     href: '/work/starbrite-rebate',
     year: '2023',
-    image: '/starbrite-rebate.png',
+    image: '/staticRebate.png',
   },
   {
     id: 'starbrite-locator',
@@ -296,7 +328,16 @@ export const webProjects: Project[] = [
     services: 'Full-Stack Development',
     href: '/work/starbrite-locator',
     year: '2023',
-    image: '/starbrite-locator.png',
+    image: '/starLocator.png',
+  },
+  {
+    id: 'quartz-council',
+    name: 'QuartzCouncil',
+    location: 'GitHub App',
+    services: 'AI Code Review Agent',
+    href: '/work/quartz-council',
+    year: '2025',
+    image: '/quartzStatic.png',
   },
 ]
 

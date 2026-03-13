@@ -5,6 +5,7 @@ import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { ProjectGrid } from './ProjectGrid'
 import { npmProjects, mobileProjects, webProjects } from '../data/projects'
 import { ListViewIcon, GridViewIcon } from '@/app/constants/icons'
+import { BentoGrid } from '@/app/components/bentoGrid/BentoGrid'
 
 export default function Work() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list')
@@ -38,17 +39,23 @@ export default function Work() {
           </button>
         </div>
       </section>
-      <ProjectGrid headers={['Web Project', 'Location', 'Services', 'Year']} projects={webProjects} viewMode={viewMode} gridLayout='banner' />
+      {viewMode === 'grid' ? (
+        <BentoGrid className={styles['c-work__bento']} variant="full" />
+      ) : (
+        <>
+          <ProjectGrid headers={['Web Project', 'Location', 'Services', 'Year']} projects={webProjects} viewMode={viewMode} gridLayout='banner' />
 
-      <ProjectGrid headers={['Mobile Project', 'Platform', 'Description', 'Year']} projects={mobileProjects} viewMode={viewMode} gridLayout='banner' />
+          <ProjectGrid headers={['Mobile Project', 'Platform', 'Description', 'Year']} projects={mobileProjects} viewMode={viewMode} gridLayout='banner' />
 
-      <ProjectGrid
-        headers={['Open-Source npm Library', 'Platform', 'Description', 'Year']}
-        projects={npmProjects}
-        viewMode={viewMode}
-        gridLayout='square'
-        enableHoverPreview
-      />
+          <ProjectGrid
+            headers={['Open-Source npm Library', 'Platform', 'Description', 'Year']}
+            projects={npmProjects}
+            viewMode={viewMode}
+            gridLayout='square'
+            enableHoverPreview
+          />
+        </>
+      )}
 
     </CurvedSection>
   )

@@ -44,14 +44,6 @@
   }
 }
 
-@media (min-width: 400px) {
-  .c-footer {
-    &__info__text {
-      font-size: var(--fs-sm, var(--fs-default));
-    }
-  }
-}
-
 @media (min-width: 800px) {
   .c-footer {
     padding: 1rem  7rem 4rem;
