@@ -45,6 +45,7 @@
     img,
     video {
       object-fit: cover;
+      transform: scale(1.02);
       transition: transform 0.4s ease;
     }
 
