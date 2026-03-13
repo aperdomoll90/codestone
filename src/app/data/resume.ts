@@ -24,11 +24,11 @@ export interface ResumeData {
 export const resumeData: ResumeData = {
   headline: 'Full Stack Software Developer',
   about:
-    'Certified EMT, fluent in English and Spanish, has worked in medical data and medical finance as well as IT at a medical school. I love art, cooking, baking, medical applications of technology, automation, AI, and I hope to improve lives through my work.',
+    'Full-stack software engineer with a focus on accessible UI, component libraries, and design systems in React, Next.js, and TypeScript. Author of published npm packages including css-forge, point-focus, and csv-conductor. Experience building cross-platform mobile apps with React Native and currently exploring AI agent orchestration. Bilingual in English and Spanish, certified EMT, and driven by a love for automation, art, cooking, and agriculture.',
   experience: [
     {
       title: 'Founding Engineer / Technical Lead',
-      company: 'AMR Vineyards',
+      company: 'AMR Estate Wines',
       location: 'Greenfield, California',
       period: '2025 – Present',
       description:
@@ -48,7 +48,7 @@ export const resumeData: ResumeData = {
       location: 'Florida, USA',
       period: '07/2021 – 09/2021',
       description:
-        'Single-handedly developed cross-platform mobile app using React Native and Expo. Integrated Google Maps API with property pinning functionality. Implemented Redux for state management and styled-components for UI.',
+        'Built a cross-platform commercial real estate investment platform (iOS/Android) enabling investors and portfolio managers to discover, analyze, and collaborate on property deals. Developed interactive map-based property discovery with real-time filtering across demographics, zoning, and transaction history. Implemented a financial proforma engine supporting multi-property and multi-deal analysis with rent rolls, occupancy schedules, and operating statements. Integrated HubSpot CRM for contact management and built a permission-based sharing system with NDA enforcement for secure deal collaboration. Sole developer using React Native, TypeScript, and Auth0.',
     },
     {
       title: 'Non-relevant roles',

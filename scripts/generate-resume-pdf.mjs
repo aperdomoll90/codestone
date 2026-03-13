@@ -37,103 +37,78 @@ const colors = {
   white: [255, 255, 255],
 }
 
-// Draw the R logo from SVG - exact paths from the SVG
+// Helper: translate SVG coordinate to PDF position
+function s(coord, scale, offset) {
+  return offset + coord * scale
+}
+
+// Draw the Perdomo logo from SVG paths with proper bezier curves
 function drawLogo(doc, x, y, size) {
-  // Original viewBox is 435x436, scale to fit
   const scale = size / 436
 
   doc.setFillColor(...colors.logoDark)
 
-  // Path 1 - R shape with curve (top part of letter R)
-  // M99.5008 248 L119.001 216 H316.501 C330.001 211.5 344.501 202 344.501 181
-  // C344.501 160 330.001 145.5 308.001 145.5 H237.501 V196.5 L204.001 148.5 V112.5
-  // H316.501 C339.501 112.5 378.501 135 378.501 181 C378.501 227 336.501 248 316.501 248 H99.5008 Z
-  doc.moveTo(x + 99.5 * scale, y + 248 * scale)
-  doc.lineTo(x + 119 * scale, y + 216 * scale)
-  doc.lineTo(x + 316.5 * scale, y + 216 * scale)
-  // Approximate the curve C330.001 211.5 344.501 202 344.501 181
-  doc.lineTo(x + 330 * scale, y + 211.5 * scale)
-  doc.lineTo(x + 344.5 * scale, y + 202 * scale)
-  doc.lineTo(x + 344.5 * scale, y + 181 * scale)
-  // Approximate the curve C344.501 160 330.001 145.5 308.001 145.5
-  doc.lineTo(x + 344.5 * scale, y + 160 * scale)
-  doc.lineTo(x + 330 * scale, y + 145.5 * scale)
-  doc.lineTo(x + 308 * scale, y + 145.5 * scale)
-  doc.lineTo(x + 237.5 * scale, y + 145.5 * scale)
-  doc.lineTo(x + 237.5 * scale, y + 196.5 * scale)
-  doc.lineTo(x + 204 * scale, y + 148.5 * scale)
-  doc.lineTo(x + 204 * scale, y + 112.5 * scale)
-  doc.lineTo(x + 316.5 * scale, y + 112.5 * scale)
-  // Approximate C339.501 112.5 378.501 135 378.501 181
-  doc.lineTo(x + 339.5 * scale, y + 112.5 * scale)
-  doc.lineTo(x + 378.5 * scale, y + 135 * scale)
-  doc.lineTo(x + 378.5 * scale, y + 181 * scale)
-  // Approximate C378.501 227 336.501 248 316.501 248
-  doc.lineTo(x + 378.5 * scale, y + 227 * scale)
-  doc.lineTo(x + 336.5 * scale, y + 248 * scale)
-  doc.lineTo(x + 316.5 * scale, y + 248 * scale)
-  doc.lineTo(x + 99.5 * scale, y + 248 * scale)
+  // Path 1 — R bowl (top part with curves)
+  // M99.5008 248 L119.001 216 H316.501
+  // C330.001 211.5 344.501 202 344.501 181
+  // C344.501 160 330.001 145.5 308.001 145.5
+  // H237.501 V196.5 L204.001 148.5 V112.5 H316.501
+  // C339.501 112.5 378.501 135 378.501 181
+  // C378.501 227 336.501 248 316.501 248 H99.5008 Z
+  doc.moveTo(s(99.5, scale, x), s(248, scale, y))
+  doc.lineTo(s(119, scale, x), s(216, scale, y))
+  doc.lineTo(s(316.5, scale, x), s(216, scale, y))
+  doc.curveTo(s(330, scale, x), s(211.5, scale, y), s(344.5, scale, x), s(202, scale, y), s(344.5, scale, x), s(181, scale, y))
+  doc.curveTo(s(344.5, scale, x), s(160, scale, y), s(330, scale, x), s(145.5, scale, y), s(308, scale, x), s(145.5, scale, y))
+  doc.lineTo(s(237.5, scale, x), s(145.5, scale, y))
+  doc.lineTo(s(237.5, scale, x), s(196.5, scale, y))
+  doc.lineTo(s(204, scale, x), s(148.5, scale, y))
+  doc.lineTo(s(204, scale, x), s(112.5, scale, y))
+  doc.lineTo(s(316.5, scale, x), s(112.5, scale, y))
+  doc.curveTo(s(339.5, scale, x), s(112.5, scale, y), s(378.5, scale, x), s(135, scale, y), s(378.5, scale, x), s(181, scale, y))
+  doc.curveTo(s(378.5, scale, x), s(227, scale, y), s(336.5, scale, x), s(248, scale, y), s(316.5, scale, x), s(248, scale, y))
+  doc.lineTo(s(99.5, scale, x), s(248, scale, y))
   doc.fill()
 
-  // Path 2 - R leg (diagonal kick)
-  // M269.001 259.5 H229.001 L271.501 323 H312.001 L269.001 259.5 Z
-  doc.moveTo(x + 269 * scale, y + 259.5 * scale)
-  doc.lineTo(x + 229 * scale, y + 259.5 * scale)
-  doc.lineTo(x + 271.5 * scale, y + 323 * scale)
-  doc.lineTo(x + 312 * scale, y + 323 * scale)
-  doc.lineTo(x + 269 * scale, y + 259.5 * scale)
+  // Path 2 — R leg (diagonal kick)
+  doc.moveTo(s(269, scale, x), s(259.5, scale, y))
+  doc.lineTo(s(229, scale, x), s(259.5, scale, y))
+  doc.lineTo(s(271.5, scale, x), s(323, scale, y))
+  doc.lineTo(s(312, scale, x), s(323, scale, y))
+  doc.lineTo(s(269, scale, x), s(259.5, scale, y))
   doc.fill()
 
-  // Path 3 - The circular ring with complex path
-  // This is the outer ring with cutouts - simplified version
-  doc.moveTo(x + 248.5 * scale, y + 404 * scale)
-  doc.lineTo(x + 248.5 * scale, y + 433 * scale)
-  // Approximate the curve to the right side
-  doc.lineTo(x + 310.43 * scale, y + 425 * scale)
-  doc.lineTo(x + 430.36 * scale, y + 361 * scale)
-  doc.lineTo(x + 434.43 * scale, y + 223.5 * scale)
-  doc.lineTo(x + 438.5 * scale, y + 86 * scale)
-  doc.lineTo(x + 326.44 * scale, y + 0 * scale)
-  doc.lineTo(x + 220 * scale, y + 0 * scale)
-  doc.lineTo(x + 109.44 * scale, y + 0 * scale)
-  doc.lineTo(x + 0 * scale, y + 81 * scale)
-  doc.lineTo(x + 0 * scale, y + 223.5 * scale)
-  doc.lineTo(x + 0 * scale, y + 336.5 * scale)
-  doc.lineTo(x + 104.44 * scale, y + 444 * scale)
-  doc.lineTo(x + 237.5 * scale, y + 435 * scale)
-  doc.lineTo(x + 237.5 * scale, y + 292.5 * scale)
-  doc.lineTo(x + 215 * scale, y + 259.5 * scale)
-  doc.lineTo(x + 203 * scale, y + 259.5 * scale)
-  doc.lineTo(x + 203 * scale, y + 313.5 * scale)
-  doc.lineTo(x + 203.93 * scale, y + 406 * scale)
-  doc.lineTo(x + 167.93 * scale, y + 404 * scale)
-  doc.lineTo(x + 146.5 * scale, y + 393.84 * scale)
-  doc.lineTo(x + 113 * scale, y + 374.5 * scale)
-  doc.lineTo(x + 86.2 * scale, y + 359 * scale)
-  doc.lineTo(x + 60.5 * scale, y + 322.72 * scale)
-  doc.lineTo(x + 51 * scale, y + 306.5 * scale)
-  doc.lineTo(x + 149 * scale, y + 147 * scale)
-  doc.lineTo(x + 190 * scale, y + 205.5 * scale)
-  doc.lineTo(x + 230.5 * scale, y + 205.5 * scale)
-  doc.lineTo(x + 167 * scale, y + 112.5 * scale)
-  doc.lineTo(x + 130.5 * scale, y + 112.5 * scale)
-  doc.lineTo(x + 107.55 * scale, y + 149.5 * scale)
-  doc.lineTo(x + 36.38 * scale, y + 266.82 * scale)
-  doc.lineTo(x + 35.93 * scale, y + 267.5 * scale)
-  doc.lineTo(x + 32.27 * scale, y + 260.5 * scale)
-  doc.lineTo(x + 28.93 * scale, y + 232.5 * scale)
-  doc.lineTo(x + 26.61 * scale, y + 213 * scale)
-  doc.lineTo(x + 27.93 * scale, y + 176.5 * scale)
-  doc.lineTo(x + 43.5 * scale, y + 145.5 * scale)
-  doc.lineTo(x + 49.2 * scale, y + 134.15 * scale)
-  doc.lineTo(x + 91.44 * scale, y + 26.78 * scale)
-  doc.lineTo(x + 220 * scale, y + 28.5 * scale)
-  doc.lineTo(x + 332.43 * scale, y + 30 * scale)
-  doc.lineTo(x + 406 * scale, y + 126.47 * scale)
-  doc.lineTo(x + 406 * scale, y + 223.5 * scale)
-  doc.lineTo(x + 406 * scale, y + 315 * scale)
-  doc.lineTo(x + 322.94 * scale, y + 396 * scale)
-  doc.lineTo(x + 248.5 * scale, y + 404 * scale)
+  // Path 3 — Outer ring with inner cutout
+  // Exact SVG: M248.501 404V433C310.43 425 430.361 361 434.43 223.5C438.5 86 326.438 0 220.001 0
+  // C109.438 0 0 81 0 223.5C0 336.5 104.438 444 237.501 435V292.5L215 259.5H203
+  // C203 313.5 204.929 406.055 203.93 406C167.93 404 146.5 393.841 113 374.5
+  // C86.2 359.027 60.5 322.72 51 306.5L149 147L190 205.5H230.5L167 112.5H130.5
+  // C107.548 149.5 36.3788 266.823 35.9303 267.5C35.4819 268.177 32.2658 260.5 28.9303 232.5
+  // C26.6074 213 27.9303 176.5 43.5008 145.5C49.2019 134.15 91.4418 26.7848 220.001 28.5
+  // C332.43 30 406.001 126.47 406.001 223.5C406.001 315 322.938 396 248.501 404Z
+  doc.moveTo(s(248.501, scale, x), s(404, scale, y))
+  doc.lineTo(s(248.501, scale, x), s(433, scale, y))
+  doc.curveTo(s(310.43, scale, x), s(425, scale, y), s(430.361, scale, x), s(361, scale, y), s(434.43, scale, x), s(223.5, scale, y))
+  doc.curveTo(s(438.5, scale, x), s(86, scale, y), s(326.438, scale, x), s(0, scale, y), s(220.001, scale, x), s(0, scale, y))
+  doc.curveTo(s(109.438, scale, x), s(0, scale, y), s(0, scale, x), s(81, scale, y), s(0, scale, x), s(223.5, scale, y))
+  doc.curveTo(s(0, scale, x), s(336.5, scale, y), s(104.438, scale, x), s(444, scale, y), s(237.501, scale, x), s(435, scale, y))
+  doc.lineTo(s(237.501, scale, x), s(292.5, scale, y))
+  doc.lineTo(s(215, scale, x), s(259.5, scale, y))
+  doc.lineTo(s(203, scale, x), s(259.5, scale, y))
+  doc.curveTo(s(203, scale, x), s(313.5, scale, y), s(204.929, scale, x), s(406.055, scale, y), s(203.93, scale, x), s(406, scale, y))
+  doc.curveTo(s(167.93, scale, x), s(404, scale, y), s(146.5, scale, x), s(393.841, scale, y), s(113, scale, x), s(374.5, scale, y))
+  doc.curveTo(s(86.2, scale, x), s(359.027, scale, y), s(60.5, scale, x), s(322.72, scale, y), s(51, scale, x), s(306.5, scale, y))
+  doc.lineTo(s(149, scale, x), s(147, scale, y))
+  doc.lineTo(s(190, scale, x), s(205.5, scale, y))
+  doc.lineTo(s(230.5, scale, x), s(205.5, scale, y))
+  doc.lineTo(s(167, scale, x), s(112.5, scale, y))
+  doc.lineTo(s(130.5, scale, x), s(112.5, scale, y))
+  doc.curveTo(s(107.548, scale, x), s(149.5, scale, y), s(36.3788, scale, x), s(266.823, scale, y), s(35.9303, scale, x), s(267.5, scale, y))
+  doc.curveTo(s(35.4819, scale, x), s(268.177, scale, y), s(32.2658, scale, x), s(260.5, scale, y), s(28.9303, scale, x), s(232.5, scale, y))
+  doc.curveTo(s(26.6074, scale, x), s(213, scale, y), s(27.9303, scale, x), s(176.5, scale, y), s(43.5008, scale, x), s(145.5, scale, y))
+  doc.curveTo(s(49.2019, scale, x), s(134.15, scale, y), s(91.4418, scale, x), s(26.7848, scale, y), s(220.001, scale, x), s(28.5, scale, y))
+  doc.curveTo(s(332.43, scale, x), s(30, scale, y), s(406.001, scale, x), s(126.47, scale, y), s(406.001, scale, x), s(223.5, scale, y))
+  doc.curveTo(s(406.001, scale, x), s(315, scale, y), s(322.938, scale, x), s(396, scale, y), s(248.501, scale, x), s(404, scale, y))
   doc.fill()
 }
 
