@@ -1,0 +1,361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BentoGrid matches snapshot 1`] = `
+<div>
+  <div
+    class="c-bento-grid "
+    data-variant="compact"
+  >
+    <a
+      class="c-bento-grid__card"
+      href="/work/rockval"
+    >
+      <img
+        alt="RockVal"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FrockvalInitial.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FrockvalInitial.png&w=640&q=75 640w, /_next/image?url=%2FrockvalInitial.png&w=750&q=75 750w, /_next/image?url=%2FrockvalInitial.png&w=828&q=75 828w, /_next/image?url=%2FrockvalInitial.png&w=1080&q=75 1080w, /_next/image?url=%2FrockvalInitial.png&w=1200&q=75 1200w, /_next/image?url=%2FrockvalInitial.png&w=1920&q=75 1920w, /_next/image?url=%2FrockvalInitial.png&w=2048&q=75 2048w, /_next/image?url=%2FrockvalInitial.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/rockvalVideo.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          Mobile Dev
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          RockVal
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          Real estate investment app
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/csv-conductor"
+    >
+      <img
+        alt="csv-conductor"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FcsvConductorStatic.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FcsvConductorStatic.png&w=640&q=75 640w, /_next/image?url=%2FcsvConductorStatic.png&w=750&q=75 750w, /_next/image?url=%2FcsvConductorStatic.png&w=828&q=75 828w, /_next/image?url=%2FcsvConductorStatic.png&w=1080&q=75 1080w, /_next/image?url=%2FcsvConductorStatic.png&w=1200&q=75 1200w, /_next/image?url=%2FcsvConductorStatic.png&w=1920&q=75 1920w, /_next/image?url=%2FcsvConductorStatic.png&w=2048&q=75 2048w, /_next/image?url=%2FcsvConductorStatic.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/csvConductoryVideo.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          npm Library
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          csv-conductor
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          CSV parser & generator
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/quartz-council"
+    >
+      <img
+        alt="QuartzCouncil"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FquartzStatic.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FquartzStatic.png&w=640&q=75 640w, /_next/image?url=%2FquartzStatic.png&w=750&q=75 750w, /_next/image?url=%2FquartzStatic.png&w=828&q=75 828w, /_next/image?url=%2FquartzStatic.png&w=1080&q=75 1080w, /_next/image?url=%2FquartzStatic.png&w=1200&q=75 1200w, /_next/image?url=%2FquartzStatic.png&w=1920&q=75 1920w, /_next/image?url=%2FquartzStatic.png&w=2048&q=75 2048w, /_next/image?url=%2FquartzStatic.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/quartsCouncilVideo.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          Dev Tool
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          QuartzCouncil
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          AI code review agent
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/css-forge"
+    >
+      <img
+        alt="css-forge"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FforgeInitial.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FforgeInitial.png&w=640&q=75 640w, /_next/image?url=%2FforgeInitial.png&w=750&q=75 750w, /_next/image?url=%2FforgeInitial.png&w=828&q=75 828w, /_next/image?url=%2FforgeInitial.png&w=1080&q=75 1080w, /_next/image?url=%2FforgeInitial.png&w=1200&q=75 1200w, /_next/image?url=%2FforgeInitial.png&w=1920&q=75 1920w, /_next/image?url=%2FforgeInitial.png&w=2048&q=75 2048w, /_next/image?url=%2FforgeInitial.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/forgevideo.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          npm Library
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          css-forge
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          React component library
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/starbrite-rebate"
+    >
+      <img
+        alt="StarPriority"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FstaticRebate.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FstaticRebate.png&w=640&q=75 640w, /_next/image?url=%2FstaticRebate.png&w=750&q=75 750w, /_next/image?url=%2FstaticRebate.png&w=828&q=75 828w, /_next/image?url=%2FstaticRebate.png&w=1080&q=75 1080w, /_next/image?url=%2FstaticRebate.png&w=1200&q=75 1200w, /_next/image?url=%2FstaticRebate.png&w=1920&q=75 1920w, /_next/image?url=%2FstaticRebate.png&w=2048&q=75 2048w, /_next/image?url=%2FstaticRebate.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/starPriority.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          Full-Stack Dev
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          StarPriority
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          Rebate submission platform
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/stop"
+    >
+      <img
+        alt="STOP"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FstopInitial.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FstopInitial.png&w=640&q=75 640w, /_next/image?url=%2FstopInitial.png&w=750&q=75 750w, /_next/image?url=%2FstopInitial.png&w=828&q=75 828w, /_next/image?url=%2FstopInitial.png&w=1080&q=75 1080w, /_next/image?url=%2FstopInitial.png&w=1200&q=75 1200w, /_next/image?url=%2FstopInitial.png&w=1920&q=75 1920w, /_next/image?url=%2FstopInitial.png&w=2048&q=75 2048w, /_next/image?url=%2FstopInitial.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/stopVideo.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          Web Project
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          STOP
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          Sea turtle conservation platform
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/starbrite-locator"
+    >
+      <img
+        alt="StarLocator"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2FstarLocatorInitial.png&w=3840&q=75"
+        srcset="/_next/image?url=%2FstarLocatorInitial.png&w=640&q=75 640w, /_next/image?url=%2FstarLocatorInitial.png&w=750&q=75 750w, /_next/image?url=%2FstarLocatorInitial.png&w=828&q=75 828w, /_next/image?url=%2FstarLocatorInitial.png&w=1080&q=75 1080w, /_next/image?url=%2FstarLocatorInitial.png&w=1200&q=75 1200w, /_next/image?url=%2FstarLocatorInitial.png&w=1920&q=75 1920w, /_next/image?url=%2FstarLocatorInitial.png&w=2048&q=75 2048w, /_next/image?url=%2FstarLocatorInitial.png&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+      <video
+        data-playback="hover"
+        loop=""
+        playsinline=""
+        src="/starFinderVideo.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          Full-Stack Dev
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          StarLocator
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          Product-based store locator
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+    <a
+      class="c-bento-grid__card"
+      href="/work/point-focus"
+    >
+      <video
+        data-playback="auto"
+        loop=""
+        playsinline=""
+        src="/pointFocus.mp4"
+      />
+      <div
+        class="c-bento-grid__info"
+      >
+        <span
+          class="c-bento-grid__info-role"
+        >
+          npm Library
+        </span>
+        <span
+          class="c-bento-grid__info-title"
+        >
+          point-focus
+        </span>
+        <span
+          class="c-bento-grid__info-desc"
+        >
+          Image zoom & focus component
+        </span>
+      </div>
+      <span
+        class="c-bento-grid__button"
+      >
+        View
+      </span>
+    </a>
+  </div>
+</div>
+`;

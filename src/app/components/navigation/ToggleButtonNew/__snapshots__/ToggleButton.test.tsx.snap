@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleButton matches snapshot 1`] = `
+<div>
+  <button
+    class="c-toggle-button"
+    data-active="false"
+    style="--top: 2rem;"
+    type="button"
+  >
+    <span />
+    <span />
+    <span />
+    <span
+      class="sr-only"
+    >
+      menu
+    </span>
+  </button>
+</div>
+`;

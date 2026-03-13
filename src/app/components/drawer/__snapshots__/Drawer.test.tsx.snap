@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer matches snapshot when open 1`] = `
+<div>
+  <div
+    class="c-drawer "
+    data-anchor="bottom"
+    data-open="true"
+  >
+    <div
+      class="c-drawer__overlay"
+    />
+    <div
+      class="c-drawer__content "
+    >
+      <button
+        aria-label="Close drawer"
+        class="c-drawer__close"
+        type="button"
+      >
+        <span />
+        <span />
+      </button>
+      <p>
+        Drawer content
+      </p>
+    </div>
+  </div>
+</div>
+`;

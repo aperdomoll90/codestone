@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "npm run build && firebase deploy"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "deploy": "npm run build && firebase deploy",
+    "prepare": "husky"
   },
   "dependencies": {
     "css-forge": "^0.1.35",
@@ -20,12 +23,22 @@
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
+    "@types/jest-axe": "^3.5.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "husky": "^9.1.7",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-axe": "^10.0.0",
+    "jest-environment-jsdom": "^29.7.0",
     "sass": "^1.90.0",
+    "ts-jest": "^29.4.6",
     "typescript": "^5"
   }
 }
