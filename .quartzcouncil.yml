@@ -1,0 +1,48 @@
+# QuartzCouncil configuration for Chalcedony agent
+# This file defines repo-specific conventions to enforce during PR reviews
+
+version: 1
+
+limits:
+  # max_comments: 0 means no limit (report all violations)
+  max_comments: 0
+  default_severity: warning
+
+rules:
+  # BEM naming: c-component, c-component__element, c-component--modifier
+  bem_naming:
+    enabled: true
+    prefix: "c-"
+    element_separator: "__"
+    modifier_separator: "--"
+    severity: warning
+
+  # SCSS nesting must use & for nested selectors
+  scss_nesting:
+    enabled: true
+    require_ampersand: true
+    severity: warning
+
+  # CSS Modules must use bracket notation: styles["class"] not styles.class
+  css_modules_access:
+    enabled: true
+    style_object: "styles"
+    bracket_notation_only: true
+    severity: warning
+
+  # data-* attributes must use allowed prefixes
+  data_attributes:
+    enabled: true
+    allowed_prefixes: ["data-state", "data-variant", "data-open", "data-anchor", "data-active", "data-visible"]
+    severity: warning
+
+policy:
+  # Custom hooks naming convention
+  - id: "hooks-naming"
+    severity: warning
+    text: "Custom hooks must be named useX (camelCase starting with 'use') and must not be exported as default."
+
+  # Prefer data attributes over class toggling for state
+  - id: "data-attr-state"
+    severity: warning
+    text: "Use data-* attributes for component state (data-open, data-active) instead of toggling CSS classes."

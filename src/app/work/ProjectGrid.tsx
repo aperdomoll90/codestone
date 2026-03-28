@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from './ProjectGrid.module.scss'
 import { Project } from './types'
 import { useMagnetize } from 'css-forge'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 
 type ViewMode = 'list' | 'grid'
 type GridLayout = 'square' | 'banner'
@@ -24,7 +24,7 @@ export function ProjectGrid({
   gridLayout = 'square',
   enableHoverPreview,
 }: IProjectGridProps) {
-  const router = useRouter()
+  const router = useTransitionRouter()
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const previewRef = useRef<HTMLDivElement | null>(null)
@@ -87,15 +87,15 @@ export function ProjectGrid({
     <>
       <section className={styles['c-project-grid']} data-view={viewMode}>
         <div className={styles['c-project-grid__header']}>
-          {headers.map((header, index) => (
-            <span key={index}>{header}</span>
+          {headers.map((header) => (
+            <span key={header}>{header}</span>
           ))}
         </div>
 
         <div ref={contentRef} className={styles['c-project-grid__content']}>
-          {projects.map((project, index) => (
+          {projects.map((project, projectIndex) => (
             <a
-              key={index}
+              key={project.href}
               href={project.href}
               target={project.isExternal ? '_blank' : undefined}
               rel={project.isExternal ? 'noopener noreferrer' : undefined}
@@ -103,8 +103,8 @@ export function ProjectGrid({
               style={{ '--project-image': `url(${project.image})` } as React.CSSProperties}
               data-view={viewMode}
               data-layout={gridLayout}
-              data-hovered={hoveredIndex === index}
-              onMouseMove={e => handleMouseMove(e, index)}
+              data-hovered={hoveredIndex === projectIndex}
+              onMouseMove={e => handleMouseMove(e, projectIndex)}
               onMouseLeave={handleMouseLeave}
               onClick={e => handleClick(e, project)}>
               <span>{project.name}</span>
@@ -123,8 +123,8 @@ export function ProjectGrid({
               <div
                 className={styles['c-project-grid__preview-images']}
                 style={{ '--active-index': hoveredIndex ?? 0 } as React.CSSProperties}>
-                {projects.map((project, index) => (
-                  <Image key={index} src={project.image} alt={project.name} width={300} height={200} />
+                {projects.map((project) => (
+                  <Image key={project.image} src={project.image} alt={project.name} width={300} height={200} />
                 ))}
               </div>
               <span className={styles['c-project-grid__preview-label']}>View</span>

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutSection matches snapshot 1`] = `
+<div>
+  <section
+    class="c-about-section"
+    id="c-about"
+  >
+    <div
+      class="c-about-section_content"
+    >
+      <p
+        class="c-about-section_content-message-primary"
+      >
+        Together, we will craft an intuitive, accessible experience that speaks directly to your customers.
+      </p>
+      <p
+        class="c-about-section_content-secondary"
+      >
+        With equal parts creativity, code, and interaction insight, I offer a truly multifaceted approach.
+      </p>
+    </div>
+    <div
+      class="c-about-section_container"
+    >
+      <button
+        class="c-about-section_container-aboutme"
+        type="button"
+      >
+        About Me
+      </button>
+      <a
+        class="c-about-section_container-codepen"
+        href="https://codepen.io/fuzzy-wolfpup/collections/"
+      >
+        CodePen
+      </a>
+      <button
+        class="c-about-section_container-resume"
+        type="button"
+      >
+        Resume
+      </button>
+      <a
+        class="c-about-section_container-github"
+        href="https://github.com/aperdomoll90"
+      >
+        GitHub
+      </a>
+      <a
+        class="c-about-section_container-npm"
+        href="https://www.npmjs.com/~aperdomoll90"
+      >
+        npm
+      </a>
+    </div>
+  </section>
+</div>
+`;

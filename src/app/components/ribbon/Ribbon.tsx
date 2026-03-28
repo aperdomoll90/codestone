@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import styles from './Ribbon.module.scss'
 
@@ -12,7 +11,7 @@ const RotatingGlobe = () => {
         {Array(5)
           .fill(0)
           .map((_, index) => (
-            <span key={index} style={{ '--i': index } as any} />
+            <span key={`globe-line-${index}`} style={{ '--i': index } as React.CSSProperties} />
           ))}
       </div>
       <div className={`${styles['c-globe__lat']}`} />
@@ -30,12 +29,12 @@ const Ribbon: React.FC<RibbonProps> = ({ className }) => {
           fill='#1C1D20'
         />
         <text x={XPosition} y='35' fill='white' fontSize='16' fontFamily='Albert Sans, sans-serif' fontWeight='200'>
-          Located
+          Shipping
           <tspan x={XPosition} dy='20'>
-            in
+            Global
           </tspan>
           <tspan x={XPosition} dy='20'>
-            Florida, USA
+            Solutions
           </tspan>
         </text>
       </svg>
@@ -43,4 +42,4 @@ const Ribbon: React.FC<RibbonProps> = ({ className }) => {
   )
 }
 
-export default Ribbon
+export { Ribbon }

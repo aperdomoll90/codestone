@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectContent matches snapshot with project 1`] = `
+<div>
+  <section
+    class="c-project"
+  >
+    <section
+      class="c-curved-section c-project__hero"
+      style="--section-bg: var(--white); --curve-bg: var(--white); --animation-range: 0% 30%; --curve-scale-from: 30; --curve-scale-to: 0;"
+    >
+      <svg
+        height="0"
+        style="position: absolute;"
+        width="0"
+      >
+        <defs>
+          <clippath
+            clipPathUnits="objectBoundingBox"
+            id="content-curve"
+          >
+            <path
+              d="M0,0 L1,0 L1,0.5 C0.75,1 0.25,1 0,0.5 L0,0 Z"
+            />
+          </clippath>
+        </defs>
+      </svg>
+      <h1
+        class="c-project__hero-title"
+      >
+        Test Project
+      </h1>
+      <div
+        class="c-project__hero-header"
+      >
+        <span>
+          Role/Service
+        </span>
+        <span>
+          Location
+        </span>
+        <span>
+          Year
+        </span>
+      </div>
+      <div
+        class="c-project__hero-info"
+      >
+        <span>
+          Full-Stack Dev
+        </span>
+        <span>
+          npm
+        </span>
+        <span>
+          2024
+        </span>
+      </div>
+    </section>
+    <section
+      class="c-project__content"
+    >
+      <div
+        class="c-project__content-media-wrapper"
+      >
+        <img
+          alt="Test Project"
+          class="c-project__content-image"
+          data-nimg="1"
+          decoding="async"
+          height="500"
+          loading="lazy"
+          src="/_next/image?url=%2Ftest.png&w=1920&q=75"
+          srcset="/_next/image?url=%2Ftest.png&w=828&q=75 1x, /_next/image?url=%2Ftest.png&w=1920&q=75 2x"
+          style="color: transparent;"
+          width="800"
+        />
+        <div
+          class="c-project__content-image-buttons"
+        />
+      </div>
+      <div
+        class="c-project__content-info"
+      >
+        <div
+          class="c-project__content-info-section"
+          data-title="Overview"
+        >
+          <p>
+            A test project overview.
+          </p>
+        </div>
+        <div
+          class="c-project__content-info-section"
+          data-title="Key Features & Highlights"
+        >
+          <ul
+            class="c-project__list"
+          >
+            <li>
+              Feature one
+            </li>
+            <li>
+              Feature two
+            </li>
+            <li>
+              Feature three
+            </li>
+          </ul>
+        </div>
+        <div
+          class="c-project__content-info-section"
+          data-title="Tech Stack & Your Role"
+        >
+          <div
+            class="c-project__content-info-section-tech"
+            data-header="Frontend"
+          >
+            <ul
+              class="c-project__list"
+            >
+              <li>
+                React
+              </li>
+              <li>
+                TypeScript
+              </li>
+            </ul>
+          </div>
+          <div
+            class="c-project__content-info-section-tech"
+            data-header="Backend"
+          >
+            <ul
+              class="c-project__list"
+            >
+              <li>
+                Node.js
+              </li>
+              <li>
+                Express
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</div>
+`;

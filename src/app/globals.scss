@@ -13,6 +13,17 @@
   --gray100:#E9EAEB;
   --gray100-transp:#e9eaebd4;
 
+  // Bento card colors (warm pastel palette)
+  --bento-lavender: #b8b0d8;
+  --bento-rose: #d4a0a8;
+  --bento-sky: #b0d0e8;
+  --bento-yellow: #e8d478;
+  --bento-peach: #d8a888;
+  --bento-steel: #a0b8c8;
+  --bento-lilac: #d4c8e8;
+  --bento-sage: #b8d8d0;
+  --bento-blush: #e0c8d0;
+  --bento-cornflower: #b8c8e8;
 }
 
 * {
@@ -26,9 +37,36 @@ html {
   scroll-behavior: smooth; 
 }
 
+// View Transition API — CSS-driven page transitions
+::view-transition-old(root) {
+  animation: pageOut 1s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  animation: pageIn 1s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+  z-index: 1000;
+}
+
+@keyframes pageOut {
+  to {
+    opacity: 0.2;
+    transform: translateY(-35%);
+  }
+}
+
+@keyframes pageIn {
+  from {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+}
+
 body {
   width: 100dvw;
-  min-height: 100dvh;
+  min-height: 100svh;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

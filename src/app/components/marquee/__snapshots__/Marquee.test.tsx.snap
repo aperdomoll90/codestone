@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marquee matches snapshot 1`] = `
+<div>
+  <div
+    class="c-marquee"
+  >
+    <div
+      class="c-marquee__track"
+    >
+      <h1>
+        Adrian Perdomo - Adrian Perdomo -
+      </h1>
+      <h1
+        aria-hidden="true"
+      >
+        Adrian Perdomo - Adrian Perdomo -
+      </h1>
+    </div>
+  </div>
+</div>
+`;

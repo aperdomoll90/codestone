@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useCallback } from 'react'
 
 interface UseSwipeGestureOptions {
   onSwipeDown?: () => void
@@ -7,7 +7,6 @@ interface UseSwipeGestureOptions {
   onSwipeRight?: () => void
   threshold?: number
   enabled?: boolean
-  lockScroll?: boolean
 }
 
 export const useSwipeGesture = ({
@@ -17,21 +16,11 @@ export const useSwipeGesture = ({
   onSwipeRight,
   threshold = 50,
   enabled = true,
-  lockScroll = false,
 }: UseSwipeGestureOptions) => {
   const touchStartX = useRef(0)
   const touchStartY = useRef(0)
   const touchEndX = useRef(0)
   const touchEndY = useRef(0)
-
-  useEffect(() => {
-    if (lockScroll && enabled) {
-      document.body.style.overflow = 'hidden'
-      return () => {
-        document.body.style.overflow = ''
-      }
-    }
-  }, [lockScroll, enabled])
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX

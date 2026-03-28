@@ -14,6 +14,13 @@
   &__logo {
     display: none;
     pointer-events: auto;
+    align-items: center;
+    gap: 0.4rem;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 
   &__drawer {
@@ -21,7 +28,7 @@
   }
 
   &__menu {
-    padding: min(30dvh, 30dvh) 2em !important;
+    padding: 30dvh 2em !important;
 
     &-item {
       padding: 1rem;
@@ -46,7 +53,7 @@
   &[data-route='about'],
   &[data-route='resume'] {
     .c-navigation__logo {
-      display: block;
+      display: flex;
       position: absolute;
       top: 3rem;
       left: 2rem;
@@ -68,7 +75,7 @@
     font-weight: 500;
 
     .c-navigation__logo {
-      display: block;
+      display: flex;
       position: absolute;
       top: 3rem;
       left: 2rem;
@@ -110,7 +117,7 @@
     }
 
     &__logo {
-      display: block;
+      display: flex;
       position: relative;
       font-size: 1.2rem;
     }

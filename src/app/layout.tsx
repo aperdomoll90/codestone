@@ -2,9 +2,8 @@ import type { Metadata } from 'next'
 import './globals.scss'
 import { Albert_Sans } from 'next/font/google'
 import { Footer } from './components/navigation/footer/Footer'
-import { ResponsiveNav } from './components/navigation/responsiveNav/ResponsiveNav'
-import { LoadingScreen } from './components/loadingScreen/LoadingScreen'
-import { LoadingProvider } from './components/loadingScreen/LoadingContext'
+import { ResponsiveNav } from './components/navigation/ResponsiveNav/ResponsiveNav'
+import { ViewTransitions } from 'next-view-transitions'
 
 export const albertSans = Albert_Sans({
   subsets: ['latin'],
@@ -26,15 +25,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={albertSans.className}>
-      <body>
-        <LoadingProvider>
+    <ViewTransitions>
+      <html lang='en' className={albertSans.className}>
+        <body>
           <ResponsiveNav />
-          <LoadingScreen />
           <main>{children}</main>
           <Footer />
-        </LoadingProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }

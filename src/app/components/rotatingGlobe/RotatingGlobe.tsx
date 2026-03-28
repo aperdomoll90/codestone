@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import styles from './RotatingGlobe.module.scss'
 
@@ -16,7 +15,7 @@ export const RotatingGlobe: React.FC<RotatingGlobeProps> = ({ className = '', co
         {Array(5)
           .fill(0)
           .map((_, index) => (
-            <span key={index} style={{ '--i': index } as React.CSSProperties} />
+            <span key={`globe-line-${index}`} style={{ '--i': index } as React.CSSProperties} />
           ))}
       </div>
       <div className={styles['c-globe__lat']} />

@@ -4,7 +4,7 @@ import styles from './About.module.scss'
 import { CurvedSection } from '@/app/components/curvedSection/CurvedSection'
 import { RotatingGlobe } from '@/app/components/rotatingGlobe/RotatingGlobe'
 import { DrawButton } from 'css-forge'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 
 const linksData = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrian-perdomo-12997474/' },
@@ -32,7 +32,7 @@ const servicesData = [
 ]
 
 export default function About() {
-  const router = useRouter()
+  const router = useTransitionRouter()
 
   const handleNavigate = (href: string, e: React.MouseEvent) => {
     if (href.startsWith('http') || href.startsWith('mailto:')) {
@@ -79,8 +79,8 @@ export default function About() {
         <h2 className={styles['c-about__services-title']}>I can help you with ...</h2>
 
         <div className={styles['c-about__services-grid']}>
-          {servicesData.map((service, index) => (
-            <div data-index={`0${index + 1}`} key={index} className={styles['c-about__services-grid-item']}>
+          {servicesData.map((service, serviceIndex) => (
+            <div data-index={`0${serviceIndex + 1}`} key={service.title} className={styles['c-about__services-grid-item']}>
               <h3 className={styles['c-about__services-grid-item-title']}>{service.title}</h3>
               <p className={styles['c-about__services-grid-item-desc']}>{service.description}</p>
             </div>

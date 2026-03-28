@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurvedSection matches snapshot 1`] = `
+<div>
+  <section
+    class="c-curved-section "
+    style="--section-bg: var(--white); --curve-bg: var(--white); --animation-range: 90% 100%; --curve-scale-from: 30; --curve-scale-to: 0;"
+  >
+    <svg
+      height="0"
+      style="position: absolute;"
+      width="0"
+    >
+      <defs>
+        <clippath
+          clipPathUnits="objectBoundingBox"
+          id="content-curve"
+        >
+          <path
+            d="M0,0 L1,0 L1,0.5 C0.75,1 0.25,1 0,0.5 L0,0 Z"
+          />
+        </clippath>
+      </defs>
+    </svg>
+    <p>
+      Test content
+    </p>
+  </section>
+</div>
+`;

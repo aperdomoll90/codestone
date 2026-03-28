@@ -3,69 +3,60 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  padding-bottom: 7rem;
+  padding: 0 0 3rem;
 
   &::before {
     content: 'Recent Work';
     font-size: 1rem;
     position: absolute;
     color: var(--gray300);
-    top: -25%;
+    top: -2%;
     right: 5%;
   }
 
-  &__carousels {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
   &__button {
-    position: relative;
+    position: relative !important;
+    margin-top: 3rem;
     bottom: 0;
   }
 }
 
+// ── Small mobile ──
 @media (min-width: 400px) {
   .c-work-section {
     gap: 2rem;
+    padding: 0 0 7rem;
+
     &::before {
       top: -25%;
       right: 7%;
     }
-
-    &__carousels {
-      gap: 0.75rem;
-    }
   }
 }
 
+// ── Tablet ──
 @media (min-width: 800px) {
   .c-work-section {
     gap: 4rem;
-    padding-bottom: 12rem;
+    padding: 0 0 12rem;
 
     &::before {
       top: -20%;
       right: 15%;
     }
-
-    &__carousels {
-      gap: 1rem;
-    }
   }
 }
 
+// ── Desktop ──
 @media (min-width: 900px) {
   .c-work-section {
     min-height: 80svh;
     gap: 3rem;
-    padding-top: 3rem;
-    padding-bottom: 16rem;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+
     &::before {
       font-size: 1.2rem;
       top: 0%;
@@ -73,16 +64,8 @@
       left: 15%;
     }
 
-    &__carousels {
-      gap: 1.5rem;
-    }
-  }
-}
-
-@media (min-width: 1600px) {
-  .c-work-section {
-    &__carousels {
-      gap: 2rem;
+    &__button {
+      margin-top: 0;
     }
   }
 }

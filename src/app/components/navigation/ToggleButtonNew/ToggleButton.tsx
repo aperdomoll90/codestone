@@ -4,6 +4,7 @@ import { ToggleButtonPropsType } from './ToggleButton.types'
 export const ToggleButton: React.FC<ToggleButtonPropsType> = ({ active, setActive, yPosition='2rem' }) => {
   return (
     <button
+      type="button"
       className={styles['c-toggle-button']}
       data-active={active}
       style={

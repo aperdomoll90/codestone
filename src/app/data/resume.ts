@@ -24,15 +24,23 @@ export interface ResumeData {
 export const resumeData: ResumeData = {
   headline: 'Full Stack Software Developer',
   about:
-    'Certified EMT, fluent in English and Spanish, has worked in medical data and medical finance as well as IT at a medical school. I love art, cooking, baking, medical applications of technology, automation, AI, and I hope to improve lives through my work.',
+    'Full-stack software engineer with a focus on accessible UI, component libraries, and design systems in React, Next.js, and TypeScript. Author of published npm packages including css-forge, point-focus, and csv-conductor. Experience building cross-platform mobile apps with React Native and currently exploring AI agent orchestration. Bilingual in English and Spanish, certified EMT, and driven by a love for automation, art, cooking, and agriculture.',
   experience: [
+    {
+      title: 'Founding Engineer / Technical Lead',
+      company: 'AMR Estate Wines',
+      location: 'Greenfield, California',
+      period: '2025 – Present',
+      description:
+        'Architected and built the company\'s end-to-end digital commerce infrastructure, including e-commerce storefront, point-of-sale, and inventory management systems for both online and in-person wine sales. Built internal tools for product catalog, inventory workflows, and vineyard operations, connecting Shopify, payment processors, and operational dashboards for end-to-end traceability. Implemented barcode and QR-based product tracking to streamline fulfillment, event logistics, and inventory audits. Defined the technology roadmap and system architecture, designing for scalability across future distribution channels and retail expansion.',
+    },
     {
       title: 'Software Engineer',
       company: 'CITY Furniture',
       location: 'Florida, USA',
-      period: '01/2022 – Present',
+      period: '01/2022 – 03/2026',
       description:
-        'Developed and maintained e-commerce platform features using Next.js and Node.js microservices architecture. Deployed services on AWS infrastructure. Wrote unit and integration tests with Jest. Monitored application performance and troubleshot issues using New Relic.',
+        'Owned product pages and Blueprint, the internal UI component library powering a high-traffic e-commerce platform serving nearly 700K monthly visitors and $94M in annual online revenue. Modernized Blueprint by replacing JS-based styling with CSS-native solutions, reducing bundle size and improving both runtime performance and WCAG accessibility compliance across the entire site. Participated in the migration from React Context to Redux across product pages, cart, and checkout flows, improving state predictability on critical revenue paths. Implemented 3D model rendering on product detail pages for interactive product visualization. Built and published point-focus (npm), a physics-based image zoom library, when no existing solution met the platform\'s requirements. Served as the primary liaison between design and engineering teams, championing accessibility standards across the development workflow.',
     },
     {
       title: 'Software Engineer',
@@ -40,7 +48,7 @@ export const resumeData: ResumeData = {
       location: 'Florida, USA',
       period: '07/2021 – 09/2021',
       description:
-        'Single-handedly developed cross-platform mobile app using React Native and Expo. Integrated Google Maps API with property pinning functionality. Implemented Redux for state management and styled-components for UI.',
+        'Built a cross-platform commercial real estate investment platform (iOS/Android) enabling investors and portfolio managers to discover, analyze, and collaborate on property deals. Developed interactive map-based property discovery with real-time filtering across demographics, zoning, and transaction history. Implemented a financial proforma engine supporting multi-property and multi-deal analysis with rent rolls, occupancy schedules, and operating statements. Integrated HubSpot CRM for contact management and built a permission-based sharing system with NDA enforcement for secure deal collaboration. Sole developer using React Native, TypeScript, and Auth0.',
     },
     {
       title: 'Non-relevant roles',
@@ -103,23 +111,21 @@ export const resumeData: ResumeData = {
     'React',
     'React Native',
     'Next.js',
-    'React Hooks',
     'SCSS Modules',
     'Tailwind CSS',
     'Responsive & Accessible UI',
-    'SVG',
-    'Canvas',
+    'SVG & Canvas',
     'Three.js',
     'Node.js',
     'Express',
     'REST APIs',
     'MongoDB',
-    'SQL',
-    'NoSQL',
+    'PostgreSQL',
     'Firebase',
+    'Shopify',
     'Jest',
     'AWS (S3, Lambda, Amplify)',
     'Serverless Functions & Architecture',
-    'Performance Optimization & Lazy Loading',
+    'Performance Optimization',
   ],
 }

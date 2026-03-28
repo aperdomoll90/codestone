@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer matches snapshot 1`] = `
+<div>
+  <div
+    class="c-footer"
+  >
+    <div
+      class="c-footer__group"
+      style="--label: 'Contact Details';"
+    >
+      <a
+        href="mailto:aperdomoll90@gmail.com"
+      >
+        aperdomoll90@gmail.com
+      </a>
+      <a
+        href="tel:+13052020222"
+      >
+        +1 305 343 9033
+      </a>
+    </div>
+    <div
+      class="c-footer__group"
+      style="--label: 'Version'; --fs-default: 0.8rem; --fs-sm: 0.85rem; --fs-md: 0.9rem; --fs-mdx: 1rem; --fs-lg: 1.125rem;"
+    >
+      <span
+        class="c-footer__text"
+      >
+        2025 © Edition
+      </span>
+    </div>
+    <div
+      class="c-footer__group"
+      style="--label: 'Social';"
+    >
+      <a
+        href="https://www.linkedin.com/in/adrian-perdomo-12997474/"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+`;

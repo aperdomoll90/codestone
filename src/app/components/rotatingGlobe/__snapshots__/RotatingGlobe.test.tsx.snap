@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RotatingGlobe matches snapshot 1`] = `
+<div>
+  <div
+    class="c-globe "
+  >
+    <div
+      class="c-globe__long"
+    >
+      <span
+        style="--i: 0;"
+      />
+      <span
+        style="--i: 1;"
+      />
+      <span
+        style="--i: 2;"
+      />
+      <span
+        style="--i: 3;"
+      />
+      <span
+        style="--i: 4;"
+      />
+    </div>
+    <div
+      class="c-globe__lat"
+    />
+  </div>
+</div>
+`;
